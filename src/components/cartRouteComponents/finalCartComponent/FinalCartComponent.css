@@ -1,0 +1,26 @@
+.final-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 920px;
+}
+
+.final-left {
+  width: 520px;
+}
+
+.final-left p {
+  color: #505050;
+}
+
+.final-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 400px;
+  cursor: pointer;
+}
+
+.final-right a {
+  text-decoration: underline;
+  color: #83b669;
+}

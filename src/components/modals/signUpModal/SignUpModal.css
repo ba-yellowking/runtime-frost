@@ -1,0 +1,23 @@
+.modal-title {
+  cursor: pointer;
+}
+
+.modal-title:hover {
+  color: #67ac44;
+}
+
+.modal-title::before {
+  content: " ";
+  position: absolute;
+  left: 5px;
+  top: 100%;
+  width: 0;
+  height: 2px;
+  background-color: #67ac44;
+  transition-duration: .3s;
+  transition-property: width;
+}
+
+.modal-title:hover::before {
+  width: calc(100% - 10px);
+}

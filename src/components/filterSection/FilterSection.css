@@ -1,0 +1,36 @@
+.filter-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 960px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 885px;
+}
+
+.filter-dropdowns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 885px;
+  padding: 20px 0;
+}
+
+.filter-text {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.filter-available {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+}

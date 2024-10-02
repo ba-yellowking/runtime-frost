@@ -1,0 +1,26 @@
+.products-component-container {
+  margin-top: 25px;
+  height: 1100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  overflow: hidden;
+}
+
+.products-component-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.products-component-center-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+}

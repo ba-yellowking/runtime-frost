@@ -1,0 +1,18 @@
+.button-standard {
+  width: 115px;
+  height: 30px;
+  background-color: #67ac44;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-standard:disabled {
+  background-color: #8c8c8c;
+  cursor: default;
+}
+
+.button-standard.active {
+  background-color: #357017;
+}

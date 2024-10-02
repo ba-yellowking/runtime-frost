@@ -1,0 +1,117 @@
+.product-card-wrapper {
+  margin: 25px 0;
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+
+.top-product-card {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  background-color: #ffffff;
+  width: 960px;
+  height: 250px;
+  padding: 10px;
+}
+
+.image-product-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 335px;
+  height: 230px;
+}
+.main-image-product-card {
+  /*width: 335px;*/
+  /*height: 230px;*/
+  width: 300px;
+  height: 230px;
+  background-color: #ececec;
+}
+
+.info-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 375px;
+  height: 230px;
+  padding: 10px;
+}
+.name-product-card {
+  font-size: 18px;
+}
+.code-product-card, .manufacturer-product-card, .description-product-card {
+  color: #5c5c5c;
+  font-size: 15px;
+}
+
+.add-info-product-card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.add-info-product-card-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 230px;
+  height: 230px;
+  background-color: #ececec;
+}
+.price-product-card {
+  margin: 10px;
+  font-size: 1.5rem;
+}
+.available-product-card {
+  margin: 0 0 10px 0;
+}
+
+
+.bottom-product-card {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 960px;
+  min-height: 300px;
+}
+.applicable-product-card-wrap {
+  /*padding: 10px;*/
+  /*margin-bottom: 15px;*/
+  padding: 10px;
+  width: 335px;
+  /*background-color: #f5f5f5;*/
+  /*border: 1px solid #dadada;*/
+}
+.review-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 960px;
+}
+
+.product-card-component-center-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+}
+
+.available-product-card {
+  margin: 10px;
+}
+
+.available-logo {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
