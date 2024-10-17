@@ -1,8 +1,7 @@
 import "./Footer.css";
-import instagramLogo from './images/instagram.png';
-import gmailLogo from './images/gmail.png';
-import phoneCallLogo from './images/phone-call.png';
-
+import instagramLogo from '../../images/instagram.png';
+import gmailLogo from '../../images/gmail.png';
+import phoneCallLogo from '../../images/phone-call.png';
 
 function Footer() {
 

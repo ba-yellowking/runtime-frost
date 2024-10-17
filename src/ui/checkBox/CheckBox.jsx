@@ -1,14 +1,11 @@
 import "./CheckBox.css";
 
-
 function CheckBox({ onChangeCheckBox, isChecked, setIsChecked }) {
-
 
   const checkBox = function() {
     setIsChecked(!isChecked);
     onChangeCheckBox(!isChecked);
   }
-
 
   return (
     <div className="available-container">
@@ -21,6 +18,5 @@ function CheckBox({ onChangeCheckBox, isChecked, setIsChecked }) {
     </div>
   )
 }
-
 
 export default CheckBox;

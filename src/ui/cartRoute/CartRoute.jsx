@@ -1,8 +1,6 @@
 import "./CartRoute.css";
 
-
 function CartRoute({ currentComponent, setCurrentComponent }) {
-
 
   function handleCurrentComponent(component) {
 
@@ -13,14 +11,10 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
     if (previousStep <= currentStep && currentStep !== 3) {
       setCurrentComponent(component)
     }
-
   }
 
-
   return (
-
     <div className="route-container">
-
       <div
         className={`route-cart ${currentComponent === "cart" ? "activeRoute" : ""}`}
         onClick={function() {
@@ -29,7 +23,6 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
       >
         <span>Корзина</span>
       </div>
-
 
       <div
         className={`route-contacts ${currentComponent === "contacts" ? "activeRoute" : ""}`}
@@ -40,7 +33,6 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
         <span>Контакты</span>
       </div>
 
-
       <div
         className={`route-delivery ${currentComponent === "delivery" ? "activeRoute" : ""}`}
         onClick={function() {
@@ -50,7 +42,6 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
         <span>Доставка</span>
       </div>
 
-
       <div
         className={`route-final ${currentComponent === "final" ? "activeRoute" : ""}`}
         onClick={function() {
@@ -59,7 +50,6 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
       >
         <span>Завершение</span>
       </div>
-
     </div>
   )
 }

@@ -6,16 +6,13 @@ import {useState} from "react";
 import axios from "axios";
 import ProductCardComponent from "../components/productCardComponent/ProductCardComponent.jsx";
 
-
 function ProductCardPage() {
-
 
   const params = useParams();
 
   const [productCardData, setProductCardData] = useState([]);
 
   const [reviews, setReviews] = useState([]);
-
 
   // Запрос на получение сетки товаров
   useEffect(function() {
@@ -41,43 +38,36 @@ function ProductCardPage() {
       })
   }, []);
 
-
   // Запрос на получение отзывов
   const updateReviews = function() {
     axios
       .get(`https://frost.runtime.kz/api/reviews?productId=${params.productId}`)
-
       .then(function(response) {
         setReviews(response.data);
-      });
+      })
+      .catch((error) => console.error(error));
   };
 
   useEffect(function() {
     updateReviews();
   }, []);
 
-
   return (
 
     <div className="main-page-container">
-
       <Header/>
 
       <div className="product-card-component">
-
         <ProductCardComponent
           productCardData={productCardData}
           reviewData={reviews}
           updateReviews={updateReviews}
         />
-
       </div>
 
       <Footer/>
-
     </div>
   )
 }
-
 
 export default ProductCardPage;

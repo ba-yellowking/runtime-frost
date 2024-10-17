@@ -1,7 +1,6 @@
 // Все начинается с useModal
 import {useState} from "react";
 
-
 function useModal() {
 
   // Хук для запоминания состояния открытости
@@ -19,8 +18,6 @@ function useModal() {
 
   // Возвращает массив с тремя элементами
   return [isOpen, open, close]
-
 }
-
 
 export default useModal;

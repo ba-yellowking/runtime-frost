@@ -2,13 +2,11 @@ import "./PageNavComponent.css";
 import PageNavButton from "../../ui/pageNavButton/PageNavButton.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 
-
-function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) {
+function PageNavComponent({ totalPages, onPageChange, currentPage }) {
 
 // totalPages - общее количество страниц из ProductsComponent
 // onPageChange - функция, передаваемая в PageNavButton
 // currentPage - текущая страница
-
 
   const pageForward = function () {
     if (currentPage < totalPages) {
@@ -16,13 +14,11 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
     }
   }
 
-
   const pageBack = function () {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   }
-
 
   const showFirstPage = function () {
     return (
@@ -35,7 +31,6 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
       />
     );
   }
-
 
   const showLastPage = function () {
     if (totalPages !== 1) {
@@ -51,9 +46,7 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
     }
   }
 
-
   const threePages = [];
-
 
   // Перебор всех кнопок в навигации
   const renderPageButtons = function () {
@@ -78,9 +71,7 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
     }
 
     return threePages;
-
   };
-
 
   return (
     <div className="page-nav-container">
@@ -95,9 +86,7 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
       />
 
       {showFirstPage()}
-
       {renderPageButtons()}
-
       {showLastPage()}
 
       <ButtonStandard
@@ -111,6 +100,5 @@ function PageNavComponent({ totalPages, onPageChange, currentPage, isLoading }) 
     </div>
   );
 }
-
 
 export default PageNavComponent;

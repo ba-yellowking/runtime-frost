@@ -3,6 +3,8 @@ import axios from "axios";
 import ProductCard from "../../ui/productCard/ProductCard.jsx";
 import "./ProductsComponent.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {setLoading} from "../../slices/loadingSlice.jsx";
 
 function ProductsComponent(
   { currentPage,
@@ -11,18 +13,16 @@ function ProductsComponent(
     currentModelId,
     currentGenerationId,
     currentAvailableId,
-    isLoading,
-    setIsLoading
   }) {
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.loading.isLoading);
 
   const [products, setProducts] = useState([]);
 
-
   useEffect(function() {
-    setIsLoading(true);
+    dispatch(setLoading(true));
     axios
-
       .get(`https://frost.runtime.kz/api/products`, {
       params: {
         page: currentPage,
@@ -38,15 +38,14 @@ function ProductsComponent(
         console.log(response)
         setProducts(response.data.items);
         setTotalPages(response.data.totalPages);
-        setIsLoading(false);
+        dispatch(setLoading(false));
     })
 
       .catch(function(error) {
-        console.log(error);
-        setIsLoading(false);
+        console.error(error);
+        dispatch(setLoading(false));
       })
   }, [currentPage, setTotalPages, currentBrandId, currentModelId, currentGenerationId, currentAvailableId]);
-
 
   return (
     <>
@@ -78,6 +77,5 @@ function ProductsComponent(
     </>
   );
 }
-
 
 export default ProductsComponent;

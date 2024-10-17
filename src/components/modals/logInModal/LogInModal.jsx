@@ -1,22 +1,31 @@
 import Modal from "../../../ui/modal/Modal.jsx";
 import "./LogInModal.css";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
-import {AuthContext} from "../../../contexts/AuthContextProvider.jsx";
-import Spinner from "../../../ui/spinner/Spinner.jsx";
+import {useDispatch} from "react-redux";
+import {signIn} from "../../../slices/authSlice.jsx";
 
+function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
-function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn, goToForgotPassword }) {
+  const dispatch = useDispatch();
 
+  // Состояние для почты и пароля
+  const[emailInput, setEmailInput] = useState("");
+  const[passInput, setPassInput] = useState("");
 
-  // AuthContext
-  const [, signIn, , loading] = useContext(AuthContext);
-
-
-  const handleClick = function() {
-    signIn(emailInput, passInput);
+  // Почта для авторизации
+  const handleEmailInput = function(content) {
+    setEmailInput(content.target.value);
   }
 
+  // Пароль для авторизации
+  const handlePassInput = function(content) {
+    setPassInput(content.target.value);
+  }
+
+  const handleClick = function() {
+    dispatch(signIn(emailInput, passInput))
+  }
 
   // Обновление формы авторизации при закрытии
   const resetForm = function() {
@@ -24,32 +33,12 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn, goToFo
     setPassInput("");
   }
 
-
   const handleClose = function() {
     close();
     resetForm();
   }
 
-
-  // Состояние для почты и пароля
-  const[emailInput, setEmailInput] = useState("");
-  const[passInput, setPassInput] = useState("");
-
-
-  // Текст пользователя для почты
-  const handleEmailInput = function(content) {
-    setEmailInput(content.target.value);
-  }
-
-
-  // Текст пользователя для пароля
-  const handlePassInput = function(content) {
-    setPassInput(content.target.value);
-  }
-
-
   return (
-
     <div className="modal-container">
 
       <span className="modal-title" onClick={onClick}>
@@ -57,44 +46,26 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn, goToFo
       </span>
 
       <Modal open={isOpen} close={handleClose}>
-
         <div className="modal-content-top">
           <p>Вход в учетную запись</p>
         </div>
 
         <div className="modal-content-center">
+          <input
+            className="authorization-input"
+            type="text"
+            value={emailInput}
+            onChange={handleEmailInput}
+            placeholder="Электронная почта"
+          />
 
-          {loading ? (<Spinner/>) : (
-            <>
-
-              <input
-                className="authorization-input"
-                type="text"
-                value={emailInput}
-                onChange={handleEmailInput}
-                placeholder="Электронная почта"
-              />
-
-              <input
-                className="authorization-input"
-                type="password"
-                value={passInput}
-                onChange={handlePassInput}
-                placeholder="Пароль"
-              />
-
-              <div className="forgot-password-wrap">
-                <span
-                  className="forgot-password-text"
-                  onClick={goToForgotPassword}
-                >
-                  Забыли пароль?
-                </span>
-              </div>
-
-            </>
-          )}
-
+          <input
+            className="authorization-input"
+            type="password"
+            value={passInput}
+            onChange={handlePassInput}
+            placeholder="Пароль"
+          />
         </div>
 
         <div className="modal-content-bottom">
@@ -102,7 +73,6 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn, goToFo
           <ButtonStandard
             name="Войти"
             style={{width: "400px", height: "40px", margin: "10px"}}
-            // AuthContext
             clickHandler={handleClick}
           />
 
@@ -115,6 +85,5 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn, goToFo
     </div>
   )
 }
-
 
 export default LogInModal;

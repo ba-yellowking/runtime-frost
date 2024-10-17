@@ -2,23 +2,19 @@ import { useState } from "react";
 import useModal from "../../hooks/useModal.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import ReviewsComponent from "../reviewsComponent/ReviewsComponent.jsx";
-import ProductInCartModal from "../modals/productInCartModal/ProductInCartModal.jsx";
+import ProductInCartModal from "../modals/ProductInCartModal.jsx";
 import "./ProductCardComponent.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 
-
 // Карточка продукта по его ID http://localhost:5173/products/1
 
-
 function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
-
 
   // Объявляем хуки в начале компонента
   const [isOpenProductInCartModal, openProductInCartModal, closeProductInCartModal] = useModal();
   const [currentProductId, setCurrentProductId] = useState(null);
   const [currentProductName, setCurrentProductName] = useState(null);
   const [currentProductPrice, setCurrentProductPrice] = useState(null);
-
 
   function handleClick() {
     setCurrentProductId(productCardData.id);
@@ -27,21 +23,14 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
     openProductInCartModal();
   }
 
-
   return (
-
     <>
       {productCardData.price ? (
-
         <div className="product-card-wrapper">
-
           <div className="top-product-card">
-
-
             <div className="image-product-card">
               <div className="main-image-product-card"></div>
             </div>
-
 
             <div className="info-product-card">
 
@@ -60,14 +49,10 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
               <div className="description-product-card">
                 <span><b>Описание:</b></span> {productCardData.description}
               </div>
-
             </div>
 
-
             <div className="add-info-product-card">
-
               <div className="add-info-product-card-wrap">
-
                 <div className="price-product-card">
                   <b>{`${productCardData.price.toLocaleString("ru-RU")} ₸`}</b>
                 </div>
@@ -92,14 +77,11 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
                   isDisabled={!productCardData.available}
                   style={{margin: "10px"}}
                 />
-
               </div>
             </div>
           </div>
 
-
           <div className="bottom-product-card">
-
             <div className="review-product-card">
               <ReviewsComponent
                 reviewData={reviewData}
@@ -107,7 +89,6 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
                 updateReviews={updateReviews}
               />
             </div>
-
           </div>
 
           <ProductInCartModal
@@ -117,7 +98,6 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
             newProductPrice={currentProductPrice}
             newProductId={currentProductId}
           />
-
         </div>
       ) : (
         <div className="product-card-wrapper">
@@ -127,9 +107,7 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
         </div>
       )}
     </>
-
   );
 }
-
 
 export default ProductCardComponent;

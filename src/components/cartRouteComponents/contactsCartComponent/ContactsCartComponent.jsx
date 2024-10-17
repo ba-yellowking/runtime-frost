@@ -1,16 +1,14 @@
 import "./ContactsCartComponent.css";
-import {AuthContext} from "../../../contexts/AuthContextProvider.jsx";
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import InputMask from 'react-input-mask';
-
+import {useSelector} from "react-redux";
 
 function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData }) {
 
+  const user = useSelector((state) => state.auth.user);
 
-  const [user, , , , ,] = useContext(AuthContext);
   const [errorPhone, setErrorPhone] = useState("");
-
 
   function onChangePhoneNumber(event) {
     setOrdersData({
@@ -19,12 +17,10 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
     });
   }
 
-
   // Проверка на заполнение телефонной строки
   function isPhoneComplete(phone) {
     return phone.length === 16;
   }
-
 
   function proceed() {
     if (isPhoneComplete(ordersData.phone)) {
@@ -34,21 +30,16 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
     }
   }
 
-
   return (
-
     <div className="cart-menu-container">
-
       <span className="cart-text">
         Контактные данные
       </span>
 
       <div className="contacts-container">
-
         <div className="contacts-container-left">
-
           <p className="contacts-text">Фамилия</p>
-          {/*Input value всегда сопровождается onChange*/}
+
           <input
             className="contacts-last-name contacts-style"
             type="text"
@@ -68,7 +59,6 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
             className="contacts-patronymic contacts-style"
             type="text"
           />
-
 
           {/*InputMask для номера телефона*/}
           {errorPhone ? (
@@ -99,16 +89,13 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
               </InputMask>
             </>
           )}
-
         </div>
-
 
         <div className="divider"></div>
 
-
         <div className="contacts-container-right">
-
           <p className="contacts-text">Электронная почта</p>
+
           <input
             className="contacts-email contacts-style"
             type="text"
@@ -131,7 +118,6 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
                 disabled
               />
             </>
-
           ) : (
             <>
               <p className="contacts-text">Пароль</p>
@@ -147,7 +133,6 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
               />
             </>
           )}
-
           <div className="contacts-button-container">
             <ButtonStandard
               name="Подтвердить"
@@ -155,12 +140,10 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
               clickHandler={proceed}
             />
           </div>
-
         </div>
       </div>
     </div>
   )
 }
-
 
 export default ContactsCartComponent;

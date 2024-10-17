@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CheckBox from "../../ui/checkBox/CheckBox.jsx";
 
-
 function FilterSection({ currentBrandId, currentModelId, currentGenerationId, currentAvailableBoolean, isChecked, setIsChecked }) {
-
 
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
@@ -14,7 +12,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
 
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedModel, setSelectedModel] = useState(null);
-
 
   // Запрос на марки
   useEffect(function() {
@@ -26,7 +23,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
         }))
       })
   }, [])
-
 
   // Запрос на модели
   useEffect(function() {
@@ -41,7 +37,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
     }
   }, [selectedBrand]);
 
-
   // Запрос на поколения
   useEffect(function() {
     if (selectedModel > 0) {
@@ -55,7 +50,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
     }
   }, [selectedBrand, selectedModel]);
 
-
   const changeBrand = function(brandId) {
     setSelectedBrand(brandId);
     currentBrandId(brandId);
@@ -63,32 +57,24 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
     setGenerations([]);
   }
 
-
   const changeModel = function(modelId) {
     setSelectedModel(modelId);
     currentModelId(modelId);
     setGenerations([]);
   }
 
-
   const changeGeneration = function(generationId) {
     currentGenerationId(generationId);
   }
-
 
   const onChangeCheckBox = function(availableBoolean) {
     currentAvailableBoolean(availableBoolean);
   }
 
-
   return (
     <div className="filter-container">
-
       <div className="filter-wrapper">
-
         <div className="filter-dropdowns">
-
-
           <div className="filter-brands">
             <span className="filter-text">Марка</span>
             <DropDown
@@ -97,7 +83,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
               clickHandler={changeBrand}
             />
           </div>
-
 
           <div className="filter-models">
             <span className="filter-text">Модель</span>
@@ -117,7 +102,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
             )}
           </div>
 
-
           <div className="filter-generations">
             <span className="filter-text">Поколение</span>
             {selectedModel && selectedBrand ? (
@@ -136,7 +120,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
             )}
           </div>
 
-
           <div className="filter-available">
             <CheckBox
               isChecked={isChecked}
@@ -144,13 +127,10 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
               onChangeCheckBox={onChangeCheckBox}
             />
           </div>
-
-
         </div>
       </div>
     </div>
   )
 }
-
 
 export default FilterSection;

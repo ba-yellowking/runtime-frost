@@ -2,9 +2,7 @@ import "./DeliveryComponent.css";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import axios from "axios";
 
-
 function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, setOrderNumber, setErrorMessages, errorMessages }) {
-
 
   // Поле ввода для области
   function onChangeArea(event) {
@@ -15,7 +13,6 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
       });
   }
 
-
   // Поле ввода для города
   function onChangeCity(event) {
     setOrdersData({
@@ -23,7 +20,6 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
       city: event.target.value
     });
   }
-
 
   // Поле ввода для улицы
   function onChangeStreet(event) {
@@ -33,7 +29,6 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
     });
   }
 
-
   // Поле ввода для дома
   function onChangeHouse(event) {
     setOrdersData({
@@ -41,7 +36,6 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
       house: event.target.value
     });
   }
-
 
   // Поле ввода для квартиры
   function onChangeApartment(event) {
@@ -51,22 +45,16 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
     });
   }
 
-
   // Запрос на получение номера заказа
   function submitDelivery() {
-
     axios
       .post("https://frost.runtime.kz/api/orders", ordersData)
-
       .then(function(response) {
         setOrderNumber(response.data)
         setCurrentComponent("final")
       })
-
       .catch(function(error) {
-
         const errors = error.response.data.errors;
-
         setErrorMessages({
           apartment: errors.apartment ? errors.apartment[0] : "",
           area: errors.area ? errors.area[0] : "",
@@ -78,22 +66,18 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
       })
   }
 
-
   function proceed() {
     submitDelivery();
   }
 
-
   return (
 
     <div className="cart-menu-container">
-
       <span className="cart-text">
         Доставка
       </span>
 
       <div className="delivery-container">
-
         <div className="delivery-container-left">
 
           {errorMessages.area ? (
@@ -122,9 +106,7 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
 
         </div>
 
-
         <div className="divider"></div>
-
 
         <div className="delivery-container-right">
 
@@ -184,6 +166,5 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
     </div>
   )
 }
-
 
 export default DeliveryComponent;

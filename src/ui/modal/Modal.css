@@ -3,11 +3,13 @@
   position: absolute;
   display: none;
 }
+
 .modal-wrap.visible {
   visibility: visible;
   position: relative;
   display: inline-block;
 }
+
 .modal-shade {
   position: fixed;
   display: flex;
@@ -20,6 +22,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal-content {
   position: relative;
   display: flex;
@@ -32,8 +35,6 @@
   border: 1px solid #cccccc;
 }
 
-
-
 .close {
   position: absolute;
   top: 0;
@@ -42,12 +43,11 @@
   color: #575757;
   font-size: 28px;
 }
+
 .close:hover {
   color: black;
   cursor: pointer;
 }
-
-
 
 .modal-content-top {
   display: flex;
@@ -58,11 +58,10 @@
   height: 125px;
   background-color: #ffffff;
 }
+
 .modal-content-top span {
   font-size: 1.5rem;
 }
-
-
 
 .modal-content-center {
   display: flex;
@@ -73,6 +72,7 @@
   height: 250px;
   background-color: #ffffff;
 }
+
 .modal-content-center-text {
   width: 400px;
   height: 100px;
@@ -80,14 +80,7 @@
   padding: 10px;
   background-color: #ffffff;
 }
-.forgot-password-wrap {
-  align-self: flex-end;
-  text-decoration: none;
-  margin: 7px 100px 7px 0;
-  font-size: 14px;
-  cursor: pointer;
-  color: #8c8c8c;
-}
+
 .modal-content-button {
   width: 20px;
   height: 20px;
@@ -96,14 +89,14 @@
   background-color: #ffffff;
   margin: 10px;
 }
+
 .modal-content-name {
   padding: 10px;
 }
+
 .modal-content-price {
   padding: 10px;
 }
-
-
 
 .modal-content-bottom {
   display: flex;
@@ -115,16 +108,12 @@
   background-color: #ffffff;
 }
 
-
-
 .signin-signup {
   cursor: pointer;
   padding: 0 10px 10px 10px;
   color: #8c8c8c;
   font-size: 14px;
 }
-
-
 
 .authorization-input {
   margin: 5px;
@@ -134,38 +123,36 @@
   border: 1px solid #a1a1a1;
   font-size: 16px;
 }
+
 .authorization-input:focus {
   border-color: #505050;
   outline: none;
 }
+
 .authorization-input::placeholder {
   color: #a1a1a1;
 }
 
-
-
 .authorization-full-name {
   display: flex;
 }
+
 .authorization-first-name {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
+
 .authorization-last-name {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-
-
 .invalid {
   color: #ff3a3a;
   font-size: 14px;
 }
-
-
 
 .continue-shopping {
   cursor: pointer;

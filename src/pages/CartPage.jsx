@@ -1,22 +1,17 @@
 import Header from "../components/header/Header.jsx";
 import Footer from "../components/footer/Footer.jsx";
 import CartRoute from "../ui/cartRoute/CartRoute.jsx";
-import {useContext, useState} from "react";
-import {AuthContext} from "../contexts/AuthContextProvider.jsx";
+import {useState} from "react";
 import CartComponent from "../components/cartRouteComponents/cartComponent/CartComponent.jsx";
 import ContactsCartComponent from "../components/cartRouteComponents/contactsCartComponent/ContactsCartComponent.jsx";
 import DeliveryComponent from "../components/cartRouteComponents/deliveryComponent/DeliveryComponent.jsx";
 import FinalCartComponent from "../components/cartRouteComponents/finalCartComponent/FinalCartComponent.jsx";
 import ProfileComponent from "../components/profileComponent/ProfileComponent.jsx";
-
+import {useSelector} from "react-redux";
 
 function CartPage() {
 
-
-  const authContext = useContext(AuthContext);
-  console.log(authContext);
-  const [, , , , , totalCount, setTotalCount] = useContext(AuthContext);
-
+  const totalCount = useSelector((state) => state.counter.counter);
 
   const [currentComponent, setCurrentComponent] = useState("cart");
   const [orderNumber, setOrderNumber] = useState(null);
@@ -39,7 +34,6 @@ function CartPage() {
     street: "",
   })
 
-
   // См. компонент <CartRoute>
   const renderContent = function() {
 
@@ -51,7 +45,6 @@ function CartPage() {
       return (
         <CartComponent
           setCurrentComponent={setCurrentComponent}
-          setTotalCount={setTotalCount}
         />
       )
     } else if (currentComponent === "contacts") {
@@ -87,7 +80,6 @@ function CartPage() {
     }
   }
 
-
   // Состояние для открытия личного кабинета
   const [isProfilePage, setIsProfilePage] = useState(false);
 
@@ -96,9 +88,7 @@ function CartPage() {
     setIsProfilePage(true);
   }
 
-
   return (
-
     <div className="main-page-container">
       {isProfilePage ? (
        <ProfileComponent/>
@@ -110,7 +100,6 @@ function CartPage() {
           />
 
           <div className="cart-route">
-
             <p className="cart-route-text">Оформление заказа</p>
 
             <CartRoute
@@ -125,7 +114,6 @@ function CartPage() {
         </>
       )}
     </div>
-
   )
 }
 

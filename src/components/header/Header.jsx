@@ -2,42 +2,30 @@ import "./Header.css";
 import useModal from "../../hooks/useModal.jsx";
 import LogInModal from "../modals/logInModal/LogInModal.jsx";
 import SignUpModal from "../modals/signUpModal/SignUpModal.jsx";
-import ForgotPasswordModal from "../modals/forgotPasswordModal/ForgotPasswordModal.jsx";
-import EndRegistrationModal from "../modals/endRegistrationModal/EndRegistrationModal.jsx";
-import {AuthContext} from "../../contexts/AuthContextProvider.jsx";
-import {useContext} from "react";
-import cart from './images/cart.png';
-import logout from './images/logout.png';
+import EndRegistrationModal from "../modals/EndRegistrationModal.jsx";
+import cart from '../../images/cart.png';
+import logout from '../../images/logout.png';
+import {checkTokenAndGetUser, signOut} from "../../slices/authSlice.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 
+function Header({ openProfilePage }) {
 
-function Header({ openProfilePage, totalCount }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const tokenInfo = useSelector((state) => state.auth.tokenInfo);
+  const totalCount = useSelector((state) => state.counter.counter);
 
-
-  // AuthContext
-  const [user, , signOut, loading, ] = useContext(AuthContext);
+  const displayName = user ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) : "";
 
   // Открыто ли модальное окно?
   const [isOpenLogIn, openLogIn, closeLogIn] = useModal();
   const [isOpenSignUp, openSignUp, closeSignUp] = useModal();
-  const [isOpenForgotPassword, openForgotPassword, closeForgotPassword] = useModal();
   const [isOpenEndRegistration, openEndRegistration, closeEndRegistration] = useModal();
-
 
   // Переход из <LogIn/> в <SignUp/>
   const goToSignUpFromLogIn = function() {
     openSignUp();
-    closeLogIn();
-  }
-
-  // Переход из <SignUp/> в <ForgotPassword/>
-  const goToSignUpFromForgotPassword = function() {
-    openSignUp();
-    closeForgotPassword();
-  }
-
-  // Переход в <ForgotPassword/>
-  const goToForgotPassword = function() {
-    openForgotPassword();
     closeLogIn();
   }
 
@@ -47,28 +35,31 @@ function Header({ openProfilePage, totalCount }) {
     closeSignUp();
   }
 
+  // Updating redux state if "tokenInfo" is in local storage, but "user" is not set
+  useEffect(function() {
+    if (!user && tokenInfo) {
+      dispatch(checkTokenAndGetUser());
+    }
+  }, [dispatch, user, tokenInfo]);
 
   return (
-
     <div className="header-container">
-
       <div className="header-wrap">
 
         <div className="header-left">
           <a href="/">
-            <img className="header-left-logo" src="/src/components/header/images/logo.png" alt="Logo"/>
+            <img className="header-left-logo" src="/src/images/logo.png" alt="Logo"/>
           </a>
         </div>
 
-
-        {user ? (
+        {user && tokenInfo ? (
           <div className="header-right-profile">
 
             <div
               className="header-right-username"
               onClick={openProfilePage}
             >
-              {user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)}
+              {displayName}
             </div>
 
             <a
@@ -81,7 +72,7 @@ function Header({ openProfilePage, totalCount }) {
             </a>
 
             <div className="logout">
-              <img className="logout-logo" src={logout} alt="cart-logo" onClick={signOut}/>
+              <img className="logout-logo" src={logout} alt="cart-logo" onClick={() => dispatch(signOut())}/>
             </div>
 
           </div>
@@ -96,7 +87,6 @@ function Header({ openProfilePage, totalCount }) {
                 isOpen={isOpenLogIn}
                 close={closeLogIn}
                 goToSignUpFromLogIn={goToSignUpFromLogIn}
-                goToForgotPassword={goToForgotPassword}
               />
 
             </div>
@@ -128,25 +118,15 @@ function Header({ openProfilePage, totalCount }) {
 
           </div>
         )}
-
       </div>
-
-      <ForgotPasswordModal
-        isOpen={isOpenForgotPassword}
-        close={closeForgotPassword}
-        goToSignUpFromForgotPassword={goToSignUpFromForgotPassword}
-        style={{width: "400px", height: "40px"}}
-      />
 
       <EndRegistrationModal
         isOpen={isOpenEndRegistration}
         close={closeEndRegistration}
         openLogIn={openLogIn}
       />
-
     </div>
   )
 }
-
 
 export default Header;

@@ -1,34 +1,27 @@
 import "./ReviewsComponent.css";
-import {AuthContext} from "../../contexts/AuthContextProvider.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
-
+import {useSelector} from "react-redux";
 
 function ReviewsComponent({ reviewData, productId, updateReviews }) {
 
-
-  const [user, , , , ,] = useContext(AuthContext);
+  const user = useSelector((state) => state.auth.user);
 
   const [existingFeedback, setExistingFeedBack] = useState(false);
 
   const [newReview, setNewReview] = useState();
-
 
   // Проверка на то, был ли оставлен отзыв на товар с заданным Id
   useEffect(function() {
     isExistedFeedback()
   }, [productId, existingFeedback])
 
-
   // Отзывы пользователей
   const renderReviewData = function() {
-
     return reviewData.map(function(reviewItem, index) {
-
       return (
         <div key={index} className="review-item">
-
           <div className="review-item-name">
             <b>{`${reviewItem.user.firstName} ${reviewItem.user.lastName}`}</b>
           </div>
@@ -36,12 +29,10 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
           <div className="review-item-feedback">
             {reviewItem.review}
           </div>
-
         </div>
       );
     });
   };
-
 
   // Запрос на установку состояния, отправлял ли пользователь отзыв на товар с конкретным id
   // Если отправлял – true, если не отправлял – false
@@ -49,56 +40,37 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
   const isExistedFeedback = function() {
     axios
       .get(`https://frost.runtime.kz/api/reviews/exists?productId=${productId}`)
-
       .then(function(response) {
         setExistingFeedBack(response.data);
       })
-
-      .catch(function(error) {
-        console.log(error);
-      });
+      .catch((error) => console.error(error));
   }
-
 
   const handleNewReview = function(event) {
     setNewReview(event.target.value);
   }
 
-
   // Запрос на добавление нового отзыва
   const addNewFeedback = function() {
-
-    console.log("Product ID:", productId);
-    console.log("New Review:", newReview);
-
     axios
       .post("https://frost.runtime.kz/api/reviews", {
         product_id: productId,
         review: newReview
       })
-
       .then(function() {
         setExistingFeedBack(true);
         updateReviews();
       })
-
-      .catch(function(error) {
-        console.log(error)
-      });
+      .catch((error) => console.error(error));
   }
 
-
   return (
-
     <>
       {existingFeedback === false ? (
-
         <div className="reviews-wrap">
-
           {user ? (
             <>
               <div className="reviews-top">
-
                 <div className="reviews-divider">Напишите свой отзыв</div>
 
                 <textarea
@@ -115,12 +87,9 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
                   style={{width: "150px"}}
                   clickHandler={addNewFeedback}
                 />
-
               </div>
             </>
-
           ) : (
-
             <>
               {`Чтобы оставить отзыв, `}
               <span
@@ -136,11 +105,8 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
             <div className="reviews-divider">Последние отзывы</div>
             {renderReviewData()}
           </div>
-
         </div>
-
       ) : (
-
         <>
           <div className="existing-review">
             <span>Вы уже оставили отзыв на данный товар.</span>
@@ -151,11 +117,9 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
             {renderReviewData()}
           </div>
         </>
-
       )}
     </>
   );
 }
-
 
 export default ReviewsComponent;

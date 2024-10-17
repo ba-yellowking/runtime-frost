@@ -1,17 +1,13 @@
 import "./FinalCartComponent.css";
 import React from "react";
 
-
 function FinalCartComponent({ orderNumber, setIsProfilePage }) {
-
 
   function handleProfileRedirect() {
     setIsProfilePage(true);
   }
 
-
   return (
-
     <div className="cart-menu-container">
 
       <span className="cart-text">
@@ -30,6 +26,5 @@ function FinalCartComponent({ orderNumber, setIsProfilePage }) {
     </div>
   )
 }
-
 
 export default FinalCartComponent;

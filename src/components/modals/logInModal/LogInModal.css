@@ -21,8 +21,3 @@
 .modal-title:hover::before {
   width: calc(100% - 10px);
 }
-
-
-.forgot-password-wrap {
-  padding: 10px;
-}

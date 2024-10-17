@@ -4,14 +4,15 @@ import "./ProfileComponent.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import Spinner from "../../ui/spinner/Spinner.jsx";
-
+import {useDispatch, useSelector} from "react-redux";
+import {setLoading} from "../../slices/loadingSlice.jsx";
 
 function ProfileComponent() {
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.loading.isLoading);
 
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-
 
   function dateFormatting(date) {
     return new Date(date).toLocaleString("ru-RU", {
@@ -23,36 +24,33 @@ function ProfileComponent() {
     });
   }
 
-
   useEffect(function() {
-    setLoading(true);
+    dispatch(setLoading(true));
 
     axios
       .get("https://frost.runtime.kz/api/orders")
+
       .then(response => {
         setOrders(response.data);
-        setLoading(false);
+        dispatch(setLoading(false));
         console.log(response);
       })
+
       .catch(error => {
         console.log(error);
-        setLoading(false);
+        dispatch(setLoading(false));
       });
   }, []);
 
-
   return (
-
     <>
-
       <Header/>
 
       <div className="profile-top">
         <p className="profile-top-text">Личный кабинет</p>
       </div>
 
-      {loading ? (
-
+      {isLoading ? (
         <>
           <div className="profile-wrap">
             <span className="profile-text">Мои заказы</span>
@@ -61,15 +59,10 @@ function ProfileComponent() {
             </div>
           </div>
         </>
-
       ) : (
-
         <>
-
           {orders.length > 0 ? (
-
             <div className="profile-wrap">
-
               <span className="profile-text">Мои заказы</span>
 
               <div className="profile-header">
@@ -110,24 +103,18 @@ function ProfileComponent() {
                   })
                 })}
               </div>
-
             </div>
-
           ) : (
-
             <div className="empty-orders">
             <span>У Вас нет заказов</span>
             </div>
-
           )}
         </>
       )}
 
       <Footer/>
-
     </>
   );
 }
-
 
 export default ProfileComponent;

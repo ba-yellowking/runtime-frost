@@ -1,22 +1,17 @@
 import { useState } from "react";
 import "./ButtonStandard.css";
 
-
 function ButtonStandard({ name, clickHandler, isDisabled, style }) {
 
-
   const [isActive, setIsActive] = useState(false);
-
 
   const handleMouseDown = function() {
     setIsActive(true);
   };
 
-
   const handleMouseUp = function() {
     setIsActive(false);
   };
-
 
   return (
 
@@ -31,9 +26,7 @@ function ButtonStandard({ name, clickHandler, isDisabled, style }) {
     >
       {name}
     </button>
-
   );
 }
-
 
 export default ButtonStandard;
