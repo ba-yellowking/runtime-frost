@@ -103,10 +103,7 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
             value={ordersData.city}
             onChange={onChangeCity}
           />
-
         </div>
-
-        <div className="divider"></div>
 
         <div className="delivery-container-right">
 

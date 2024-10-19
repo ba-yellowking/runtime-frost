@@ -15,7 +15,6 @@ function Header({ openProfilePage }) {
   const user = useSelector((state) => state.auth.user);
   const tokenInfo = useSelector((state) => state.auth.tokenInfo);
   const totalCount = useSelector((state) => state.counter.counter);
-
   const displayName = user ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) : "";
 
   // Открыто ли модальное окно?
@@ -39,8 +38,9 @@ function Header({ openProfilePage }) {
   useEffect(function() {
     if (!user && tokenInfo) {
       dispatch(checkTokenAndGetUser());
+      closeLogIn();
     }
-  }, [dispatch, user, tokenInfo]);
+  }, [dispatch, tokenInfo]);
 
   return (
     <div className="header-container">
@@ -52,9 +52,8 @@ function Header({ openProfilePage }) {
           </a>
         </div>
 
-        {user && tokenInfo ? (
+        {user !== null && tokenInfo ? (
           <div className="header-right-profile">
-
             <div
               className="header-right-username"
               onClick={openProfilePage}
@@ -74,48 +73,48 @@ function Header({ openProfilePage }) {
             <div className="logout">
               <img className="logout-logo" src={logout} alt="cart-logo" onClick={() => dispatch(signOut())}/>
             </div>
-
           </div>
         ) : (
           <div className="header-right">
+            {!tokenInfo ? (
+              <>
+                <div className="log-in-section">
+                  <LogInModal
+                    title="Войти"
+                    onClick={openLogIn}
+                    isOpen={isOpenLogIn}
+                    close={closeLogIn}
+                    goToSignUpFromLogIn={goToSignUpFromLogIn}
+                  />
+                </div>
 
-            <div className="log-in-section">
+                <div className="sign-up-section">
+                  <SignUpModal
+                    title="Регистрация"
+                    onClick={openSignUp}
+                    isOpen={isOpenSignUp}
+                    close={closeSignUp}
+                    style={{width: "195px"}}
+                    onClickLogIn={goToLogInFromSignUp}
 
-              <LogInModal
-                title="Войти"
-                onClick={openLogIn}
-                isOpen={isOpenLogIn}
-                close={closeLogIn}
-                goToSignUpFromLogIn={goToSignUpFromLogIn}
-              />
+                    // Закрытие моального окна через 5 сек
+                    openEndRegistration={function () {
+                      openEndRegistration()
+                      setTimeout(function () {
+                        closeEndRegistration()
+                      }, 3_000)
+                    }}
+                  />
+                </div>
 
-            </div>
-
-            <div className="sign-up-section">
-
-              <SignUpModal
-                title="Регистрация"
-                onClick={openSignUp}
-                isOpen={isOpenSignUp}
-                close={closeSignUp}
-                style={{width: "195px"}}
-                onClickLogIn={goToLogInFromSignUp}
-
-                // Закрытие моального окна через 5 сек
-                openEndRegistration={function () {
-                  openEndRegistration()
-                  setTimeout(function () {
-                    closeEndRegistration()
-                  }, 3_000)
-                }}
-              />
-
-            </div>
-
-            {/*<a href="/cart" className="cart-page">*/}
-            {/*  <span>Корзина</span>*/}
-            {/*</a>*/}
-
+                {/*<a href="/cart" className="cart-page">*/}
+                {/*  <span>Корзина</span>*/}
+                {/*</a>*/}
+              </>
+            ) : (
+              <>
+              </>
+            )}
           </div>
         )}
       </div>

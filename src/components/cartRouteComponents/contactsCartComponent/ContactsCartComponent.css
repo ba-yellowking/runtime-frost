@@ -29,12 +29,6 @@
   background-color: #ffffff;
 }
 
-.divider {
-  width: 1px;
-  height: 304px;
-  background-color: #d6d6d6;
-}
-
 .contacts-button-container {
   display: flex;
   justify-content: flex-end;

@@ -48,7 +48,7 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
           }))
         });
     }
-  }, [selectedBrand, selectedModel]);
+  }, [selectedModel]);
 
   const changeBrand = function(brandId) {
     setSelectedBrand(brandId);
@@ -76,7 +76,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
       <div className="filter-wrapper">
         <div className="filter-dropdowns">
           <div className="filter-brands">
-            <span className="filter-text">Марка</span>
             <DropDown
               defaultOption="Все марки"
               options={brands}
@@ -85,7 +84,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
           </div>
 
           <div className="filter-models">
-            <span className="filter-text">Модель</span>
             {selectedBrand ? (
               <DropDown
                 defaultOption="Все модели"
@@ -95,15 +93,12 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
             ) : (
               <DropDown
                 defaultOption="Все модели"
-                options={models}
-                clickHandler={changeModel}
                 style={{width: "220px", height: "33px", backgroundColor: "#cccccc", cursor: "default"}}
               />
             )}
           </div>
 
           <div className="filter-generations">
-            <span className="filter-text">Поколение</span>
             {selectedModel && selectedBrand ? (
               <DropDown
                 defaultOption="Все поколения"
@@ -113,8 +108,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
             ) : (
               <DropDown
                 defaultOption="Все поколения"
-                options={generations}
-                clickHandler={changeGeneration}
                 style={{width: "220px", height: "33px", backgroundColor: "#cccccc", cursor: "default"}}
               />
             )}

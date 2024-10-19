@@ -91,8 +91,6 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
           )}
         </div>
 
-        <div className="divider"></div>
-
         <div className="contacts-container-right">
           <p className="contacts-text">Электронная почта</p>
 

@@ -22,7 +22,7 @@ function ProductCard({ id, name, price, available }) {
     <div className="product-container">
       <div className="product-wrapper">
         <div className="product-image">
-          <p>Image</p>
+          {/*<p></p>*/}
         </div>
 
         <div

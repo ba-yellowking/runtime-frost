@@ -5,11 +5,8 @@ import ProductsComponent from "../components/productsComponent/ProductsComponent
 import PageNavComponent from "../components/pageNav/PageNavComponent.jsx";
 import {useState } from 'react';
 import ProfileComponent from "../components/profileComponent/ProfileComponent.jsx";
-import {useSelector} from "react-redux";
 
 function MainPage() {
-
-  const totalCount = useSelector((state) => state.counter.counter);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -79,7 +76,6 @@ function MainPage() {
         <>
           <Header
             openProfilePage={openProfilePage}
-            totalCount={totalCount}
           />
 
           <div className="products-container">

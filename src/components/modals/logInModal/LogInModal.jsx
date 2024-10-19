@@ -40,10 +40,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
   return (
     <div className="modal-container">
-
-      <span className="modal-title" onClick={onClick}>
-        {title}
-      </span>
+      <span className="modal-title" onClick={onClick}>{title}</span>
 
       <Modal open={isOpen} close={handleClose}>
         <div className="modal-content-top">
@@ -69,7 +66,6 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
         </div>
 
         <div className="modal-content-bottom">
-
           <ButtonStandard
             name="Войти"
             style={{width: "400px", height: "40px", margin: "10px"}}
@@ -79,7 +75,6 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
           <span className="signin-signup" onClick={goToSignUpFromLogIn}>
             Создать новую учетную запись
           </span>
-
         </div>
       </Modal>
     </div>

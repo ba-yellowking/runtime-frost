@@ -8,28 +8,19 @@ function Footer() {
   return (
     <div className="footer-container">
       <div className="footer-wrap">
-        <div className="footer-left">
+        <div className="footer-instagram">
           <img className="instagram" src={instagramLogo} alt="instagram"/>
-          <p>Instagram</p>
+          <p>bakytdreamer</p>
         </div>
 
-        <div className="footer-middle">
+        <div className="footer-gmail">
           <img className="gmail" src={gmailLogo} alt="gmail"/>
-          <p>company@gmail.com</p>
+          <p>ba.temirgali@gmail.com</p>
         </div>
 
-        <div className="footer-right">
+        <div className="footer-whatsapp">
           <img className="phone-call" src={phoneCallLogo} alt="phone-call"/>
-          <div className="footer-right-left">
-            <p>Astana:</p>
-            <p>+7 775 000 77 49</p>
-          </div>
-
-          <img className="phone-call" src={phoneCallLogo} alt="phone-call"/>
-          <div className="footer-right-right">
-            <p>Almaty:</p>
-            <p>+7 775 000 77 49</p>
-          </div>
+          <p>Astana: +7 775 000 77 49</p>
         </div>
       </div>
     </div>

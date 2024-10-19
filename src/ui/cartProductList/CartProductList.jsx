@@ -15,9 +15,6 @@ function CartProductList( {setCurrentComponent} ) {
 
   const [cartItems, setCartItems] = useState([]);
 
-  // Используем в AuthContextProvider useLayoutEffect, поскольку запрос на корзину выполняется раньше запроса
-  // на получение токена
-
   // Запрос на получение товаров, добавленных пользователем в корзину
   useEffect(function () {
     dispatch(setLoading(true));
@@ -25,6 +22,9 @@ function CartProductList( {setCurrentComponent} ) {
       .get("https://frost.runtime.kz/api/cart")
       .then(function (response) {
         setCartItems(response.data.items);
+
+        console.log(response.data.items)
+
         dispatch(setLoading(false));
       })
       .catch((error) => console.error(error));

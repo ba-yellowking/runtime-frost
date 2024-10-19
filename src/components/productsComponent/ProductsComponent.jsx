@@ -35,7 +35,6 @@ function ProductsComponent(
     })
 
       .then(response => {
-        console.log(response)
         setProducts(response.data.items);
         setTotalPages(response.data.totalPages);
         dispatch(setLoading(false));
@@ -45,7 +44,7 @@ function ProductsComponent(
         console.error(error);
         dispatch(setLoading(false));
       })
-  }, [currentPage, setTotalPages, currentBrandId, currentModelId, currentGenerationId, currentAvailableId]);
+  }, [currentPage, setTotalPages, currentBrandId, currentModelId, currentGenerationId, currentAvailableId, dispatch]);
 
   return (
     <>

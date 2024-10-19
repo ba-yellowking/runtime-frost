@@ -47,7 +47,7 @@ function ProfileComponent() {
       <Header/>
 
       <div className="profile-top">
-        <p className="profile-top-text">Личный кабинет</p>
+        <p className="profile-top-text">Мои заказы</p>
       </div>
 
       {isLoading ? (
@@ -105,8 +105,10 @@ function ProfileComponent() {
               </div>
             </div>
           ) : (
-            <div className="empty-orders">
-            <span>У Вас нет заказов</span>
+            <div className="cart-menu-container">
+              <div className="empty-orders">
+                <span>У Вас нет заказов</span>
+              </div>
             </div>
           )}
         </>
