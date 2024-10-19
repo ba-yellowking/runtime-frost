@@ -6,10 +6,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {
   fetchBrands,
   fetchGenerations,
-  fetchModels, setAvailable,
-  setGeneration,
-  setModel,
-  setSelectedBrand, setSelectedGeneration, setSelectedModel
+  fetchModels,
+  setAvailable,
+  setSelectedBrand,
+  setSelectedGeneration,
+  setSelectedModel
 } from "../../slices/filterSlice.jsx";
 
 function FilterSection() {
@@ -33,43 +34,39 @@ function FilterSection() {
 
   // Re-rendering generations depending on the chosen model
   useEffect(() => {
-    if (selectedModel > 0) {
-      dispatch(fetchGenerations(selectedModel));
-    }
+    dispatch(fetchGenerations(selectedModel));
   }, [dispatch, selectedModel]);
 
   const changeBrand = function(brandId) {
-    dispatch(setSelectedBrand(brandId));
     if (brandId > 0) {
-      dispatch(setSelectedModel(0));
-      dispatch(setSelectedGeneration(0));
+      dispatch(setSelectedBrand(brandId));
       dispatch(fetchModels(brandId));
     } else {
       dispatch(setSelectedBrand(0));
-      dispatch(setModel([]));
-      dispatch(setGeneration([]));
     }
+    dispatch(setSelectedModel(0));
+    dispatch(setSelectedGeneration(0));
   }
 
   const changeModel = function(modelId) {
-    dispatch(setSelectedModel(modelId));
     if (modelId > 0) {
-      dispatch(setSelectedGeneration(0));
+      dispatch(setSelectedModel(modelId));
       dispatch(fetchGenerations(modelId));
     } else {
       dispatch(setSelectedModel(0));
-      dispatch(setGeneration([]));
     }
+    dispatch(setSelectedGeneration(0));
   }
 
   const changeGeneration = function(generationId) {
-    dispatch(setSelectedGeneration(generationId));
+    if (generationId > 0) {
+      dispatch(setSelectedGeneration(generationId));
+    }
   }
 
   const onChangeCheckBox = function(availableBoolean) {
     dispatch(setAvailable(availableBoolean ? 1 : 0));
   }
-
 
   return (
     <div className="filter-container">

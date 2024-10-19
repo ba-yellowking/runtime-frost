@@ -24,14 +24,14 @@ function DropDown({ defaultOption, options = [], selectHandler, style }) {
 
   function renderOptions() {
     return allOptions.map((option, index) => {
-      if (isOpen && selectedOption !== (option.name || option)) {
+      if (isOpen && selectedOption !== (option.name || defaultOption)) {
         return (
           <div
             className="dropdown-option"
             key={index}
             onClick={() => selectOption(option)}
           >
-            {option.name || option}
+            {option.name || defaultOption}
           </div>
         );
       }
