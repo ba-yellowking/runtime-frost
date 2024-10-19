@@ -5,18 +5,17 @@ import "./ProductsComponent.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoading} from "../../slices/loadingSlice.jsx";
+import {setTotalPages} from "../../slices/filterSlice.jsx";
 
-function ProductsComponent(
-  { currentPage,
-    setTotalPages,
-    currentBrandId,
-    currentModelId,
-    currentGenerationId,
-    currentAvailableId,
-  }) {
+function ProductsComponent() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loading.isLoading);
+  const selectedBrandId = useSelector(state => state.filter.selectedBrand);
+  const selectedModelId = useSelector(state => state.filter.selectedModel);
+  const selectedGenerationId = useSelector(state => state.filter.selectedGeneration);
+  const available = useSelector(state => state.filter.available);
+  const currentPage = useSelector((state) => state.filter.currentPage);
 
   const [products, setProducts] = useState([]);
 
@@ -27,16 +26,16 @@ function ProductsComponent(
       params: {
         page: currentPage,
         size: 9,
-        brandId: currentBrandId,
-        modelId: currentModelId,
-        generationId: currentGenerationId,
-        available: currentAvailableId,
+        brandId: selectedBrandId,
+        modelId: selectedModelId,
+        generationId: selectedGenerationId,
+        available: available,
       }
     })
 
       .then(response => {
         setProducts(response.data.items);
-        setTotalPages(response.data.totalPages);
+        dispatch(setTotalPages(response.data.totalPages));
         dispatch(setLoading(false));
     })
 
@@ -44,7 +43,7 @@ function ProductsComponent(
         console.error(error);
         dispatch(setLoading(false));
       })
-  }, [currentPage, setTotalPages, currentBrandId, currentModelId, currentGenerationId, currentAvailableId, dispatch]);
+  }, [currentPage, selectedBrandId, selectedModelId, selectedGenerationId, available, dispatch]);
 
   return (
     <>
@@ -63,7 +62,7 @@ function ProductsComponent(
                     id={product.id}
                     name={product.name}
                     price={product.price}
-                    available={currentAvailableId}
+                    available={available}
                   />
                 );
               })

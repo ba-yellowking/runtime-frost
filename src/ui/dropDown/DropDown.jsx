@@ -1,14 +1,14 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import "./DropDown.css";
 
-function DropDown({ defaultOption, options=[], clickHandler, style }) {
+function DropDown({ defaultOption, options = [], selectHandler, style }) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultOption);
 
-  useEffect(function () {
-    setSelectedOption(defaultOption)
-  }, [options])
+  useEffect(() => {
+    setSelectedOption(defaultOption);
+  }, [options]);
 
   const allOptions = [defaultOption, ...options];
 
@@ -16,51 +16,37 @@ function DropDown({ defaultOption, options=[], clickHandler, style }) {
     setIsOpen(!isOpen);
   }
 
-  // {id: ..., name: ...} -> { text: name, value: id }
-  // {countryCode: ..., countryName: ..., ...} -> { text: countryName, value: countryCode }
-  // Если информация с сервера разнится, лучше всего преобразовывать ее через map по вышеуказанному шаблону
-
   function selectOption(option) {
     setSelectedOption(option.name || option);
     setIsOpen(false);
-    clickHandler(option.id);
+    selectHandler(option.id || 0);
   }
 
   function renderOptions() {
-    return (
-      allOptions.map(function(option, index) {
-        if (isOpen && selectedOption !== (option.name || option)) {
-          return (
-            <div
-              className="dropdown-option"
-              key={index}
-              onClick={function() {
-                selectOption(option)
-              }}
-            >
-              {option.name || option}
-            </div>
-          )
-        }
-      })
-    )
+    return allOptions.map((option, index) => {
+      if (isOpen && selectedOption !== (option.name || option)) {
+        return (
+          <div
+            className="dropdown-option"
+            key={index}
+            onClick={() => selectOption(option)}
+          >
+            {option.name || option}
+          </div>
+        );
+      }
+    });
   }
 
-  return(
+  return (
     <div className="dropdown-wrap">
-      <div
-        className="dropdown-header"
-        onClick={openMenu}
-        style={style}
-      >
+      <div className="dropdown-header" onClick={openMenu} style={style}>
         {selectedOption}
       </div>
 
-      <div className="dropdown-list">
-        {renderOptions()}
-      </div>
+      {isOpen && <div className="dropdown-list">{renderOptions()}</div>}
     </div>
-  )
+  );
 }
 
 export default DropDown;

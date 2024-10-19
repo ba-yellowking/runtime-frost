@@ -1,75 +1,75 @@
 import "./FilterSection.css";
 import DropDown from "../../ui/dropDown/DropDown.jsx";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import CheckBox from "../../ui/checkBox/CheckBox.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {
+  fetchBrands,
+  fetchGenerations,
+  fetchModels, setAvailable,
+  setGeneration,
+  setModel,
+  setSelectedBrand, setSelectedGeneration, setSelectedModel
+} from "../../slices/filterSlice.jsx";
 
-function FilterSection({ currentBrandId, currentModelId, currentGenerationId, currentAvailableBoolean, isChecked, setIsChecked }) {
+function FilterSection() {
 
-  const [brands, setBrands] = useState([]);
-  const [models, setModels] = useState([]);
-  const [generations, setGenerations] = useState([]);
+  const dispatch = useDispatch()
+  const brands = useSelector(state => state.filter.brand);
+  const models = useSelector(state => state.filter.model);
+  const generations = useSelector(state => state.filter.generation);
 
-  const [selectedBrand, setSelectedBrand] = useState(null);
-  const [selectedModel, setSelectedModel] = useState(null);
+  const selectedBrand = useSelector(state => state.filter.selectedBrand);
+  const selectedModel = useSelector(state => state.filter.selectedModel);
 
-  // Запрос на марки
-  useEffect(function() {
-    axios
-      .get("https://frost.runtime.kz/api/brands")
-      .then(function(response) {
-        setBrands(response.data.map(function(brand) {
-          return { name: brand.name, id: brand.id }
-        }))
-      })
-  }, [])
+  useEffect(() => {
+    dispatch(fetchBrands());
+  }, [dispatch]);
 
-  // Запрос на модели
-  useEffect(function() {
-    if (selectedBrand > 0) {
-      axios
-        .get(`https://frost.runtime.kz/api/models?brandId=${selectedBrand}`)
-        .then(function(response) {
-          setModels(response.data.map(function(model) {
-            return { name: model.name, id: model.id }
-          }));
-        });
-    }
-  }, [selectedBrand]);
+  // Re-rendering models depending on the chosen brand
+  useEffect(() => {
+    dispatch(fetchModels(selectedBrand));
+  }, [dispatch, selectedBrand]);
 
-  // Запрос на поколения
-  useEffect(function() {
+  // Re-rendering generations depending on the chosen model
+  useEffect(() => {
     if (selectedModel > 0) {
-      axios
-        .get(`https://frost.runtime.kz/api/generations?modelId=${selectedModel}`)
-        .then(function(response) {
-          setGenerations(response.data.map(function(generation) {
-            return { name: generation.name, id: generation.id }
-          }))
-        });
+      dispatch(fetchGenerations(selectedModel));
     }
-  }, [selectedModel]);
+  }, [dispatch, selectedModel]);
 
   const changeBrand = function(brandId) {
-    setSelectedBrand(brandId);
-    currentBrandId(brandId);
-    setModels([]);
-    setGenerations([]);
+    dispatch(setSelectedBrand(brandId));
+    if (brandId > 0) {
+      dispatch(setSelectedModel(0));
+      dispatch(setSelectedGeneration(0));
+      dispatch(fetchModels(brandId));
+    } else {
+      dispatch(setSelectedBrand(0));
+      dispatch(setModel([]));
+      dispatch(setGeneration([]));
+    }
   }
 
   const changeModel = function(modelId) {
-    setSelectedModel(modelId);
-    currentModelId(modelId);
-    setGenerations([]);
+    dispatch(setSelectedModel(modelId));
+    if (modelId > 0) {
+      dispatch(setSelectedGeneration(0));
+      dispatch(fetchGenerations(modelId));
+    } else {
+      dispatch(setSelectedModel(0));
+      dispatch(setGeneration([]));
+    }
   }
 
   const changeGeneration = function(generationId) {
-    currentGenerationId(generationId);
+    dispatch(setSelectedGeneration(generationId));
   }
 
   const onChangeCheckBox = function(availableBoolean) {
-    currentAvailableBoolean(availableBoolean);
+    dispatch(setAvailable(availableBoolean ? 1 : 0));
   }
+
 
   return (
     <div className="filter-container">
@@ -79,7 +79,7 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
             <DropDown
               defaultOption="Все марки"
               options={brands}
-              clickHandler={changeBrand}
+              selectHandler={changeBrand}
             />
           </div>
 
@@ -88,7 +88,7 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
               <DropDown
                 defaultOption="Все модели"
                 options={models}
-                clickHandler={changeModel}
+                selectHandler={changeModel}
               />
             ) : (
               <DropDown
@@ -103,7 +103,7 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
               <DropDown
                 defaultOption="Все поколения"
                 options={generations}
-                clickHandler={changeGeneration}
+                selectHandler={changeGeneration}
               />
             ) : (
               <DropDown
@@ -115,8 +115,6 @@ function FilterSection({ currentBrandId, currentModelId, currentGenerationId, cu
 
           <div className="filter-available">
             <CheckBox
-              isChecked={isChecked}
-              setIsChecked={setIsChecked}
               onChangeCheckBox={onChangeCheckBox}
             />
           </div>

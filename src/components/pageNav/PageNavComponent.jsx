@@ -1,12 +1,23 @@
 import "./PageNavComponent.css";
 import PageNavButton from "../../ui/pageNavButton/PageNavButton.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentPage} from "../../slices/filterSlice.jsx";
 
-function PageNavComponent({ totalPages, onPageChange, currentPage }) {
+function PageNavComponent() {
 
 // totalPages - общее количество страниц из ProductsComponent
 // onPageChange - функция, передаваемая в PageNavButton
 // currentPage - текущая страница
+
+  const dispatch = useDispatch();
+
+  const onPageChange = function(pageNumber) {
+    dispatch(setCurrentPage(pageNumber));
+  }
+
+  const currentPage = useSelector((state) => state.filter.currentPage);
+  const totalPages = useSelector(state => state.filter.totalPages);
 
   const pageForward = function () {
     if (currentPage < totalPages) {

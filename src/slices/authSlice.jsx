@@ -60,7 +60,6 @@ export function signOut() {
   return function (dispatch) {
     localStorage.removeItem("tokenInfo");
     dispatch(setUser(null));
-
     // Reloading the main page
     window.location.reload();
   }
