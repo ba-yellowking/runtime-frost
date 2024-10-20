@@ -29,12 +29,16 @@ function FilterSection() {
 
   // Re-rendering models depending on the chosen brand
   useEffect(() => {
-    dispatch(fetchModels(selectedBrand));
+    if (selectedBrand > 0) {
+      dispatch(fetchModels(selectedBrand));
+    }
   }, [dispatch, selectedBrand]);
 
   // Re-rendering generations depending on the chosen model
   useEffect(() => {
-    dispatch(fetchGenerations(selectedModel));
+    if (selectedModel > 0 && models.length > 0) {
+      dispatch(fetchGenerations(selectedModel));
+    }
   }, [dispatch, selectedModel]);
 
   const changeBrand = function(brandId) {

@@ -17,8 +17,9 @@ function MainPage() {
     dispatch(setCurrentPage(pageNumber));
   }
 
-  // Состояние для открытия личного кабинета
+  // State for profile
   const [isProfilePage, setIsProfilePage] = useState(false);
+
   // Для <Header/>
   function openProfilePage() {
     setIsProfilePage(true);
@@ -26,7 +27,6 @@ function MainPage() {
 
   return (
     <div className="main-page-container">
-
       {isProfilePage ? (
         <ProfileComponent/>
       ) : (
@@ -34,17 +34,13 @@ function MainPage() {
           <Header
             openProfilePage={openProfilePage}
           />
-
           <div className="products-container">
             <FilterSection/>
-
             <ProductsComponent/>
-
             <PageNavComponent
               onPageChange={onPageChange}
             />
           </div>
-
           <Footer/>
         </>
       )}
