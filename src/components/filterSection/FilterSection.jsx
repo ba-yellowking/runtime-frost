@@ -4,13 +4,9 @@ import { useEffect } from "react";
 import CheckBox from "../../ui/checkBox/CheckBox.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {
+  changeBrand, changeGeneration, changeModel,
   fetchBrands,
-  fetchGenerations,
-  fetchModels,
   setAvailable,
-  setSelectedBrand,
-  setSelectedGeneration,
-  setSelectedModel
 } from "../../slices/filterSlice.jsx";
 
 function FilterSection() {
@@ -27,46 +23,11 @@ function FilterSection() {
     dispatch(fetchBrands());
   }, [dispatch]);
 
-  // Re-rendering models depending on the chosen brand
-  useEffect(() => {
-    if (selectedBrand > 0) {
-      dispatch(fetchModels(selectedBrand));
-    }
-  }, [dispatch, selectedBrand]);
-
-  // Re-rendering generations depending on the chosen model
-  useEffect(() => {
-    if (selectedModel > 0 && models.length > 0) {
-      dispatch(fetchGenerations(selectedModel));
-    }
-  }, [dispatch, selectedModel]);
-
-  const changeBrand = function(brandId) {
-    if (brandId > 0) {
-      dispatch(setSelectedBrand(brandId));
-      dispatch(fetchModels(brandId));
-    } else {
-      dispatch(setSelectedBrand(0));
-    }
-    dispatch(setSelectedModel(0));
-    dispatch(setSelectedGeneration(0));
-  }
-
-  const changeModel = function(modelId) {
-    if (modelId > 0) {
-      dispatch(setSelectedModel(modelId));
-      dispatch(fetchGenerations(modelId));
-    } else {
-      dispatch(setSelectedModel(0));
-    }
-    dispatch(setSelectedGeneration(0));
-  }
-
-  const changeGeneration = function(generationId) {
-    if (generationId > 0) {
-      dispatch(setSelectedGeneration(generationId));
-    }
-  }
+  // const changeGeneration = function(generationId) {
+  //   if (generationId > 0) {
+  //     dispatch(setSelectedGeneration(generationId));
+  //   }
+  // }
 
   const onChangeCheckBox = function(availableBoolean) {
     dispatch(setAvailable(availableBoolean ? 1 : 0));
@@ -80,7 +41,9 @@ function FilterSection() {
             <DropDown
               defaultOption="Все марки"
               options={brands}
-              selectHandler={changeBrand}
+              selectHandler={function(brandId) {
+                dispatch(changeBrand(brandId));
+              }}
             />
           </div>
 
@@ -89,7 +52,9 @@ function FilterSection() {
               <DropDown
                 defaultOption="Все модели"
                 options={models}
-                selectHandler={changeModel}
+                selectHandler={function(modelId) {
+                  dispatch(changeModel(modelId))
+                }}
               />
             ) : (
               <DropDown
@@ -104,7 +69,9 @@ function FilterSection() {
               <DropDown
                 defaultOption="Все поколения"
                 options={generations}
-                selectHandler={changeGeneration}
+                selectHandler={function(generationId) {
+                  dispatch(changeGeneration(generationId))
+                }}
               />
             ) : (
               <DropDown

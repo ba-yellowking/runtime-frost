@@ -62,30 +62,58 @@ export function fetchBrands() {
   }
 }
 
-export function fetchModels(brandId) {
-  return function(dispatch) {
-    axios
-      .get(`https://frost.runtime.kz/api/models?brandId=${brandId}`)
-      .then(function(response) {
-        const models = response.data.map(function(model) {
-          return { name: model.name, id: model.id }
+export function changeBrand(brandId) {
+  return function (dispatch) {
+    if (brandId > 0) {
+      dispatch(setSelectedBrand(brandId));
+
+      axios
+        .get(`https://frost.runtime.kz/api/models?brandId=${brandId}`)
+        .then(function (response) {
+          const models = response.data.map(function (model) {
+            return { name: model.name, id: model.id };
+          });
+          dispatch(setModel(models));
         })
-        dispatch(setModel(models));
-      });
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      dispatch(setSelectedBrand(0));
+    }
+    dispatch(setSelectedModel(0));
+    dispatch(setSelectedGeneration(0));
+  };
+}
+
+export function changeModel(modelId) {
+  return function (dispatch) {
+    if (modelId > 0) {
+      dispatch(setSelectedModel(modelId));
+
+      axios
+        .get(`https://frost.runtime.kz/api/generations?modelId=${modelId}`)
+        .then(function(response) {
+          const generations = response.data.map(function(generation) {
+            return { name: generation.name, id: generation.id }
+          })
+          dispatch(setGeneration(generations));
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      dispatch(setSelectedModel(0));
+    }
+    dispatch(setSelectedGeneration(0));
   }
 }
 
-export function fetchGenerations(modelId) {
-  return function(dispatch) {
-    axios
-      .get(`https://frost.runtime.kz/api/generations?modelId=${modelId}`)
-      .then(function(response) {
-        const generations = response.data.map(function(generation) {
-          return { name: generation.name, id: generation.id }
-        })
-        dispatch(setGeneration(generations));
-      });
-
+export function changeGeneration(generationId) {
+  return function (dispatch) {
+    if (generationId > 0) {
+      dispatch(setSelectedGeneration(generationId));
+    }
   }
 }
 

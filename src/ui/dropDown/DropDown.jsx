@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import "./DropDown.css";
+// import {useDispatch} from "react-redux";
+// import {selectedBrandId, setSelectedBrand} from "../../slices/filterSlice.jsx";
 
 function DropDown({ defaultOption, options = [], selectHandler, style }) {
+
+  // const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultOption);
@@ -20,6 +24,7 @@ function DropDown({ defaultOption, options = [], selectHandler, style }) {
     setSelectedOption(option.name || option);
     setIsOpen(false);
     selectHandler(option.id || 0);
+    // dispatch(selectedBrandId(option.id || 0));
   }
 
   function renderOptions() {
