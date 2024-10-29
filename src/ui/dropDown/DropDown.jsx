@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import "./DropDown.css";
-// import {useDispatch} from "react-redux";
-// import {selectedBrandId, setSelectedBrand} from "../../slices/filterSlice.jsx";
+import {useClickOutsideDropDown} from "../../hooks/useClickOutsideDropDown.jsx";
 
 function DropDown({ defaultOption, options = [], selectHandler, style }) {
 
-  // const dispatch = useDispatch();
+  const dropDownRef = useRef()
+  useClickOutsideDropDown(dropDownRef, function() {
+    setIsOpen(false)
+  })
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultOption);
@@ -24,7 +26,6 @@ function DropDown({ defaultOption, options = [], selectHandler, style }) {
     setSelectedOption(option.name || option);
     setIsOpen(false);
     selectHandler(option.id || 0);
-    // dispatch(selectedBrandId(option.id || 0));
   }
 
   function renderOptions() {
@@ -44,8 +45,8 @@ function DropDown({ defaultOption, options = [], selectHandler, style }) {
   }
 
   return (
-    <div className="dropdown-wrap">
-      <div className="dropdown-header" onClick={openMenu} style={style}>
+    <div className="dropdown-wrap" >
+      <div className="dropdown-header" onClick={openMenu} style={style} ref={dropDownRef}>
         {selectedOption}
       </div>
 

@@ -47,7 +47,7 @@ function ProfileComponent() {
       <Header/>
 
       <div className="profile-top">
-        <p className="profile-top-text">Мои заказы</p>
+        <p className="profile-top-text">Личный кабинет</p>
       </div>
 
       {isLoading ? (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ButtonStandard.css";
 
-function ButtonStandard({ name, clickHandler, isDisabled, style }) {
+function ButtonStandard({ name, clickHandler, isDisabled, style, className }) {
 
   const [isActive, setIsActive] = useState(false);
 
@@ -14,10 +14,9 @@ function ButtonStandard({ name, clickHandler, isDisabled, style }) {
   };
 
   return (
-
     <button
       type="button"
-      className={`button-standard ${isActive ? "active" : ""}`}
+      className={`button-standard ${isActive ? "active" : ""} ${className}`}  // Используем className для классов
       onClick={clickHandler}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}

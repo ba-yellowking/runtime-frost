@@ -21,3 +21,9 @@
 .modal-title:hover::before {
   width: calc(100% - 10px);
 }
+
+.signUpModal {
+  width: 400px;
+  height: 40px;
+  margin: 10px;
+}

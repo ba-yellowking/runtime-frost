@@ -21,7 +21,6 @@ function ProductCardPage() {
       .get(`https://frost.runtime.kz/api/products/${params.productId}`)
 
       .then(function(response) {
-        console.log(response.data.available,)
         const productData = {
           id: response.data.id,
           name: response.data.name,
@@ -34,7 +33,7 @@ function ProductCardPage() {
           model: response.data.model.name,
           generation: response.data.generation.name,
         };
-        setProductCardData(productData)
+        setProductCardData(productData);
       })
   }, []);
 

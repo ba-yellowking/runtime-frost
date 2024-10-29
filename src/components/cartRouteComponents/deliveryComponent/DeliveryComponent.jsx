@@ -153,7 +153,7 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
           <div className="delivery-button-container">
             <ButtonStandard
               name="Подтвердить"
-              style={{marginTop: "26px", width: "200px"}}
+              className="deliveryComponent"
               clickHandler={proceed}
             />
           </div>

@@ -93,7 +93,7 @@ function PageNavComponent() {
           pageBack()
         }}
         isDisabled={currentPage === 1}
-        style={{margin: "5px"}}
+        className="pageNavComponentBack"
       />
 
       {showFirstPage()}
@@ -106,7 +106,7 @@ function PageNavComponent() {
           pageForward()
         }}
         isDisabled={currentPage === totalPages}
-        style={{marginTop: "5px", marginLeft: "5px", marginBottom: "5px", marginRight: "37px"}}
+        className="pageNavComponentForward"
       />
     </div>
   );

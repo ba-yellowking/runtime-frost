@@ -96,3 +96,7 @@
   border: 1px solid #dadada;
   border-radius: 10px;
 }
+
+.reviewsComponent {
+  width: 150px;
+}

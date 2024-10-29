@@ -43,3 +43,8 @@
   color: red;
   font-size: 12px;
 }
+
+.contactsCartComponent {
+  margin: 26px 0 0 0;
+  width: 200px;
+}

@@ -162,7 +162,7 @@ function CartProductList( {setCurrentComponent} ) {
               <div className="cart-button-container">
                 <ButtonStandard
                   name="Оформить заказ"
-                  style={{marginTop: "10px", width: "200px"}}
+                  className="cartProductList"
                   clickHandler={function() {
                     setCurrentComponent("contacts");
                   }}

@@ -1,11 +1,11 @@
 import React from "react";
 import ButtonStandard from "../buttonStandard/ButtonStandard.jsx";
 import useModal from "../../hooks/useModal.jsx";
-import ProductInCartModal from "../../components/modals/ProductInCartModal.jsx";
+import ProductInCartModal from "../../components/modals/productInCartModal/ProductInCartModal.jsx";
 import "./ProductCard.css";
 import {useNavigate} from "react-router-dom";
 
-function ProductCard({ id, name, price, available }) {
+function ProductCard({ id, name, price }) {
 
   const [isOpenProductInCartModal, openProductInCartModal, closeProductInCartModal] = useModal();
 
@@ -48,7 +48,6 @@ function ProductCard({ id, name, price, available }) {
             newProductName={name}
             newProductPrice={price}
             newProductId={id}
-            available={available}
           />
         </div>
       </div>

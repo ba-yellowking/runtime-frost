@@ -1,4 +1,6 @@
-import "./Header.css";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 import useModal from "../../hooks/useModal.jsx";
 import LogInModal from "../modals/logInModal/LogInModal.jsx";
 import SignUpModal from "../modals/signUpModal/SignUpModal.jsx";
@@ -6,46 +8,51 @@ import EndRegistrationModal from "../modals/EndRegistrationModal.jsx";
 import cart from '../../images/cart.png';
 import logout from '../../images/logout.png';
 import {checkTokenAndGetUser, signOut} from "../../slices/authSlice.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import "./Header.css";
 
 function Header({ openProfilePage }) {
-
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const tokenInfo = useSelector((state) => state.auth.tokenInfo);
   const totalCount = useSelector((state) => state.counter.counter);
   const displayName = user ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) : "";
 
-  // Открыто ли модальное окно?
+  const navigate = useNavigate();
+
+  // Modal state hooks
   const [isOpenLogIn, openLogIn, closeLogIn] = useModal();
   const [isOpenSignUp, openSignUp, closeSignUp] = useModal();
   const [isOpenEndRegistration, openEndRegistration, closeEndRegistration] = useModal();
 
-  // Переход из <LogIn/> в <SignUp/>
-  const goToSignUpFromLogIn = function() {
+  // Transition between modals
+  const goToSignUpFromLogIn = () => {
     openSignUp();
     closeLogIn();
-  }
+  };
 
-  // Переход из <SignUp/> в <LogIn/>
-  const goToLogInFromSignUp = function() {
+  const goToLogInFromSignUp = () => {
     openLogIn();
     closeSignUp();
-  }
+  };
 
   // Updating redux state if "tokenInfo" is in local storage, but "user" is not set
-  useEffect(function() {
+  useEffect(() => {
     if (!user && tokenInfo) {
       dispatch(checkTokenAndGetUser());
       closeLogIn();
     }
   }, [dispatch, tokenInfo]);
 
+  // Redirecting a user to main page after log out
+  const handleSignOut = () => {
+    dispatch(signOut());
+    navigate("/");
+  };
+
   return (
+
     <div className="header-container">
       <div className="header-wrap">
-
         <div className="header-left">
           <a href="/">
             <img className="header-left-logo" src="/src/images/logo.png" alt="Logo"/>
@@ -54,24 +61,20 @@ function Header({ openProfilePage }) {
 
         {user !== null && tokenInfo ? (
           <div className="header-right-profile">
-            <div
-              className="header-right-username"
-              onClick={openProfilePage}
-            >
+            <div className="header-right-username" onClick={openProfilePage}>
               {displayName}
             </div>
 
             <a
               href="/cart"
               className={totalCount > 0 ? "cart-page-active" : "cart-page"}
-              // content: attr(data-count) (см. css)
               data-count={totalCount > 0 ? totalCount : null}
             >
               <img className="cart-logo" src={cart} alt="cart-logo"/>
             </a>
 
             <div className="logout">
-              <img className="logout-logo" src={logout} alt="cart-logo" onClick={() => dispatch(signOut())}/>
+              <img className="logout-logo" src={logout} alt="logout-logo" onClick={handleSignOut}/>
             </div>
           </div>
         ) : (
@@ -96,25 +99,16 @@ function Header({ openProfilePage }) {
                     close={closeSignUp}
                     style={{width: "195px"}}
                     onClickLogIn={goToLogInFromSignUp}
-
-                    // Закрытие моального окна через 5 сек
-                    openEndRegistration={function () {
-                      openEndRegistration()
-                      setTimeout(function () {
-                        closeEndRegistration()
-                      }, 3_000)
+                    openEndRegistration={() => {
+                      openEndRegistration();
+                      setTimeout(() => {
+                        closeEndRegistration();
+                      }, 3000);
                     }}
                   />
                 </div>
-
-                {/*<a href="/cart" className="cart-page">*/}
-                {/*  <span>Корзина</span>*/}
-                {/*</a>*/}
               </>
-            ) : (
-              <>
-              </>
-            )}
+            ) : null}
           </div>
         )}
       </div>
@@ -125,7 +119,7 @@ function Header({ openProfilePage }) {
         openLogIn={openLogIn}
       />
     </div>
-  )
+  );
 }
 
 export default Header;

@@ -134,7 +134,7 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
           <div className="contacts-button-container">
             <ButtonStandard
               name="Подтвердить"
-              style={{marginTop: "26px", width: "200px"}}
+              className="contactsCartComponent"
               clickHandler={proceed}
             />
           </div>

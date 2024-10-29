@@ -84,7 +84,7 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
 
                 <ButtonStandard
                   name="Добавить"
-                  style={{width: "150px"}}
+                  className="reviewsComponent"
                   clickHandler={addNewFeedback}
                 />
               </div>

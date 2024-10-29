@@ -62,12 +62,13 @@ function ProductsComponent() {
                     id={product.id}
                     name={product.name}
                     price={product.price}
-                    available={available}
                   />
                 );
               })
             ) : (
-              <div className="empty-products"></div>
+              <div className="empty-products">
+                <p>Таких товаров не существует</p>
+              </div>
             )}
           </div>
         </div>

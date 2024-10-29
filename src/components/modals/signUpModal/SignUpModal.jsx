@@ -116,7 +116,7 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
                   </div>
 
                   <input
-                    className="authorization-input"
+                    className={`authorization-input`}
                     type="text"
                     value={firstNameInput}
                     onChange={handleFirstNameInput}
@@ -179,7 +179,7 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
               <ButtonStandard
                 name="Зарегистрироваться"
                 clickHandler={handleClick}
-                style={{width: "400px", height: "40px", margin: "10px"}}
+                className="signUpModal"
               />
 
               <span

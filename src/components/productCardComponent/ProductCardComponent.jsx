@@ -2,7 +2,7 @@ import { useState } from "react";
 import useModal from "../../hooks/useModal.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import ReviewsComponent from "../reviewsComponent/ReviewsComponent.jsx";
-import ProductInCartModal from "../modals/ProductInCartModal.jsx";
+import ProductInCartModal from "../modals/productInCartModal/ProductInCartModal.jsx";
 import "./ProductCardComponent.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 
@@ -75,7 +75,7 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
                   name="Купить"
                   clickHandler={handleClick}
                   isDisabled={!productCardData.available}
-                  style={{margin: "10px"}}
+                  className="productCardComponent"
                 />
               </div>
             </div>

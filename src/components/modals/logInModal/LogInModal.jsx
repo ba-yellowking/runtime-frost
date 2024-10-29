@@ -2,32 +2,48 @@ import Modal from "../../../ui/modal/Modal.jsx";
 import "./LogInModal.css";
 import {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../../slices/authSlice.jsx";
+import Spinner from "../../../ui/spinner/Spinner.jsx";
+import {setLoading} from "../../../slices/loadingSlice.jsx";
 
 function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
   const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.loading.isLoading);
 
-  // Состояние для почты и пароля
+  // States for login and password
   const[emailInput, setEmailInput] = useState("");
   const[passInput, setPassInput] = useState("");
 
-  // Почта для авторизации
+  // Errors for wrong login and password
+  const [errorLogin, setErrorLogin] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+
+  // Email (login)
   const handleEmailInput = function(content) {
     setEmailInput(content.target.value);
   }
 
-  // Пароль для авторизации
+  // Password
   const handlePassInput = function(content) {
     setPassInput(content.target.value);
   }
 
   const handleClick = function() {
+    dispatch(setLoading(true))
     dispatch(signIn(emailInput, passInput))
+      .then(function () {
+        dispatch(setLoading(false));
+      })
+      .catch(function () {
+        dispatch(setLoading(false));
+        setErrorLogin("Пожалуйста, введите почту")
+        setErrorPassword("Пожалуйста, введите пароль")
+      });
   }
 
-  // Обновление формы авторизации при закрытии
+  // Reseting inputs when closed
   const resetForm = function() {
     setEmailInput("");
     setPassInput("");
@@ -47,28 +63,32 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
           <p>Вход в учетную запись</p>
         </div>
 
-        <div className="modal-content-center">
-          <input
-            className="authorization-input"
-            type="text"
-            value={emailInput}
-            onChange={handleEmailInput}
-            placeholder="Электронная почта"
-          />
+        {isLoading ? (
+          <Spinner/>
+        ) : (
+          <div className="modal-content-center">
+            <input
+              className={`authorization-input ${errorLogin ? 'error' : ''}`}
+              type="text"
+              value={emailInput}
+              onChange={handleEmailInput}
+              placeholder={errorLogin || "Электронная почта"}
+            />
 
-          <input
-            className="authorization-input"
-            type="password"
-            value={passInput}
-            onChange={handlePassInput}
-            placeholder="Пароль"
-          />
-        </div>
+            <input
+              className={`authorization-input ${errorPassword ? 'error' : ''}`}
+              type="password"
+              value={passInput}
+              onChange={handlePassInput}
+              placeholder={errorPassword || "Пароль"}
+            />
+          </div>
+        )}
 
         <div className="modal-content-bottom">
           <ButtonStandard
             name="Войти"
-            style={{width: "400px", height: "40px", margin: "10px"}}
+            className="logInModal"
             clickHandler={handleClick}
           />
 

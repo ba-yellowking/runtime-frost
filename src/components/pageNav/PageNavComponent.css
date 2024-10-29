@@ -8,3 +8,11 @@
   background-color: #ffffff;
   border: 1px solid #cccccc;
 }
+
+.pageNavComponentForward {
+  margin: 5px 37px 5px 5px;
+}
+
+.pageNavComponentBack {
+  margin: 5px;
+}

@@ -1,12 +1,16 @@
-import Modal from "../../ui/modal/Modal.jsx";
-import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
+import Modal from "../../../ui/modal/Modal.jsx";
+import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useSelector} from "react-redux";
+import "./ProductInCartModal.css";
 
 // Модальное окно при добавлении товара в корзину
 // cart/add?productId=...&count=...
 
-function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, newProductId, available }) {
+function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
+
+  const user = useSelector(state => state.auth.user);
 
   const [counter, setCounter] = useState(1);
 
@@ -47,7 +51,7 @@ function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, ne
   // ЗАМЫКАНИЕ !!!
 
   function decrease() {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(counter - 1);
     }
   }
@@ -76,20 +80,12 @@ function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, ne
         </div>
 
         <div className="modal-content-bottom">
-
-          {available === 1 ? (
-            <ButtonStandard
-              name="Оформить заказ"
-              style={{width: "400px", height: "40px"}}
-              clickHandler={clickHandler}
-            />
-          ) : (
-            <ButtonStandard
-              name="Купить"
-              style={{width: "400px", height: "40px"}}
-              clickHandler={clickHandler}
-            />
-          )}
+          <ButtonStandard
+            name="Отправить в корзину"
+            className="productInCartModal"
+            clickHandler={clickHandler}
+            isDisabled={!user}
+          />
 
           <span className="continue-shopping" onClick={close}>
             Продолжить покупки

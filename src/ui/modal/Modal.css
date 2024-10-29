@@ -101,7 +101,7 @@
 .modal-content-bottom {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 125px;
@@ -133,6 +133,10 @@
   color: #a1a1a1;
 }
 
+.authorization-input.error::placeholder {
+  color: #f65656; /* красный цвет для ошибки */
+}
+
 .authorization-full-name {
   display: flex;
 }
@@ -154,7 +158,9 @@
   font-size: 14px;
 }
 
-.continue-shopping {
+.continue-shopping,
+.signin-signup {
+  margin-bottom: 25px;
   cursor: pointer;
   color: #8c8c8c;
   font-size: 14px;

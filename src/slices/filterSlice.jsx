@@ -45,7 +45,7 @@ const filterSlice = createSlice({
     },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
-    }
+    },
   }
 })
 
@@ -127,7 +127,7 @@ export const {
   setSelectedGeneration,
   setIsChecked,
   setTotalPages,
-  setCurrentPage
+  setCurrentPage,
 } = filterSlice.actions;
 
 export const filterReducer = filterSlice.reducer;

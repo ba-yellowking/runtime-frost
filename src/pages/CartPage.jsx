@@ -11,6 +11,8 @@ import {useSelector} from "react-redux";
 
 function CartPage() {
 
+  const user = useSelector(state => state.auth.user);
+
   const totalCount = useSelector((state) => state.counter.counter);
 
   const [currentComponent, setCurrentComponent] = useState("cart");
@@ -90,7 +92,7 @@ function CartPage() {
 
   return (
     <div className="main-page-container">
-      {isProfilePage ? (
+      {isProfilePage && user ? (
        <ProfileComponent/>
       ) : (
         <>

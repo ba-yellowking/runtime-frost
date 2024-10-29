@@ -34,3 +34,14 @@
   align-items: center;
   padding: 5px;
 }
+
+.filterSection {
+  width: 220px;
+  height: 33px;
+  background-color: #cccccc;
+  cursor: default;
+}
+
+@media (max-width: 1000px) {
+
+}
