@@ -6,10 +6,13 @@ import Footer from "../footer/Footer.jsx";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoading} from "../../slices/loadingSlice.jsx";
+import {useNavigate} from "react-router-dom";
 
 function ProfileComponent() {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.accessToken);
   const isLoading = useSelector((state) => state.loading.isLoading);
 
   const [orders, setOrders] = useState([]);
@@ -25,6 +28,11 @@ function ProfileComponent() {
   }
 
   useEffect(function() {
+
+    // if (!token) {
+    //   navigate("/");
+    // }
+
     dispatch(setLoading(true));
 
     axios
@@ -33,7 +41,6 @@ function ProfileComponent() {
       .then(response => {
         setOrders(response.data);
         dispatch(setLoading(false));
-        console.log(response);
       })
 
       .catch(error => {

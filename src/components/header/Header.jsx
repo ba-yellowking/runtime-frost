@@ -45,8 +45,8 @@ function Header({ openProfilePage }) {
 
   // Redirecting a user to main page after log out
   const handleSignOut = () => {
-    dispatch(signOut());
     navigate("/");
+    dispatch(signOut());
   };
 
   return (

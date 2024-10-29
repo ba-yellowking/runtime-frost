@@ -66,8 +66,6 @@ export function signOut() {
     localStorage.removeItem("tokenInfo");
     dispatch(setUser(null));
     dispatch(setTokenInfo(null));
-    window.location.reload()
-    // Убрать потому что корзина перезагружается
   }
 }
 

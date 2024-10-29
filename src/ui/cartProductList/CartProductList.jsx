@@ -1,100 +1,53 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import "./CartProductList.css";
 import Spinner from "../spinner/Spinner.jsx";
 import ButtonStandard from "../buttonStandard/ButtonStandard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setTotalCount} from "../../slices/counterSlice.jsx"
 import {setLoading} from "../../slices/loadingSlice.jsx";
+import {decreaseCartItems, deleteCartItems, fetchCartItems, increaseCartItems} from "../../slices/cartSlice.jsx";
 
 function CartProductList( {setCurrentComponent} ) {
 
   const dispatch = useDispatch();
 
   const isLoading = useSelector((state) => state.loading.isLoading);
+  const cartItems = useSelector(state => state.cart.cartItems);
 
-  const [cartItems, setCartItems] = useState([]);
-
-  // Запрос на получение товаров, добавленных пользователем в корзину
+  // fetching all cart items
   useEffect(function () {
-    dispatch(setLoading(true));
-    axios
-      .get("https://frost.runtime.kz/api/cart")
-      .then(function (response) {
-        setCartItems(response.data.items);
-
-        console.log(response.data.items)
-
+    dispatch(fetchCartItems())
+      .then(() => dispatch(setLoading(false)))
+      .catch((error) => {
+        console.error(error);
         dispatch(setLoading(false));
       })
-      .catch((error) => console.error(error));
-  }, []);
+  }, [dispatch]);
 
-  // Вычисление общего количества товаров для иконки корзины
+  // total number of cart items
   useEffect(() => {
     const totalItems = cartItems.reduce((total, item) => total + item.count, 0);
     dispatch(setTotalCount(totalItems));
-  }, [cartItems]);
+  }, [dispatch]);
 
-  // Запрос на удаление из корзины
+  // deleting an item from cart
   const deleteItem = function(productId) {
-    axios
-      .get(`https://frost.runtime.kz/api/cart/delete?productId=${productId}`)
-      .then(function() {
-        // const updatedCartItems = cartItems.filter(function(item) {
-        //   return item.product.id !== productId
-        // });
-        const updatedCartItems = [...cartItems];
-        const deleteIndex = updatedCartItems.findIndex(function(item) {
-          return item.product.id === productId
-        })
-        updatedCartItems.splice(deleteIndex, 1);
-        setCartItems(updatedCartItems);
-      })
-      .catch(function(error) {
-        console.log(`Ошибка при удалении товара из корзины: ${error}`)
-      })
+    dispatch(deleteCartItems(productId));
   }
 
+  // total number of cart items
   const totalAmount = cartItems.reduce(function(total, item) {
     return total + item.product.price * item.count
   }, 0)
 
+  // increasing the quantity of items in cart
   const increaseQuantity = function increase(productId) {
-    axios
-      .get(`https://frost.runtime.kz/api/cart/increase?productId=${productId}`)
-      .then(function() {
-        const updatedCartItems = [...cartItems];
-        for (let i = 0; i < updatedCartItems.length; i++) {
-          if (updatedCartItems[i].product.id === productId) {
-            updatedCartItems[i].count += 1;
-          }
-        }
-        setCartItems(updatedCartItems)
-      })
-      .catch((error) => console.error(error));
+    dispatch(increaseCartItems(productId));
   }
 
+  // decreasing the quantity of items in cart
   const decreaseQuantity = function decrease(productId) {
-    axios
-      .get(`https://frost.runtime.kz/api/cart/decrease?productId=${productId}`)
-      .then(function() {
-        let updatedCartItems = [...cartItems];
-        for (let i = 0; i < updatedCartItems.length; i++) {
-          if (updatedCartItems[i].product.id === productId) {
-            if (updatedCartItems[i].count > 1) {
-              updatedCartItems[i].count -= 1;
-            } else {
-              deleteItem(productId)
-              return;
-            }
-          }
-        }
-        setCartItems(updatedCartItems)
-      })
-      .catch(function(error) {
-        console.log(`Количество не может быть меньше нуля: ${error}`)
-      })
+    dispatch(decreaseCartItems(productId));
   }
 
   return (
@@ -148,7 +101,9 @@ function CartProductList( {setCurrentComponent} ) {
                               }}
                       >+</button>
                     </div>
-                    <div className="cart-item-column">{(item.product.price * item.count).toLocaleString("ru-RU")} ₸</div>
+                    <div className="cart-item-column">
+                      {(item.product.price * item.count).toLocaleString("ru-RU")} ₸
+                    </div>
                   </div>
                 ))}
               </div>
