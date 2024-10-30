@@ -126,7 +126,7 @@ function CartProductList( {setCurrentComponent} ) {
             </>
           ) : (
             <div className="empty-cart">
-              <span>Корзина пуста.
+              <span>Ваша корзина пуста.
                 <a href="/" className="empty-cart-add-products">Добавить товары</a>
               </span>
             </div>

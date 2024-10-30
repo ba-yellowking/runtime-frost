@@ -49,28 +49,24 @@ function ProductsComponent() {
     <>
       {isLoading ? (
         <div className="products-component-center-spinner">
-          <Spinner/>
+          <Spinner />
         </div>
-      ) : (
+      ) : products.length > 0 ? (
         <div className="products-component-container">
           <div className="products-component-wrapper">
-            {products.length > 0 ? (
-              products.map(function(product) {
-                return (
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    price={product.price}
-                  />
-                );
-              })
-            ) : (
-              <div className="empty-products">
-                <p>Таких товаров не существует</p>
-              </div>
-            )}
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+              />
+            ))}
           </div>
+        </div>
+      ) : (
+        <div className="empty-products">
+          <p>Товары по заданным параметрам отсутствуют</p>
         </div>
       )}
     </>

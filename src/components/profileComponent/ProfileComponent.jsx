@@ -10,9 +10,7 @@ import {useNavigate} from "react-router-dom";
 
 function ProfileComponent() {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector(state => state.auth.accessToken);
   const isLoading = useSelector((state) => state.loading.isLoading);
 
   const [orders, setOrders] = useState([]);
@@ -28,11 +26,6 @@ function ProfileComponent() {
   }
 
   useEffect(function() {
-
-    // if (!token) {
-    //   navigate("/");
-    // }
-
     dispatch(setLoading(true));
 
     axios
@@ -113,8 +106,11 @@ function ProfileComponent() {
             </div>
           ) : (
             <div className="cart-menu-container">
+              <span className="profile-text">Мои заказы</span>
               <div className="empty-orders">
-                <span>У Вас нет заказов</span>
+                <span>У Вас еще нет заказов.
+                  <a href="/" className="empty-cart-add-products">Добавить товары</a>
+                </span>
               </div>
             </div>
           )}

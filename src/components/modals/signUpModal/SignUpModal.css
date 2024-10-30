@@ -25,5 +25,10 @@
 .signUpModal {
   width: 400px;
   height: 40px;
-  margin: 10px;
 }
+
+.signin-signup-style {
+  color: #67ac44;
+  cursor: pointer;
+}
+

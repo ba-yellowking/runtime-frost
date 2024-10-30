@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   width: 600px;
-  height: 400px;
+  max-height: 400px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
 }
@@ -50,17 +50,15 @@
 }
 
 .modal-content-top {
+  margin-bottom: 10px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 20px;
   width: 100%;
-  height: 125px;
-  background-color: #ffffff;
-}
-
-.modal-content-top span {
-  font-size: 1.5rem;
+  max-height: 125px;
+  background-color: #efefef;
 }
 
 .modal-content-center {
@@ -69,7 +67,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 250px;
+  max-height: 250px;
   background-color: #ffffff;
 }
 
@@ -99,19 +97,26 @@
 }
 
 .modal-content-bottom {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 125px;
   background-color: #ffffff;
 }
 
-.signin-signup {
+.continue-shopping {
+  padding: 10px;
+  color: #303030;
+  font-size: 14px;
   cursor: pointer;
-  padding: 0 10px 10px 10px;
-  color: #8c8c8c;
+}
+
+.signin-signup {
+  width: 400px;
+  padding: 10px;
+  color: #303030;
   font-size: 14px;
 }
 
@@ -125,12 +130,13 @@
 }
 
 .authorization-input:focus {
-  border-color: #505050;
+  border-color: #67ac44;
   outline: none;
 }
 
 .authorization-input::placeholder {
   color: #a1a1a1;
+  font-size: 14px;
 }
 
 .authorization-input.error::placeholder {
@@ -155,13 +161,5 @@
 
 .invalid {
   color: #ff3a3a;
-  font-size: 14px;
-}
-
-.continue-shopping,
-.signin-signup {
-  margin-bottom: 25px;
-  cursor: pointer;
-  color: #8c8c8c;
   font-size: 14px;
 }

@@ -1,6 +1,6 @@
 import Modal from "../../../ui/modal/Modal.jsx";
 import "./SignUpModal.css";
-import {useState} from "react";
+import React, {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import axios from "axios";
 import Spinner from "../../../ui/spinner/Spinner.jsx";
@@ -102,12 +102,16 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
       </span>
 
       <Modal open={isOpen} close={handleClose}>
-        {isLoading ? (<Spinner/>) : (
-          <>
-            <div className="modal-content-top">
-              <p>Создание учетной записи</p>
-            </div>
+        <div className="modal-content-top">
+          <p>Создание учетной записи</p>
+        </div>
 
+        {isLoading ? (
+          <div className="products-component-center-spinner">
+            <Spinner/>
+          </div>
+        ) : (
+          <>
             <div className="modal-content-center">
               <div className="authorization-full-name">
                 <div className="authorization-first-name">
@@ -172,7 +176,6 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
                 onChange={handleConfirmPassInput}
                 placeholder="Повторите пароль"
               />
-
             </div>
 
             <div className="modal-content-bottom">
@@ -182,11 +185,8 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
                 className="signUpModal"
               />
 
-              <span
-                className="signin-signup"
-                onClick={onClickLogIn}
-              >
-                Войти в существующую учетную запись
+              <span className="signin-signup">
+                Есть учетная запись? <span className="signin-signup-style" onClick={onClickLogIn}>Войти</span>
               </span>
             </div>
           </>

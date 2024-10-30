@@ -1,6 +1,6 @@
 import Modal from "../../../ui/modal/Modal.jsx";
 import "./LogInModal.css";
-import {useState} from "react";
+import React, {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../../slices/authSlice.jsx";
@@ -64,7 +64,9 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
         </div>
 
         {isLoading ? (
-          <Spinner/>
+          <div className="products-component-center-spinner">
+            <Spinner/>
+          </div>
         ) : (
           <div className="modal-content-center">
             <input
@@ -87,13 +89,13 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
         <div className="modal-content-bottom">
           <ButtonStandard
-            name="Войти"
+            name="Войти в учетную запись"
             className="logInModal"
             clickHandler={handleClick}
           />
 
-          <span className="signin-signup" onClick={goToSignUpFromLogIn}>
-            Создать новую учетную запись
+          <span className="signin-signup">
+            Нет учетной записи? <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>Зарегистрироваться</span>
           </span>
         </div>
       </Modal>

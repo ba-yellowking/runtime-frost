@@ -1,10 +1,11 @@
 .products-component-container {
   margin-top: 25px;
-  height: 1100px;
+  padding: 20px 0;
+  max-height: 1100px;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   overflow: hidden;
@@ -13,7 +14,23 @@
 .products-component-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  /*grid-template-rows: 1fr 1fr 1fr;*/
+  gap: 30px;
+}
+
+.products-component-container {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Это добавлено */
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+.products-component-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 }
 
@@ -21,6 +38,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 400px;
+  width: 100px;
+  height: 100px;
+}
+
+.empty-products {
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  width: 100%;
+  height: auto;
+  color: #505050;
 }

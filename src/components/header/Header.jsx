@@ -4,7 +4,6 @@ import {useEffect} from "react";
 import useModal from "../../hooks/useModal.jsx";
 import LogInModal from "../modals/logInModal/LogInModal.jsx";
 import SignUpModal from "../modals/signUpModal/SignUpModal.jsx";
-import EndRegistrationModal from "../modals/EndRegistrationModal.jsx";
 import cart from '../../images/cart.png';
 import logout from '../../images/logout.png';
 import {checkTokenAndGetUser, signOut} from "../../slices/authSlice.jsx";
@@ -112,12 +111,6 @@ function Header({ openProfilePage }) {
           </div>
         )}
       </div>
-
-      <EndRegistrationModal
-        isOpen={isOpenEndRegistration}
-        close={closeEndRegistration}
-        openLogIn={openLogIn}
-      />
     </div>
   );
 }
