@@ -139,9 +139,10 @@
   font-size: 14px;
 }
 
-.authorization-input.error::placeholder {
-  color: #f65656; /* красный цвет для ошибки */
-}
+/*Вместо стандартного Placeholder приневерной  авторизации – предупреждение об ошибке*/
+/*.authorization-input.error::placeholder {*/
+/*  color: #f65656;*/
+/*}*/
 
 .authorization-full-name {
   display: flex;

@@ -48,8 +48,12 @@ function ProductsComponent() {
   return (
     <>
       {isLoading ? (
-        <div className="products-component-center-spinner">
-          <Spinner />
+        <div className="products-component-container">
+          <div className="spinner-container">
+            <div className="spinner-wrapper">
+              <Spinner/>
+            </div>
+          </div>
         </div>
       ) : products.length > 0 ? (
         <div className="products-component-container">

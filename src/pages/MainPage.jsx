@@ -7,6 +7,7 @@ import {useState } from 'react';
 import ProfileComponent from "../components/profileComponent/ProfileComponent.jsx";
 import {useDispatch} from "react-redux";
 import {setCurrentPage} from "../slices/filterSlice.jsx";
+import TypedJS from "../components/typed/TypedJS.jsx";
 
 function MainPage() {
 
@@ -34,6 +35,9 @@ function MainPage() {
           <Header
             openProfilePage={openProfilePage}
           />
+
+          {/*<TypedJS/>*/}
+
           <div className="products-container">
             <FilterSection/>
             <ProductsComponent/>

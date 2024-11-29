@@ -10,7 +10,7 @@ function Footer() {
       <div className="footer-wrap">
         <div className="footer-instagram">
           <img className="instagram" src={instagramLogo} alt="instagram"/>
-          <p>bakytdreamer</p>
+          <a href="http://instagram.com" className="instagram-text" target="_blank"><p>bakytdreamer</p></a>
         </div>
 
         <div className="footer-gmail">

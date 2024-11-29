@@ -27,6 +27,10 @@
   height: 40px;
 }
 
+.firstNameLastName {
+  width: 195px;
+}
+
 .signin-signup-style {
   color: #67ac44;
   cursor: pointer;

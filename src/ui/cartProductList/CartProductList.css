@@ -87,14 +87,6 @@
   margin: 0 5px;
 }
 
-.cart-product-list-center-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-}
-
 .cart-button-container {
   display: flex;
   justify-content: flex-end;

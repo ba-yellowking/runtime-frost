@@ -53,11 +53,14 @@ function CartProductList( {setCurrentComponent} ) {
   return (
     <>
       {isLoading ? (
-        <div className="cart-product-list-center-spinner">
-          <Spinner/>
+        <div className="spinner-container">
+          <div className="spinner-wrapper">
+            <Spinner/>
+          </div>
         </div>
       ) : (
         <>
+          <span className="cart-text">Корзина</span>
           {cartItems.length > 0 ? (
             <>
               <div className="cart-header">
@@ -87,18 +90,16 @@ function CartProductList( {setCurrentComponent} ) {
                     </div>
 
                     <div className="cart-item-column">
-                      <button className="cart-item-btn"
-                              onClick={function() {
-                                decreaseQuantity(item.product.id)
-                              }}
+                      <button
+                        className="cart-item-btn"
+                        onClick={() => decreaseQuantity(item.product.id)}
                       >-</button>
 
                       {item.count}
 
-                      <button className="cart-item-btn"
-                              onClick={function() {
-                                increaseQuantity(item.product.id)
-                              }}
+                      <button
+                        className="cart-item-btn"
+                        onClick={() => increaseQuantity(item.product.id)}
                       >+</button>
                     </div>
                     <div className="cart-item-column">
@@ -118,9 +119,7 @@ function CartProductList( {setCurrentComponent} ) {
                 <ButtonStandard
                   name="Оформить заказ"
                   className="cartProductList"
-                  clickHandler={function() {
-                    setCurrentComponent("contacts");
-                  }}
+                  clickHandler={() => setCurrentComponent("contacts")}
                 />
               </div>
             </>

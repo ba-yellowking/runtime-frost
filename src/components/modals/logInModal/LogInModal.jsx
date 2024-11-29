@@ -38,8 +38,8 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
       })
       .catch(function () {
         dispatch(setLoading(false));
-        setErrorLogin("Пожалуйста, введите почту")
-        setErrorPassword("Пожалуйста, введите пароль")
+        setErrorLogin("Неверно введена почта")
+        setErrorPassword("Неверно введен пароль")
       });
   }
 
@@ -64,25 +64,42 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
         </div>
 
         {isLoading ? (
-          <div className="products-component-center-spinner">
-            <Spinner/>
+          <div className="spinner-container">
+            <div className="spinner-wrapper">
+              <Spinner/>
+            </div>
           </div>
         ) : (
           <div className="modal-content-center">
+
+            {errorLogin && (
+              <div className="error-container">
+                {errorLogin}
+              </div>
+            )}
+
             <input
-              className={`authorization-input ${errorLogin ? 'error' : ''}`}
+              // className={`authorization-input ${errorLogin ? 'error' : ''}`}
+              className="authorization-input"
               type="text"
               value={emailInput}
               onChange={handleEmailInput}
-              placeholder={errorLogin || "Электронная почта"}
+              placeholder={"Электронная почта"}
             />
 
+            {errorPassword && (
+              <div className="error-container">
+                {errorPassword}
+              </div>
+            )}
+
             <input
-              className={`authorization-input ${errorPassword ? 'error' : ''}`}
+              // className={`authorization-input ${errorPassword ? 'error' : ''}`}
+              className="authorization-input"
               type="password"
               value={passInput}
               onChange={handlePassInput}
-              placeholder={errorPassword || "Пароль"}
+              placeholder={"Пароль"}
             />
           </div>
         )}

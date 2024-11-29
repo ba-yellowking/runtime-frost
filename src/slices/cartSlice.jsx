@@ -15,21 +15,29 @@ const cartSlice = createSlice({
 })
 
 // fetching cart items
+// export function fetchCartItems() {
+//   return function(dispatch) {
+//     return new Promise(function(resolve, reject) {
+//       dispatch(setLoading(true));
+//       axios
+//         .get("https://frost.runtime.kz/api/cart")
+//         .then(function (response) {
+//           dispatch(setCartItems(response.data.items));
+//           resolve();
+//         })
+//         .catch((error) => {
+//           console.error(error);
+//           reject();
+//         });
+//     })
+//   }
+// }
+
 export function fetchCartItems() {
-  return function(dispatch) {
-    return new Promise(function(resolve, reject) {
-      dispatch(setLoading(true));
-      axios
-        .get("https://frost.runtime.kz/api/cart")
-        .then(function (response) {
-          dispatch(setCartItems(response.data.items));
-          resolve();
-        })
-        .catch((error) => {
-          console.error(error);
-          reject();
-        });
-    })
+  return async function(dispatch) {
+    dispatch(setLoading(true))
+    const response = await axios.get("https://frost.runtime.kz/api/cart")
+    dispatch(setCartItems(response.data.items))
   }
 }
 

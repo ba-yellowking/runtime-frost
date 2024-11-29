@@ -1,10 +1,11 @@
-import { useState } from "react";
+import React, {useEffect, useState} from "react";
 import useModal from "../../hooks/useModal.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import ReviewsComponent from "../reviewsComponent/ReviewsComponent.jsx";
 import ProductInCartModal from "../modals/productInCartModal/ProductInCartModal.jsx";
 import "./ProductCardComponent.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
+import {useNavigate} from "react-router-dom";
 
 // Карточка продукта по его ID http://localhost:5173/products/1
 
@@ -23,9 +24,20 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
     openProductInCartModal();
   }
 
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!productCardData.id) {
+      const timer = setTimeout(() => {
+        navigate("/");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [productCardData.id, navigate]);
+
   return (
     <>
-      {productCardData.price ? (
+      {productCardData.id ? (
         <div className="product-card-wrapper">
           <div className="top-product-card">
             <div className="image-product-card">
@@ -101,7 +113,8 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
         </div>
       ) : (
         <div className="product-card-wrapper">
-          <div className="product-card-component-center-spinner">
+          <div className="error404">
+            <p className="error404-text">Такой страницы нет. Возвращаюсь на главную страницу.</p>
             <Spinner/>
           </div>
         </div>

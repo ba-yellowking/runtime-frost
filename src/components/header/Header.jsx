@@ -96,7 +96,6 @@ function Header({ openProfilePage }) {
                     onClick={openSignUp}
                     isOpen={isOpenSignUp}
                     close={closeSignUp}
-                    style={{width: "195px"}}
                     onClickLogIn={goToLogInFromSignUp}
                     openEndRegistration={() => {
                       openEndRegistration();

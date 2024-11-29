@@ -21,7 +21,7 @@ function ButtonStandard({ name, clickHandler, isDisabled, style, className }) {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       disabled={isDisabled}
-      style={style}
+      // style={style}
     >
       {name}
     </button>

@@ -6,7 +6,6 @@ import Footer from "../footer/Footer.jsx";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoading} from "../../slices/loadingSlice.jsx";
-import {useNavigate} from "react-router-dom";
 
 function ProfileComponent() {
 
@@ -53,9 +52,10 @@ function ProfileComponent() {
       {isLoading ? (
         <>
           <div className="profile-wrap">
-            <span className="profile-text">Мои заказы</span>
-            <div className="profile-center-spinner">
-              <Spinner/>
+            <div className="spinner-container">
+              <div className="spinner-wrapper">
+                <Spinner/>
+              </div>
             </div>
           </div>
         </>

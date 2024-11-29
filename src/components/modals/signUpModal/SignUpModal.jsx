@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../../slices/authSlice.jsx";
 import {setLoading} from "../../../slices/loadingSlice.jsx";
 
-function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openEndRegistration }) {
+function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegistration }) {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loading.isLoading)
@@ -107,8 +107,10 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
         </div>
 
         {isLoading ? (
-          <div className="products-component-center-spinner">
-            <Spinner/>
+          <div className="spinner-container">
+            <div className="spinner-wrapper">
+              <Spinner/>
+            </div>
           </div>
         ) : (
           <>
@@ -120,12 +122,11 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
                   </div>
 
                   <input
-                    className={`authorization-input`}
+                    className={`authorization-input firstNameLastName`}
                     type="text"
                     value={firstNameInput}
                     onChange={handleFirstNameInput}
                     placeholder="Имя"
-                    style={style}
                   />
                 </div>
 
@@ -135,12 +136,11 @@ function SignUpModal({ isOpen, close, onClick, title, style, onClickLogIn, openE
                   </div>
 
                   <input
-                    className="authorization-input"
+                    className="authorization-input firstNameLastName"
                     type="text"
                     value={lastNameInput}
                     onChange={handleLastNameInput}
                     placeholder="Фамилия"
-                    style={style}
                   />
                 </div>
               </div>

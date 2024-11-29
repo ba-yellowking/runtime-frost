@@ -26,3 +26,12 @@
   width: 400px;
   height: 40px;
 }
+
+.error-container {
+  width: 400px;
+  height: 30px;
+  color: red;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
