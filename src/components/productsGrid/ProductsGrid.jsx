@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../../ui/productCard/ProductCard.jsx";
-import "./ProductsComponent.css";
+import "./ProductsGrid.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoading} from "../../slices/loadingSlice.jsx";
 import {setTotalPages} from "../../slices/filterSlice.jsx";
 
-function ProductsComponent() {
+function ProductsGrid() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loading.isLoading);
@@ -77,4 +77,4 @@ function ProductsComponent() {
   );
 }
 
-export default ProductsComponent;
+export default ProductsGrid;

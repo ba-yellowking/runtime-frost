@@ -2,14 +2,14 @@ import React, {useEffect, useState} from "react";
 import useModal from "../../hooks/useModal.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import ReviewsComponent from "../reviewsComponent/ReviewsComponent.jsx";
-import ProductInCartModal from "../modals/productInCartModal/ProductInCartModal.jsx";
-import "./ProductCardComponent.css";
+import AddProductModal from "../modals/addProductModal/AddProductModal.jsx";
+import "./ProductDetails.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useNavigate} from "react-router-dom";
 
 // Карточка продукта по его ID http://localhost:5173/products/1
 
-function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
+function ProductDetails({ productCardData, reviewData, updateReviews }) {
 
   // Объявляем хуки в начале компонента
   const [isOpenProductInCartModal, openProductInCartModal, closeProductInCartModal] = useModal();
@@ -103,7 +103,7 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
             </div>
           </div>
 
-          <ProductInCartModal
+          <AddProductModal
             isOpen={isOpenProductInCartModal}
             close={closeProductInCartModal}
             newProductName={currentProductName}
@@ -123,4 +123,4 @@ function ProductCardComponent({ productCardData, reviewData, updateReviews }) {
   );
 }
 
-export default ProductCardComponent;
+export default ProductDetails;

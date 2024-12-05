@@ -71,3 +71,9 @@
   width: 20px;
   height: auto;
 }
+
+@media (max-width: 768px) {
+  .footer-text {
+    font-size: 10px;
+  }
+}

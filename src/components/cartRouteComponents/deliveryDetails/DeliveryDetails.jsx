@@ -1,8 +1,8 @@
-import "./DeliveryComponent.css";
+import "./DeliveryDetails.css";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import axios from "axios";
 
-function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, setOrderNumber, setErrorMessages, errorMessages }) {
+function DeliveryDetails({ setCurrentComponent, ordersData, setOrdersData, setOrderNumber, setErrorMessages, errorMessages }) {
 
   // Поле ввода для области
   function onChangeArea(event) {
@@ -164,4 +164,4 @@ function DeliveryComponent({ setCurrentComponent, ordersData, setOrdersData, set
   )
 }
 
-export default DeliveryComponent;
+export default DeliveryDetails;

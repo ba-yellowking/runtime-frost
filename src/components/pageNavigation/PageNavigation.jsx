@@ -1,12 +1,12 @@
-import "./PageNavComponent.css";
+import "./PageNavigation.css";
 import PageNavButton from "../../ui/pageNavButton/PageNavButton.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPage} from "../../slices/filterSlice.jsx";
 
-function PageNavComponent() {
+function PageNavigation() {
 
-// totalPages - общее количество страниц из ProductsComponent
+// totalPages - общее количество страниц из ProductsGrid
 // onPageChange - функция, передаваемая в PageNavButton
 // currentPage - текущая страница
 
@@ -112,4 +112,4 @@ function PageNavComponent() {
   );
 }
 
-export default PageNavComponent;
+export default PageNavigation;

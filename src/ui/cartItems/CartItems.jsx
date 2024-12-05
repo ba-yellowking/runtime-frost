@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./CartProductList.css";
+import "./CartItems.css";
 import Spinner from "../spinner/Spinner.jsx";
 import ButtonStandard from "../buttonStandard/ButtonStandard.jsx";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,7 +7,7 @@ import {setTotalCount} from "../../slices/counterSlice.jsx"
 import {setLoading} from "../../slices/loadingSlice.jsx";
 import {decreaseCartItems, deleteCartItems, fetchCartItems, increaseCartItems} from "../../slices/cartSlice.jsx";
 
-function CartProductList( {setCurrentComponent} ) {
+function CartItems({setCurrentComponent} ) {
 
   const dispatch = useDispatch();
 
@@ -136,4 +136,4 @@ function CartProductList( {setCurrentComponent} ) {
   )
 }
 
-export default CartProductList;
+export default CartItems;

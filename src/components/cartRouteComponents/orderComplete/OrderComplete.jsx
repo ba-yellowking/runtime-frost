@@ -1,7 +1,7 @@
-import "./FinalCartComponent.css";
+import "./OrderComplete.css";
 import React from "react";
 
-function FinalCartComponent({ orderNumber, setIsProfilePage }) {
+function OrderComplete({ orderNumber, setIsProfilePage }) {
 
   function handleProfileRedirect() {
     setIsProfilePage(true);
@@ -27,4 +27,4 @@ function FinalCartComponent({ orderNumber, setIsProfilePage }) {
   )
 }
 
-export default FinalCartComponent;
+export default OrderComplete;

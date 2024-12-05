@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonStandard from "../buttonStandard/ButtonStandard.jsx";
 import useModal from "../../hooks/useModal.jsx";
-import ProductInCartModal from "../../components/modals/productInCartModal/ProductInCartModal.jsx";
+import AddProductModal from "../../components/modals/addProductModal/AddProductModal.jsx";
 import "./ProductCard.css";
 import {useNavigate} from "react-router-dom";
 
@@ -42,7 +42,7 @@ function ProductCard({ id, name, price }) {
             clickHandler={handleClick}
           />
 
-          <ProductInCartModal
+          <AddProductModal
             isOpen={isOpenProductInCartModal}
             close={closeProductInCartModal}
             newProductName={name}

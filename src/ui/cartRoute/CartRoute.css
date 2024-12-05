@@ -3,6 +3,7 @@
   justify-content: center;
   border: 1px solid #eaeaea;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .route-cart, .route-contacts, .route-delivery, .route-final {
@@ -18,7 +19,7 @@
 }
 
 .activeRoute {
-  background-color: #67ac44;
+  background-color: #7fb364;
   color: #ffffff;
   cursor: pointer;
 }

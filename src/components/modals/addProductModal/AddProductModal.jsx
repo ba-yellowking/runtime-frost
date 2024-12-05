@@ -3,12 +3,12 @@ import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useSelector} from "react-redux";
-import "./ProductInCartModal.css";
+import "./AddProductModal.css";
 
 // Модальное окно при добавлении товара в корзину
 // cart/add?productId=...&count=...
 
-function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
+function AddProductModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
 
   const user = useSelector(state => state.auth.user);
 
@@ -96,4 +96,4 @@ function ProductInCartModal({ isOpen, close, newProductName, newProductPrice, ne
   )
 }
 
-export default ProductInCartModal;
+export default AddProductModal;

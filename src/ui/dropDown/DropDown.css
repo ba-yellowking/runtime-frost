@@ -11,12 +11,12 @@
   justify-content: flex-start;
   align-items: center;
   padding-left: 5px;
-  border: 1px solid #d6d6d6;
+
   color: #ffffff;
   cursor: pointer;
   width: 220px;
   height: 33px;
-  background-color: #67ac44;
+  background-color: #7fb364;
 }
 
 .dropdown-option {

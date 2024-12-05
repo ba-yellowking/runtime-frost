@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {useState} from "react";
 import axios from "axios";
-import ProductCardComponent from "../components/productCardComponent/ProductCardComponent.jsx";
+import ProductDetails from "../components/productDetails/ProductDetails.jsx";
 
 function ProductCardPage() {
 
@@ -57,7 +57,7 @@ function ProductCardPage() {
       <Header/>
 
       <div className="product-card-component">
-        <ProductCardComponent
+        <ProductDetails
           productCardData={productCardData}
           reviewData={reviews}
           updateReviews={updateReviews}

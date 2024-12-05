@@ -3,10 +3,10 @@ import Footer from "../components/footer/Footer.jsx";
 import CartRoute from "../ui/cartRoute/CartRoute.jsx";
 import {useState} from "react";
 import CartComponent from "../components/cartRouteComponents/cartComponent/CartComponent.jsx";
-import ContactsCartComponent from "../components/cartRouteComponents/contactsCartComponent/ContactsCartComponent.jsx";
-import DeliveryComponent from "../components/cartRouteComponents/deliveryComponent/DeliveryComponent.jsx";
-import FinalCartComponent from "../components/cartRouteComponents/finalCartComponent/FinalCartComponent.jsx";
-import ProfileComponent from "../components/profileComponent/ProfileComponent.jsx";
+import ContactDetails from "../components/cartRouteComponents/contactDetails/ContactDetails.jsx";
+import DeliveryDetails from "../components/cartRouteComponents/deliveryDetails/DeliveryDetails.jsx";
+import OrderComplete from "../components/cartRouteComponents/orderComplete/OrderComplete.jsx";
+import UserProfile from "../components/userProfile/UserProfile.jsx";
 import {useSelector} from "react-redux";
 
 function CartPage() {
@@ -40,7 +40,7 @@ function CartPage() {
   const renderContent = function() {
 
     if (isProfilePage) {
-      return <ProfileComponent/>
+      return <UserProfile/>
     }
 
     if (currentComponent === "cart") {
@@ -51,7 +51,7 @@ function CartPage() {
       )
     } else if (currentComponent === "contacts") {
       return (
-        <ContactsCartComponent
+        <ContactDetails
           setCurrentComponent={setCurrentComponent}
           ordersData={ordersData}
           setOrdersData={setOrdersData}
@@ -60,7 +60,7 @@ function CartPage() {
       )
     } else if (currentComponent === "delivery") {
       return (
-        <DeliveryComponent
+        <DeliveryDetails
           setCurrentComponent={setCurrentComponent}
           ordersData={ordersData}
           setOrdersData={setOrdersData}
@@ -71,7 +71,7 @@ function CartPage() {
       )
     } else if (currentComponent === "final") {
       return (
-        <FinalCartComponent
+        <OrderComplete
           setCurrentComponent={setCurrentComponent}
           ordersData={ordersData}
           setOrdersData={setOrdersData}
@@ -93,7 +93,7 @@ function CartPage() {
   return (
     <div className="main-page-container">
       {isProfilePage && user ? (
-       <ProfileComponent/>
+       <UserProfile/>
       ) : (
         <>
           <Header

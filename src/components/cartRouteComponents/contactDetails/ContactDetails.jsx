@@ -1,10 +1,10 @@
-import "./ContactsCartComponent.css";
+import "./ContactDetails.css";
 import React, {useState} from "react";
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
 import InputMask from 'react-input-mask';
 import {useSelector} from "react-redux";
 
-function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData }) {
+function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
 
   const user = useSelector((state) => state.auth.user);
 
@@ -144,4 +144,4 @@ function ContactsCartComponent({ setCurrentComponent, ordersData, setOrdersData 
   )
 }
 
-export default ContactsCartComponent;
+export default ContactDetails;

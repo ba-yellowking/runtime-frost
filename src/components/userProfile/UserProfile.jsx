@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./ProfileComponent.css";
+import "./UserProfile.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoading} from "../../slices/loadingSlice.jsx";
 
-function ProfileComponent() {
+function UserProfile() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loading.isLoading);
@@ -122,4 +122,4 @@ function ProfileComponent() {
   );
 }
 
-export default ProfileComponent;
+export default UserProfile;
