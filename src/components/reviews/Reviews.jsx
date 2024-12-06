@@ -1,10 +1,11 @@
-import "./ReviewsComponent.css";
+import "./Reviews.css";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
 import {useSelector} from "react-redux";
 
-function ReviewsComponent({ reviewData, productId, updateReviews }) {
+
+function Reviews({ reviewData, productId, updateReviews }) {
 
   const user = useSelector((state) => state.auth.user);
 
@@ -109,7 +110,7 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
       ) : (
         <>
           <div className="existing-review">
-            <span>Вы уже оставили отзыв на данный товар.</span>
+            <p>Thank you for your feedback!</p>
           </div>
 
           <div className="reviews-bottom">
@@ -122,4 +123,4 @@ function ReviewsComponent({ reviewData, productId, updateReviews }) {
   );
 }
 
-export default ReviewsComponent;
+export default Reviews;

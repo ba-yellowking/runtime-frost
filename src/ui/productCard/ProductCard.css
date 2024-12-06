@@ -19,14 +19,20 @@
 }
 
 .product-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 190px;
-  background-color: #c3c3c3;
+  background-color: #eaeaea;
+}
+
+.engine-image {
   transition: 1s;
 }
 
-.product-image:hover {
-  background-color: #a6a6a6;
+.engine-image:hover {
+  transform: scale(1.1);
 }
 
 .product-description {

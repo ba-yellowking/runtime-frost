@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 960px;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 20px;
 }
 
 .review-item {
@@ -36,8 +36,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 10px 0 15px 0;
-  width: 700px;
+  width: 900px;
   padding: 10px;
   border: 1px solid #dadada;
   border-radius: 5px;
@@ -56,8 +55,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 15px 0 10px 0;
-  width: 700px;
+  margin: 20px 0 20px 0;
+  width: 900px;
   padding: 10px;
   border: 1px solid #dadada;
   border-radius: 5px;
@@ -90,11 +89,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin: 15px 0 10px 0;
-  width: 700px;
+  width: 900px;
+  margin: 20px 0 0 0;
   padding: 10px;
-  border: 1px solid #dadada;
   border-radius: 5px;
+  background-color: #7fb364;
+  color: white;
 }
 
 .reviewsComponent {

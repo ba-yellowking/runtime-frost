@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import useModal from "../../hooks/useModal.jsx";
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
-import ReviewsComponent from "../reviewsComponent/ReviewsComponent.jsx";
+import Reviews from "../reviews/Reviews.jsx";
 import AddProductModal from "../modals/addProductModal/AddProductModal.jsx";
 import "./ProductDetails.css";
 import Spinner from "../../ui/spinner/Spinner.jsx";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import engine from "./../../images/engine.png"
 
 // Карточка продукта по его ID http://localhost:5173/products/1
 
@@ -50,7 +50,9 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
             <>
               <div className="top-product-card">
                 <div className="image-product-card">
-                  <div className="main-image-product-card"></div>
+                  <div className="main-image-product-card">
+                    <img className="engine-image" src={engine} alt="image"/>
+                  </div>
                 </div>
 
                 <div className="info-product-card">
@@ -106,7 +108,7 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
 
               <div className="bottom-product-card">
                 <div className="review-product-card">
-                  <ReviewsComponent
+                  <Reviews
                     reviewData={reviewData}
                     productId={productCardData.id}
                     updateReviews={updateReviews}

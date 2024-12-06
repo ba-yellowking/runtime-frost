@@ -4,6 +4,7 @@ import useModal from "../../hooks/useModal.jsx";
 import AddProductModal from "../../components/modals/addProductModal/AddProductModal.jsx";
 import "./ProductCard.css";
 import {useNavigate} from "react-router-dom";
+import engine from "../../images/engine.png";
 
 function ProductCard({ id, name, price }) {
 
@@ -22,7 +23,7 @@ function ProductCard({ id, name, price }) {
     <div className="product-container">
       <div className="product-wrapper">
         <div className="product-image">
-          {/*<p></p>*/}
+          <img className="engine-image" src={engine} alt="image"/>
         </div>
 
         <div
