@@ -1,7 +1,7 @@
 .route-container {
   display: flex;
   justify-content: center;
-  border: 1px solid #eaeaea;
+  border: 1px solid #cccccc;
   overflow: hidden;
   border-radius: 5px;
 }

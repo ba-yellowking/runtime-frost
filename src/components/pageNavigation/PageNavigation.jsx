@@ -31,28 +31,54 @@ function PageNavigation() {
     }
   }
 
-  const showFirstPage = function () {
+  const firstPage = function () {
     return (
-      <PageNavButton
-        isActive={currentPage === 1}
-        index={1}
-        clickHandler={function () {
-          onPageChange(1)
-        }}
-      />
+      currentPage > 3 ? (
+        <div className="pageNavIndent">
+          <PageNavButton
+            isActive={currentPage === 1}
+            index={1}
+            clickHandler={function () {
+              onPageChange(1)
+            }}
+          />
+          <div className="pageNavEllipsis">...</div>
+        </div>
+      ) : (
+        <PageNavButton
+          isActive={currentPage === 1}
+          index={1}
+          clickHandler={function () {
+            onPageChange(1)
+          }}
+        />
+      )
     );
   }
 
-  const showLastPage = function () {
+  const lastPage = function () {
     if (totalPages !== 1) {
       return (
-        <PageNavButton
-          isActive={currentPage === totalPages}
-          index={totalPages}
-          clickHandler={function () {
-            onPageChange(totalPages)
-          }}
-        />
+        currentPage < totalPages - 2 ? (
+          <div className="pageNavIndent">
+            <div className="pageNavEllipsis">...</div>
+            <PageNavButton
+              isActive={currentPage === totalPages}
+              index={totalPages}
+              clickHandler={function () {
+                onPageChange(totalPages)
+              }}
+            />
+          </div>
+        ) : (
+          <PageNavButton
+            isActive={currentPage === totalPages}
+            index={totalPages}
+            clickHandler={function () {
+              onPageChange(totalPages)
+            }}
+          />
+        )
       )
     }
   }
@@ -87,27 +113,32 @@ function PageNavigation() {
   return (
     <div className="page-nav-container">
 
-      <ButtonStandard
-        name="Назад"
-        clickHandler={function () {
-          pageBack()
-        }}
-        isDisabled={currentPage === 1}
-        className="pageNavComponentBack"
-      />
+      {totalPages > 0 && (
+        <>
+          <ButtonStandard
+            name="Назад"
+            clickHandler={function () {
+              pageBack()
+            }}
+            isDisabled={currentPage === 1}
+            className="pageNavComponentBack"
+          />
 
-      {showFirstPage()}
-      {renderPageButtons()}
-      {showLastPage()}
+          {firstPage()}
+          {renderPageButtons()}
+          {lastPage()}
 
-      <ButtonStandard
-        name="Вперед"
-        clickHandler={function () {
-          pageForward()
-        }}
-        isDisabled={currentPage === totalPages}
-        className="pageNavComponentForward"
-      />
+          <ButtonStandard
+            name="Вперед"
+            clickHandler={function () {
+              pageForward()
+            }}
+            isDisabled={currentPage === totalPages}
+            className="pageNavComponentForward"
+          />
+        </>
+      )}
+
     </div>
   );
 }

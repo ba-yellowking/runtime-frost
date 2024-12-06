@@ -9,6 +9,15 @@
   cursor: pointer;
 }
 
+.pageNavIndent {
+  display: flex;
+  align-items: flex-end;
+}
+
+.pageNavEllipsis {
+  margin-bottom: 4px;
+}
+
 .active {
   background-color: #4a7c31;
 }

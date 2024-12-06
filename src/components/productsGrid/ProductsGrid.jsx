@@ -16,34 +16,35 @@ function ProductsGrid() {
   const selectedGenerationId = useSelector(state => state.filter.selectedGeneration);
   const available = useSelector(state => state.filter.available);
   const currentPage = useSelector((state) => state.filter.currentPage);
-
   const [products, setProducts] = useState([]);
 
-  useEffect(function() {
-    dispatch(setLoading(true));
-    axios
-      .get(`https://frost.runtime.kz/api/products`, {
-      params: {
-        page: currentPage,
-        size: 9,
-        brandId: selectedBrandId,
-        modelId: selectedModelId,
-        generationId: selectedGenerationId,
-        available: available,
-      }
-    })
+  useEffect(() => {
+    const fetchProducts = async () => {
+      dispatch(setLoading(true));
+      try {
+        const response = await axios.get(`https://frost.runtime.kz/api/products`, {
+          params: {
+            page: currentPage,
+            size: 9,
+            brandId: selectedBrandId,
+            modelId: selectedModelId,
+            generationId: selectedGenerationId,
+            available: available,
+          },
+        });
 
-      .then(response => {
         setProducts(response.data.items);
         dispatch(setTotalPages(response.data.totalPages));
-        dispatch(setLoading(false));
-    })
-
-      .catch(function(error) {
+      } catch (error) {
         console.error(error);
+      } finally {
         dispatch(setLoading(false));
-      })
+      }
+    };
+
+    fetchProducts();
   }, [currentPage, selectedBrandId, selectedModelId, selectedGenerationId, available, dispatch]);
+
 
   return (
     <>
