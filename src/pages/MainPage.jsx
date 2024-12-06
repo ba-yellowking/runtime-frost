@@ -7,6 +7,7 @@ import {useState } from 'react';
 import UserProfile from "../components/userProfile/UserProfile.jsx";
 import {useDispatch} from "react-redux";
 import {setCurrentPage} from "../slices/filterSlice.jsx";
+import Banner from "../ui/banner/Banner.jsx";
 
 function MainPage() {
 
@@ -34,6 +35,8 @@ function MainPage() {
           <Header
             openProfilePage={openProfilePage}
           />
+
+          <Banner/>
 
           <div className="products-container">
             <FilterSection/>

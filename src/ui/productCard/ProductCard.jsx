@@ -5,6 +5,10 @@ import AddProductModal from "../../components/modals/addProductModal/AddProductM
 import "./ProductCard.css";
 import {useNavigate} from "react-router-dom";
 import engine from "../../images/engine.png";
+import engine1 from "../../images/engine1.png";
+import engine2 from "../../images/engine2.png";
+import engine3 from "../../images/engine3.png";
+import engine4 from "../../images/engine4.png";
 
 function ProductCard({ id, name, price }) {
 
@@ -19,11 +23,21 @@ function ProductCard({ id, name, price }) {
     return navigate(`/products/${id}`);
   }
 
+  const imagesArr = {
+    0: engine,
+    1: engine1,
+    2: engine2,
+    3: engine3,
+    4: engine4,
+  }
+
+  const productImage = imagesArr[id] || engine;
+
   return (
     <div className="product-container">
       <div className="product-wrapper">
         <div className="product-image">
-          <img className="engine-image" src={engine} alt="image"/>
+          <img className="engine-image" src={productImage} alt={name}/>
         </div>
 
         <div
@@ -42,16 +56,16 @@ function ProductCard({ id, name, price }) {
             name="Купить"
             clickHandler={handleClick}
           />
-
-          <AddProductModal
-            isOpen={isOpenProductInCartModal}
-            close={closeProductInCartModal}
-            newProductName={name}
-            newProductPrice={price}
-            newProductId={id}
-          />
         </div>
       </div>
+
+      <AddProductModal
+        isOpen={isOpenProductInCartModal}
+        close={closeProductInCartModal}
+        newProductName={name}
+        newProductPrice={price}
+        newProductId={id}
+      />
     </div>
   );
 }

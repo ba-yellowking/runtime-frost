@@ -24,7 +24,7 @@
   align-items: center;
   width: 100%;
   height: 190px;
-  background-color: #eaeaea;
+  background-color: #ffffff;
 }
 
 .engine-image {
@@ -44,18 +44,18 @@
 
 .product-price-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  width: 270px;
+  width: 260px;
   height: 50px;
 }
 
 .product-price {
-  padding: 0 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
+  margin-right: 20px;
 }
 .product-buy {
   height: 50px;
