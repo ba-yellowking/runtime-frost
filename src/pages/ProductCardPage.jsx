@@ -5,6 +5,8 @@ import {useEffect} from "react";
 import {useState} from "react";
 import axios from "axios";
 import ProductDetails from "../components/productDetails/ProductDetails.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {setLoading} from "../slices/loadingSlice.jsx";
 
 function ProductCardPage() {
 
@@ -14,13 +16,18 @@ function ProductCardPage() {
 
   const [reviews, setReviews] = useState([]);
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.loading.isLoading);
+
   // Запрос на получение сетки товаров
-  useEffect(function() {
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        dispatch(setLoading(true));
+        const response = await axios.get(
+          `https://frost.runtime.kz/api/products/${params.productId}`
+        );
 
-    axios
-      .get(`https://frost.runtime.kz/api/products/${params.productId}`)
-
-      .then(function(response) {
         const productData = {
           id: response.data.id,
           name: response.data.name,
@@ -33,9 +40,16 @@ function ProductCardPage() {
           model: response.data.model.name,
           generation: response.data.generation.name,
         };
+
         setProductCardData(productData);
-      })
-  }, []);
+        dispatch(setLoading(false))
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProductData();
+  }, [params.productId]);
 
   // Запрос на получение отзывов
   const updateReviews = function() {
@@ -61,6 +75,7 @@ function ProductCardPage() {
           productCardData={productCardData}
           reviewData={reviews}
           updateReviews={updateReviews}
+          isLoading={isLoading}
         />
       </div>
 

@@ -8,7 +8,6 @@ import {setLoading} from "../../slices/loadingSlice.jsx";
 import {setTotalPages} from "../../slices/filterSlice.jsx";
 
 function ProductsGrid() {
-
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loading.isLoading);
   const selectedBrandId = useSelector(state => state.filter.selectedBrand);
@@ -17,10 +16,12 @@ function ProductsGrid() {
   const available = useSelector(state => state.filter.available);
   const currentPage = useSelector((state) => state.filter.currentPage);
   const [products, setProducts] = useState([]);
+  const [isInitialLoad, setIsInitialLoad] = useState(true); // Для отслеживания первой загрузки
 
   useEffect(() => {
     const fetchProducts = async () => {
       dispatch(setLoading(true));
+      setIsInitialLoad(true); // Начинаем загрузку
       try {
         const response = await axios.get(`https://frost.runtime.kz/api/products`, {
           params: {
@@ -39,20 +40,20 @@ function ProductsGrid() {
         console.error(error);
       } finally {
         dispatch(setLoading(false));
+        setIsInitialLoad(false); // Завершаем загрузку
       }
     };
 
     fetchProducts();
   }, [currentPage, selectedBrandId, selectedModelId, selectedGenerationId, available, dispatch]);
 
-
   return (
     <>
-      {isLoading ? (
+      {isLoading || isInitialLoad ? ( // Условие для отображения спиннера
         <div className="products-component-container">
           <div className="spinner-container">
             <div className="spinner-wrapper">
-              <Spinner/>
+              <Spinner />
             </div>
           </div>
         </div>
@@ -71,7 +72,7 @@ function ProductsGrid() {
         </div>
       ) : (
         <div className="empty-products">
-          <p>Товары по заданным параметрам отсутствуют</p>
+          <p>No items available</p>
         </div>
       )}
     </>
