@@ -1,62 +1,63 @@
-import Modal from "../../../ui/modal/Modal.jsx";
-import "./LogInModal.css";
-import React, {useState} from "react";
-import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {signIn} from "../../../slices/authSlice.jsx";
-import Spinner from "../../../ui/spinner/Spinner.jsx";
-import {setLoading} from "../../../slices/loadingSlice.jsx";
+import Modal from "../../../ui/modal/Modal.jsx"
+import "./LogInModal.css"
+import React, { useState } from "react"
+import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { signIn } from "../../../slices/authSlice.jsx"
+import Spinner from "../../../ui/spinner/Spinner.jsx"
+import { setLoading } from "../../../slices/loadingSlice.jsx"
 
 function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
-
-  const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.loading.isLoading);
+  const dispatch = useDispatch()
+  const isLoading = useSelector((state) => state.loading.isLoading)
 
   // States for login and password
-  const[emailInput, setEmailInput] = useState("");
-  const[passInput, setPassInput] = useState("");
+  const [emailInput, setEmailInput] = useState("")
+  const [passInput, setPassInput] = useState("")
 
   // Errors for wrong login and password
-  const [errorLogin, setErrorLogin] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
+  const [errorLogin, setErrorLogin] = useState("")
+  const [errorPassword, setErrorPassword] = useState("")
 
   // Email (login)
-  const handleEmailInput = function(content) {
-    setEmailInput(content.target.value);
+  const handleEmailInput = function (content) {
+    setEmailInput(content.target.value)
   }
 
   // Password
-  const handlePassInput = function(content) {
-    setPassInput(content.target.value);
+  const handlePassInput = function (content) {
+    setPassInput(content.target.value)
   }
 
-  const handleClick = function() {
+  const handleClick = function () {
     dispatch(setLoading(true))
     dispatch(signIn(emailInput, passInput))
       .then(function () {
-        dispatch(setLoading(false));
+        dispatch(setLoading(false))
       })
       .catch(function () {
-        dispatch(setLoading(false));
+        dispatch(setLoading(false))
         setErrorLogin("Неверно введена почта")
         setErrorPassword("Неверно введен пароль")
-      });
+      })
   }
 
   // Reseting inputs when closed
-  const resetForm = function() {
-    setEmailInput("");
-    setPassInput("");
+  const resetForm = function () {
+    setEmailInput("")
+    setPassInput("")
   }
 
-  const handleClose = function() {
-    close();
-    resetForm();
+  const handleClose = function () {
+    close()
+    resetForm()
   }
 
   return (
     <div className="modal-container">
-      <span className="modal-title" onClick={onClick}>{title}</span>
+      <span className="modal-title" onClick={onClick}>
+        {title}
+      </span>
 
       <Modal open={isOpen} close={handleClose}>
         <div className="modal-content-top">
@@ -66,17 +67,12 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
         {isLoading ? (
           <div className="spinner-container">
             <div className="spinner-wrapper">
-              <Spinner/>
+              <Spinner />
             </div>
           </div>
         ) : (
           <div className="modal-content-center">
-
-            {errorLogin && (
-              <div className="error-container">
-                {errorLogin}
-              </div>
-            )}
+            {errorLogin && <div className="error-container">{errorLogin}</div>}
 
             <input
               // className={`authorization-input ${errorLogin ? 'error' : ''}`}
@@ -87,11 +83,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
               placeholder={"Электронная почта"}
             />
 
-            {errorPassword && (
-              <div className="error-container">
-                {errorPassword}
-              </div>
-            )}
+            {errorPassword && <div className="error-container">{errorPassword}</div>}
 
             <input
               // className={`authorization-input ${errorPassword ? 'error' : ''}`}
@@ -105,14 +97,13 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
         )}
 
         <div className="modal-content-bottom">
-          <ButtonStandard
-            name="Войти в учетную запись"
-            className="logInModal"
-            clickHandler={handleClick}
-          />
+          <ButtonStandard name="Войти в учетную запись" className="logInModal" clickHandler={handleClick} />
 
           <span className="signin-signup">
-            Нет учетной записи? <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>Зарегистрироваться</span>
+            Нет учетной записи?{" "}
+            <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>
+              Зарегистрироваться
+            </span>
           </span>
         </div>
       </Modal>
@@ -120,4 +111,4 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
   )
 }
 
-export default LogInModal;
+export default LogInModal

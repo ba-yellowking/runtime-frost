@@ -1,11 +1,11 @@
-import {createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit"
+import axios from "axios"
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     tokenInfo: JSON.parse(localStorage.getItem("tokenInfo")),
-    user: null
+    user: null,
   },
   reducers: {
     setTokenInfo(state, action) {
@@ -13,8 +13,8 @@ const authSlice = createSlice({
     },
     setUser(state, action) {
       state.user = action.payload
-    }
-  }
+    },
+  },
 })
 
 // Thunk/middleware – посреднические функции (зачастую асинхронные), выполняемые до обновления состояния (store) через
@@ -37,25 +37,25 @@ export function checkTokenAndGetUser() {
 
 export function signIn(username, password) {
   return async function (dispatch) {
-    const response = await axios.post("https://frost.runtime.kz/api/auth/token", {username, password})
+    const response = await axios.post("https://frost.runtime.kz/api/auth/token", { username, password })
     const tokenInfo = {
       accessToken: response.data.access_token,
-      expiresIn: new Date().getTime() + (response.data.expires_in * 1000)
+      expiresIn: new Date().getTime() + response.data.expires_in * 1000,
     }
-    dispatch(setTokenInfo(tokenInfo));
-    localStorage.setItem("tokenInfo", JSON.stringify(tokenInfo));
-    dispatch(checkTokenAndGetUser());
+    dispatch(setTokenInfo(tokenInfo))
+    localStorage.setItem("tokenInfo", JSON.stringify(tokenInfo))
+    dispatch(checkTokenAndGetUser())
   }
 }
 
 export function signOut() {
   return function (dispatch) {
-    localStorage.removeItem("tokenInfo");
-    dispatch(setUser(null));
-    dispatch(setTokenInfo(null));
+    localStorage.removeItem("tokenInfo")
+    dispatch(setUser(null))
+    dispatch(setTokenInfo(null))
   }
 }
 
-export const {setTokenInfo, setUser} = authSlice.actions;
+export const { setTokenInfo, setUser } = authSlice.actions
 
-export const authReducer = authSlice.reducer;
+export const authReducer = authSlice.reducer

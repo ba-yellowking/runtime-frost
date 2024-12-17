@@ -1,30 +1,29 @@
-import Modal from "../../../ui/modal/Modal.jsx";
-import "./SignUpModal.css";
-import React, {useState} from "react";
-import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
-import axios from "axios";
-import Spinner from "../../../ui/spinner/Spinner.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {signIn} from "../../../slices/authSlice.jsx";
-import {setLoading} from "../../../slices/loadingSlice.jsx";
+import Modal from "../../../ui/modal/Modal.jsx"
+import "./SignUpModal.css"
+import React, { useState } from "react"
+import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx"
+import axios from "axios"
+import Spinner from "../../../ui/spinner/Spinner.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { signIn } from "../../../slices/authSlice.jsx"
+import { setLoading } from "../../../slices/loadingSlice.jsx"
 
 function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegistration }) {
-
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const isLoading = useSelector((state) => state.loading.isLoading)
 
   // Состояния для имени, фамилии, почты, пароля и его подтверждения
-  const [firstNameInput, setFirstNameInput] = useState("");
-  const [lastNameInput, setLastNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [passInput, setPassInput] = useState("");
-  const [confirmPassInput, setConfirmPassInput] = useState("");
+  const [firstNameInput, setFirstNameInput] = useState("")
+  const [lastNameInput, setLastNameInput] = useState("")
+  const [emailInput, setEmailInput] = useState("")
+  const [passInput, setPassInput] = useState("")
+  const [confirmPassInput, setConfirmPassInput] = useState("")
 
   // Состояние для уведомления об ошибке
-  const [errorMessage, setErrorMessage] = useState({});
+  const [errorMessage, setErrorMessage] = useState({})
 
-  const handleClick = function() {
-    dispatch(setLoading(true));
+  const handleClick = function () {
+    dispatch(setLoading(true))
 
     axios
       .post("https://frost.runtime.kz/api/registration", {
@@ -34,16 +33,16 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
         password: passInput,
       })
 
-      .then(function(response) {
-        console.log(response.data);
-        dispatch(setLoading(false));
-        close();
-        openEndRegistration();
-        dispatch(signIn(emailInput, passInput));
+      .then(function (response) {
+        console.log(response.data)
+        dispatch(setLoading(false))
+        close()
+        openEndRegistration()
+        dispatch(signIn(emailInput, passInput))
       })
 
       .catch(function (error) {
-        const errors = error.response.data.errors;
+        const errors = error.response.data.errors
 
         // Если ошибка не найдена, errorMessage будет пустой строкой
         setErrorMessage({
@@ -51,49 +50,49 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
           last_name: errors.last_name ? errors.last_name[0] : "",
           email: errors.email ? errors.email[0] : "",
           password: errors.password ? errors.password[0] : "",
-        });
+        })
 
-        dispatch(setLoading(false));
-      });
+        dispatch(setLoading(false))
+      })
   }
 
   // При отправке запроса необязательно использовать useEffect, поскольку здесь не нужны dependencies
   // Нам необходимо отправлять данные по клику на "Зарегистрироваться", поэтому axios необходимо прописать
   // в функции handleClick
 
-  const handleFirstNameInput = function(content) {
-    setFirstNameInput(content.target.value);
+  const handleFirstNameInput = function (content) {
+    setFirstNameInput(content.target.value)
   }
 
-  const handleLastNameInput = function(content) {
-    setLastNameInput(content.target.value);
+  const handleLastNameInput = function (content) {
+    setLastNameInput(content.target.value)
   }
 
-  const handleEmailInput = function(content) {
-    setEmailInput(content.target.value);
+  const handleEmailInput = function (content) {
+    setEmailInput(content.target.value)
   }
 
-  const handlePassInput = function(content) {
-    setPassInput(content.target.value);
+  const handlePassInput = function (content) {
+    setPassInput(content.target.value)
   }
 
-  const handleConfirmPassInput = function(content) {
-    setConfirmPassInput(content.target.value);
+  const handleConfirmPassInput = function (content) {
+    setConfirmPassInput(content.target.value)
   }
 
   // Обновление формы регистрации при закрытии
-  const resetForm = function() {
-    setFirstNameInput("");
-    setLastNameInput("");
-    setEmailInput("");
-    setPassInput("");
-    setConfirmPassInput("");
-  };
+  const resetForm = function () {
+    setFirstNameInput("")
+    setLastNameInput("")
+    setEmailInput("")
+    setPassInput("")
+    setConfirmPassInput("")
+  }
 
-  const handleClose = function() {
-    close();
-    resetForm();
-  };
+  const handleClose = function () {
+    close()
+    resetForm()
+  }
 
   return (
     <div className="modal-container">
@@ -109,7 +108,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
         {isLoading ? (
           <div className="spinner-container">
             <div className="spinner-wrapper">
-              <Spinner/>
+              <Spinner />
             </div>
           </div>
         ) : (
@@ -179,14 +178,13 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
             </div>
 
             <div className="modal-content-bottom">
-              <ButtonStandard
-                name="Зарегистрироваться"
-                clickHandler={handleClick}
-                className="signUpModal"
-              />
+              <ButtonStandard name="Зарегистрироваться" clickHandler={handleClick} className="signUpModal" />
 
               <span className="signin-signup">
-                Есть учетная запись? <span className="signin-signup-style" onClick={onClickLogIn}>Войти</span>
+                Есть учетная запись?{" "}
+                <span className="signin-signup-style" onClick={onClickLogIn}>
+                  Войти
+                </span>
               </span>
             </div>
           </>
@@ -196,4 +194,4 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
   )
 }
 
-export default SignUpModal;
+export default SignUpModal

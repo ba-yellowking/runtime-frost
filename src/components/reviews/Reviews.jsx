@@ -1,68 +1,67 @@
-import "./Reviews.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx";
-import {useSelector} from "react-redux";
-
+import "./Reviews.css"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx"
+import { useSelector } from "react-redux"
 
 function Reviews({ reviewData, productId, updateReviews }) {
+  const user = useSelector((state) => state.auth.user)
 
-  const user = useSelector((state) => state.auth.user);
+  const [existingFeedback, setExistingFeedBack] = useState(false)
 
-  const [existingFeedback, setExistingFeedBack] = useState(false);
-
-  const [newReview, setNewReview] = useState();
+  const [newReview, setNewReview] = useState()
 
   // Проверка на то, был ли оставлен отзыв на товар с заданным Id
-  useEffect(function() {
-    isExistedFeedback()
-  }, [productId, existingFeedback])
+  useEffect(
+    function () {
+      isExistedFeedback()
+    },
+    [productId, existingFeedback]
+  )
 
   // Отзывы пользователей
-  const renderReviewData = function() {
-    return reviewData.map(function(reviewItem, index) {
+  const renderReviewData = function () {
+    return reviewData.map(function (reviewItem, index) {
       return (
         <div key={index} className="review-item">
           <div className="review-item-name">
             <b>{`${reviewItem.user.firstName} ${reviewItem.user.lastName}`}</b>
           </div>
 
-          <div className="review-item-feedback">
-            {reviewItem.review}
-          </div>
+          <div className="review-item-feedback">{reviewItem.review}</div>
         </div>
-      );
-    });
-  };
+      )
+    })
+  }
 
   // Запрос на установку состояния, отправлял ли пользователь отзыв на товар с конкретным id
   // Если отправлял – true, если не отправлял – false
 
-  const isExistedFeedback = function() {
+  const isExistedFeedback = function () {
     axios
       .get(`https://frost.runtime.kz/api/reviews/exists?productId=${productId}`)
-      .then(function(response) {
-        setExistingFeedBack(response.data);
+      .then(function (response) {
+        setExistingFeedBack(response.data)
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }
 
-  const handleNewReview = function(event) {
-    setNewReview(event.target.value);
+  const handleNewReview = function (event) {
+    setNewReview(event.target.value)
   }
 
   // Запрос на добавление нового отзыва
-  const addNewFeedback = function() {
+  const addNewFeedback = function () {
     axios
       .post("https://frost.runtime.kz/api/reviews", {
         product_id: productId,
-        review: newReview
+        review: newReview,
       })
-      .then(function() {
-        setExistingFeedBack(true);
-        updateReviews();
+      .then(function () {
+        setExistingFeedBack(true)
+        updateReviews()
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }
 
   return (
@@ -83,11 +82,7 @@ function Reviews({ reviewData, productId, updateReviews }) {
                   maxLength="250"
                 />
 
-                <ButtonStandard
-                  name="Добавить"
-                  className="reviewsComponent"
-                  clickHandler={addNewFeedback}
-                />
+                <ButtonStandard name="Добавить" className="reviewsComponent" clickHandler={addNewFeedback} />
               </div>
             </>
           ) : (
@@ -120,7 +115,7 @@ function Reviews({ reviewData, productId, updateReviews }) {
         </>
       )}
     </>
-  );
+  )
 }
 
-export default Reviews;
+export default Reviews

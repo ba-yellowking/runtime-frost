@@ -1,14 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   outline: none;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Light', sans-serif;
+  font-family: "Roboto Light", sans-serif;
 }
 
 body {
   min-height: 100vh;
   overflow-y: scroll;
+  min-width: 300px;
 }
 
 .main-page-container {
@@ -48,4 +53,82 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 960px;
+}
+
+/*Responsive layout*/
+/*Changing the width of main containers*/
+.header-wrap,
+.footer-wrap,
+.filter-container,
+.products-container,
+.banner-component,
+.products-component-wrapper,
+.page-nav-container {
+  @apply
+    xl:max-w-[960px]
+    lg:max-w-[768px]
+    md:max-w-[480px]
+    sm:max-w-[390px]
+    xs:max-w-[300px]
+}
+
+/*Dropdowns: flex row to flex columns*/
+.filter-dropdowns {
+  @apply
+    xl:flex-row
+    xl:justify-between
+    lg:flex-row
+    lg:justify-evenly
+    md:my-2
+    md:flex-col
+    sm:flex-col
+    xs:flex-col
+
+    xl:max-w-[976px]
+    lg:max-w-[768px]
+    md:max-w-[480px]
+    sm:max-w-[390px]
+    xs:max-w-[300px]
+}
+
+/*Changing the dropdown header/option/disabled size*/
+.dropdown-header,
+.dropdown-option,
+.dropdown-disabled {
+  @apply
+  xl:w-[220px]
+  lg:w-[170px]
+  md:w-[400px]
+  sm:w-[300px]
+}
+
+/*Changing the logo size*/
+.header-left-logo {
+  @apply
+    xl:w-[183px] xl:h-auto
+    lg:w-[183px] lg:h-auto
+    md:h-[50px] md:w-auto
+    sm:h-[50px] sm:w-auto
+    xs:h-[50px] xs:w-auto
+}
+
+/*Changing grids to flex columns*/
+.products-component-wrapper {
+  @apply
+    xl:grid xl:grid-cols-3 xl:gap-[30px]
+    lg:grid lg:grid-cols-2 lg:gap-[30px]
+    md:grid md:grid-cols-1 md:gap-[30px]
+    sm:grid sm:grid-cols-1 sm:gap-[30px]
+    xs:grid xs:grid-cols-1 xs:gap-[30px]
+}
+
+/*Hiding the forward/back buttons*/
+.pageNavComponentBack,
+.pageNavComponentForward {
+  @apply
+    xl:block
+    lg:block
+    md:block
+    sm:block
+    xs:hidden
 }

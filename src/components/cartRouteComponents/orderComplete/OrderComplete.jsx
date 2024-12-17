@@ -1,18 +1,14 @@
-import "./OrderComplete.css";
-import React from "react";
+import "./OrderComplete.css"
+import React from "react"
 
 function OrderComplete({ orderNumber, setIsProfilePage }) {
-
   function handleProfileRedirect() {
-    setIsProfilePage(true);
+    setIsProfilePage(true)
   }
 
   return (
     <div className="cart-menu-container">
-
-      <span className="cart-text">
-        Заказ успешно создан
-      </span>
+      <span className="cart-text">Заказ успешно создан</span>
 
       <div className="final-container">
         <div className="final-left">
@@ -22,9 +18,8 @@ function OrderComplete({ orderNumber, setIsProfilePage }) {
           <a onClick={handleProfileRedirect}>Перейти в личный кабинет</a>
         </div>
       </div>
-
     </div>
   )
 }
 
-export default OrderComplete;
+export default OrderComplete

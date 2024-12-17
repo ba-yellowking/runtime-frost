@@ -1,12 +1,10 @@
-import "./CartRoute.css";
+import "./CartRoute.css"
 
 function CartRoute({ currentComponent, setCurrentComponent }) {
-
   function handleCurrentComponent(component) {
-
-    const cartRouteArr = ["cart", "contacts", "delivery", "final"];
-    const currentStep = cartRouteArr.indexOf(currentComponent);
-    const previousStep = cartRouteArr.indexOf(component);
+    const cartRouteArr = ["cart", "contacts", "delivery", "final"]
+    const currentStep = cartRouteArr.indexOf(currentComponent)
+    const previousStep = cartRouteArr.indexOf(component)
 
     if (previousStep <= currentStep && currentStep !== 3) {
       setCurrentComponent(component)
@@ -17,8 +15,8 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
     <div className="route-container">
       <div
         className={`route-cart ${currentComponent === "cart" ? "activeRoute" : ""}`}
-        onClick={function() {
-          handleCurrentComponent("cart");
+        onClick={function () {
+          handleCurrentComponent("cart")
         }}
       >
         <span>Корзина</span>
@@ -26,8 +24,8 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
 
       <div
         className={`route-contacts ${currentComponent === "contacts" ? "activeRoute" : ""}`}
-        onClick={function() {
-          handleCurrentComponent("contacts");
+        onClick={function () {
+          handleCurrentComponent("contacts")
         }}
       >
         <span>Контакты</span>
@@ -35,8 +33,8 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
 
       <div
         className={`route-delivery ${currentComponent === "delivery" ? "activeRoute" : ""}`}
-        onClick={function() {
-          handleCurrentComponent("delivery");
+        onClick={function () {
+          handleCurrentComponent("delivery")
         }}
       >
         <span>Доставка</span>
@@ -44,8 +42,8 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
 
       <div
         className={`route-final ${currentComponent === "final" ? "activeRoute" : ""}`}
-        onClick={function() {
-          handleCurrentComponent("final");
+        onClick={function () {
+          handleCurrentComponent("final")
         }}
       >
         <span>Завершение</span>
@@ -54,4 +52,4 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
   )
 }
 
-export default CartRoute;
+export default CartRoute

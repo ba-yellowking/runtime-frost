@@ -1,6 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
-import {setLoading} from "./loadingSlice.jsx";
+import { createSlice } from "@reduxjs/toolkit"
+import axios from "axios"
+import { setLoading } from "./loadingSlice.jsx"
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,9 +9,9 @@ const cartSlice = createSlice({
   },
   reducers: {
     setCartItems(state, action) {
-      state.cartItems = action.payload;
-    }
-  }
+      state.cartItems = action.payload
+    },
+  },
 })
 
 // fetching cart items
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
 // }
 
 export function fetchCartItems() {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(setLoading(true))
     const response = await axios.get("https://frost.runtime.kz/api/cart")
     dispatch(setCartItems(response.data.items))
@@ -43,17 +43,17 @@ export function fetchCartItems() {
 
 // deleting an item from cart
 export function deleteCartItems(productId) {
-  return function(dispatch, getState) {
-    const cartItems = getState().cart.cartItems;
+  return function (dispatch, getState) {
+    const cartItems = getState().cart.cartItems
     axios
       .get(`https://frost.runtime.kz/api/cart/delete?productId=${productId}`)
-      .then(function() {
-        const updatedCartItems = [...cartItems];
-        const deleteIndex = updatedCartItems.findIndex(function(item) {
+      .then(function () {
+        const updatedCartItems = [...cartItems]
+        const deleteIndex = updatedCartItems.findIndex(function (item) {
           return item.product.id === productId
         })
-        updatedCartItems.splice(deleteIndex, 1);
-        dispatch(setCartItems(updatedCartItems));
+        updatedCartItems.splice(deleteIndex, 1)
+        dispatch(setCartItems(updatedCartItems))
       })
       .catch((error) => console.error(error))
   }
@@ -61,18 +61,18 @@ export function deleteCartItems(productId) {
 
 // increasing the quantity of items in cart
 export function increaseCartItems(productId) {
-  return function(dispatch, getState) {
-    const cartItems = getState().cart.cartItems;
+  return function (dispatch, getState) {
+    const cartItems = getState().cart.cartItems
     axios
       .get(`https://frost.runtime.kz/api/cart/increase?productId=${productId}`)
-      .then(function() {
-        const updatedCartItems = cartItems.map(item => {
+      .then(function () {
+        const updatedCartItems = cartItems.map((item) => {
           if (item.product.id === productId) {
-            return { ...item, count: item.count + 1 };
+            return { ...item, count: item.count + 1 }
           }
-          return item;
-        });
-        dispatch(setCartItems(updatedCartItems));
+          return item
+        })
+        dispatch(setCartItems(updatedCartItems))
       })
       .catch((error) => console.error(error))
   }
@@ -80,27 +80,27 @@ export function increaseCartItems(productId) {
 
 // decreasing the quantity of items in cart
 export function decreaseCartItems(productId) {
-  return function(dispatch, getState) {
-    const cartItems = getState().cart.cartItems;
+  return function (dispatch, getState) {
+    const cartItems = getState().cart.cartItems
     axios
       .get(`https://frost.runtime.kz/api/cart/decrease?productId=${productId}`)
-      .then(function() {
-        const updatedCartItems = cartItems.map(item => {
+      .then(function () {
+        const updatedCartItems = cartItems.map((item) => {
           if (item.product.id === productId) {
             if (item.count > 1) {
-              return { ...item, count: item.count - 1 };
+              return { ...item, count: item.count - 1 }
             } else {
-              dispatch(deleteCartItems(productId));
-              return item;
+              dispatch(deleteCartItems(productId))
+              return item
             }
           }
-          return item;
-        });
-        dispatch(setCartItems(updatedCartItems));
+          return item
+        })
+        dispatch(setCartItems(updatedCartItems))
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error))
   }
 }
 
-export const {setCartItems} = cartSlice.actions;
-export const cartReducer = cartSlice.reducer;
+export const { setCartItems } = cartSlice.actions
+export const cartReducer = cartSlice.reducer

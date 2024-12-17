@@ -6,7 +6,10 @@
   border-radius: 5px;
 }
 
-.route-cart, .route-contacts, .route-delivery, .route-final {
+.route-cart,
+.route-contacts,
+.route-delivery,
+.route-final {
   display: flex;
   align-items: center;
   justify-content: center;

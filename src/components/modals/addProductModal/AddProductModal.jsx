@@ -1,24 +1,26 @@
-import Modal from "../../../ui/modal/Modal.jsx";
-import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx";
-import {useEffect, useState} from "react";
-import axios from "axios";
-import {useSelector} from "react-redux";
-import "./AddProductModal.css";
+import Modal from "../../../ui/modal/Modal.jsx"
+import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useSelector } from "react-redux"
+import "./AddProductModal.css"
 
 // Модальное окно при добавлении товара в корзину
 // cart/add?productId=...&count=...
 
 function AddProductModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
+  const user = useSelector((state) => state.auth.user)
 
-  const user = useSelector(state => state.auth.user);
+  const [counter, setCounter] = useState(1)
 
-  const [counter, setCounter] = useState(1);
-
-  useEffect(function() {
-    if (isOpen) {
-      setCounter(1);
-    }
-  }, [isOpen]);
+  useEffect(
+    function () {
+      if (isOpen) {
+        setCounter(1)
+      }
+    },
+    [isOpen]
+  )
 
   function clickHandler() {
     // console.log("Headers:", headers); // Логирование заголовков
@@ -26,15 +28,15 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
     // decrease?productId=... (GET) -> 200|404
     axios
       .get(`https://frost.runtime.kz/api/cart/add?productId=${newProductId}&count=${counter}`)
-      .then(function(response) {
-        console.log("Товар успешно добавлен в корзину", response.data);
+      .then(function (response) {
+        console.log("Товар успешно добавлен в корзину", response.data)
       })
-      .catch((error) => console.error(error));
-    close();
+      .catch((error) => console.error(error))
+    close()
   }
 
   function increase() {
-    setCounter(counter + 1);
+    setCounter(counter + 1)
   }
 
   // Жизненный цикл компонента – состояние компонента в определенный момент
@@ -52,7 +54,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
 
   function decrease() {
     if (counter > 1) {
-      setCounter(counter - 1);
+      setCounter(counter - 1)
     }
   }
 
@@ -64,19 +66,19 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
         </div>
 
         <div className="modal-content-center">
-          <div className="modal-content-name">
-            {newProductName}
-          </div>
+          <div className="modal-content-name">{newProductName}</div>
 
           <div className="modal-content-quantity">
-            <button className="modal-content-button" onClick={decrease}>-</button>
+            <button className="modal-content-button" onClick={decrease}>
+              -
+            </button>
             {counter}
-            <button className="modal-content-button" onClick={increase}>+</button>
+            <button className="modal-content-button" onClick={increase}>
+              +
+            </button>
           </div>
 
-          <div className="modal-content-price">
-            {`${(newProductPrice * counter).toLocaleString("ru-RU")} ₸`}
-          </div>
+          <div className="modal-content-price">{`${(newProductPrice * counter).toLocaleString("ru-RU")} ₸`}</div>
         </div>
 
         <div className="modal-content-bottom">
@@ -96,4 +98,4 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
   )
 }
 
-export default AddProductModal;
+export default AddProductModal

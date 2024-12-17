@@ -1,53 +1,55 @@
-import React, { useEffect } from "react";
-import "./CartItems.css";
-import Spinner from "../spinner/Spinner.jsx";
-import ButtonStandard from "../buttonStandard/ButtonStandard.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {setTotalCount} from "../../slices/counterSlice.jsx"
-import {setLoading} from "../../slices/loadingSlice.jsx";
-import {decreaseCartItems, deleteCartItems, fetchCartItems, increaseCartItems} from "../../slices/cartSlice.jsx";
+import React, { useEffect } from "react"
+import "./CartItems.css"
+import Spinner from "../spinner/Spinner.jsx"
+import ButtonStandard from "../buttonStandard/ButtonStandard.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { setTotalCount } from "../../slices/counterSlice.jsx"
+import { setLoading } from "../../slices/loadingSlice.jsx"
+import { decreaseCartItems, deleteCartItems, fetchCartItems, increaseCartItems } from "../../slices/cartSlice.jsx"
 
-function CartItems({setCurrentComponent} ) {
+function CartItems({ setCurrentComponent }) {
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
-
-  const isLoading = useSelector((state) => state.loading.isLoading);
-  const cartItems = useSelector(state => state.cart.cartItems);
+  const isLoading = useSelector((state) => state.loading.isLoading)
+  const cartItems = useSelector((state) => state.cart.cartItems)
 
   // fetching all cart items
-  useEffect(function () {
-    dispatch(fetchCartItems())
-      .then(() => dispatch(setLoading(false)))
-      .catch((error) => {
-        console.error(error);
-        dispatch(setLoading(false));
-      })
-  }, [dispatch]);
+  useEffect(
+    function () {
+      dispatch(fetchCartItems())
+        .then(() => dispatch(setLoading(false)))
+        .catch((error) => {
+          console.error(error)
+          dispatch(setLoading(false))
+        })
+    },
+    [dispatch]
+  )
 
   // total number of cart items
   useEffect(() => {
-    const totalItems = cartItems.reduce((total, item) => total + item.count, 0);
-    dispatch(setTotalCount(totalItems));
-  }, [dispatch]);
+    const totalItems = cartItems.reduce((total, item) => total + item.count, 0)
+    dispatch(setTotalCount(totalItems))
+  }, [dispatch])
 
   // deleting an item from cart
-  const deleteItem = function(productId) {
-    dispatch(deleteCartItems(productId));
+  const deleteItem = function (productId) {
+    dispatch(deleteCartItems(productId))
   }
 
   // total number of cart items
-  const totalAmount = cartItems.reduce(function(total, item) {
+  const totalAmount = cartItems.reduce(function (total, item) {
     return total + item.product.price * item.count
   }, 0)
 
   // increasing the quantity of items in cart
   const increaseQuantity = function increase(productId) {
-    dispatch(increaseCartItems(productId));
+    dispatch(increaseCartItems(productId))
   }
 
   // decreasing the quantity of items in cart
   const decreaseQuantity = function decrease(productId) {
-    dispatch(decreaseCartItems(productId));
+    dispatch(decreaseCartItems(productId))
   }
 
   return (
@@ -55,7 +57,7 @@ function CartItems({setCurrentComponent} ) {
       {isLoading ? (
         <div className="spinner-container">
           <div className="spinner-wrapper">
-            <Spinner/>
+            <Spinner />
           </div>
         </div>
       ) : (
@@ -70,7 +72,7 @@ function CartItems({setCurrentComponent} ) {
               </div>
 
               <div className="cart-body">
-                {cartItems.map(item => (
+                {cartItems.map((item) => (
                   <div className="cart-item" key={item.product.id}>
                     <div className="cart-item-column">
                       <div className="cart-item-detail">{item.product.name}</div>
@@ -90,17 +92,15 @@ function CartItems({setCurrentComponent} ) {
                     </div>
 
                     <div className="cart-item-column">
-                      <button
-                        className="cart-item-btn"
-                        onClick={() => decreaseQuantity(item.product.id)}
-                      >-</button>
+                      <button className="cart-item-btn" onClick={() => decreaseQuantity(item.product.id)}>
+                        -
+                      </button>
 
                       {item.count}
 
-                      <button
-                        className="cart-item-btn"
-                        onClick={() => increaseQuantity(item.product.id)}
-                      >+</button>
+                      <button className="cart-item-btn" onClick={() => increaseQuantity(item.product.id)}>
+                        +
+                      </button>
                     </div>
                     <div className="cart-item-column">
                       {(item.product.price * item.count).toLocaleString("ru-RU")} ₸
@@ -125,8 +125,11 @@ function CartItems({setCurrentComponent} ) {
             </>
           ) : (
             <div className="empty-cart">
-              <span>Ваша корзина пуста.
-                <a href="/" className="empty-cart-add-products">Добавить товары</a>
+              <span>
+                Ваша корзина пуста.
+                <a href="/" className="empty-cart-add-products">
+                  Добавить товары
+                </a>
               </span>
             </div>
           )}
@@ -136,4 +139,4 @@ function CartItems({setCurrentComponent} ) {
   )
 }
 
-export default CartItems;
+export default CartItems

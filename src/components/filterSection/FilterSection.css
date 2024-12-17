@@ -3,6 +3,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 960px;
+  height: 90px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   margin-bottom: 25px;
@@ -14,14 +15,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 885px;
+  width: 900px;
+  height: 90px;
 }
 
 .filter-dropdowns {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 885px;
+  width: 900px;
   padding: 20px 0;
 }
 
@@ -34,7 +36,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5px;
 }
 
 .filterSection {
@@ -42,16 +43,4 @@
   height: 33px;
   background-color: #cccccc;
   cursor: default;
-}
-
-@media (max-width: 990px) {
-  .filter-container {
-    display: flex;
-    flex-direction: column;
-    width: 470px;
-  }
-  .filter-dropdowns {
-    display: flex;
-    flex-direction: column;
-  }
 }

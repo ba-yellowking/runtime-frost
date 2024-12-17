@@ -1,32 +1,29 @@
-import Header from "../components/header/Header.jsx";
-import Footer from "../components/footer/Footer.jsx";
-import {useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {useState} from "react";
-import axios from "axios";
-import ProductDetails from "../components/productDetails/ProductDetails.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {setLoading} from "../slices/loadingSlice.jsx";
+import Header from "../components/header/Header.jsx"
+import Footer from "../components/footer/Footer.jsx"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { useState } from "react"
+import axios from "axios"
+import ProductDetails from "../components/productDetails/ProductDetails.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { setLoading } from "../slices/loadingSlice.jsx"
 
 function ProductCardPage() {
+  const params = useParams()
 
-  const params = useParams();
+  const [productCardData, setProductCardData] = useState([])
 
-  const [productCardData, setProductCardData] = useState([]);
+  const [reviews, setReviews] = useState([])
 
-  const [reviews, setReviews] = useState([]);
-
-  const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.loading.isLoading);
+  const dispatch = useDispatch()
+  const isLoading = useSelector((state) => state.loading.isLoading)
 
   // Запрос на получение сетки товаров
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        dispatch(setLoading(true));
-        const response = await axios.get(
-          `https://frost.runtime.kz/api/products/${params.productId}`
-        );
+        dispatch(setLoading(true))
+        const response = await axios.get(`https://frost.runtime.kz/api/products/${params.productId}`)
 
         const productData = {
           id: response.data.id,
@@ -39,36 +36,35 @@ function ProductCardPage() {
           brand: response.data.brand.name,
           model: response.data.model.name,
           generation: response.data.generation.name,
-        };
+        }
 
-        setProductCardData(productData);
+        setProductCardData(productData)
         dispatch(setLoading(false))
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    };
+    }
 
-    fetchProductData();
-  }, [params.productId]);
+    fetchProductData()
+  }, [params.productId])
 
   // Запрос на получение отзывов
-  const updateReviews = function() {
+  const updateReviews = function () {
     axios
       .get(`https://frost.runtime.kz/api/reviews?productId=${params.productId}`)
-      .then(function(response) {
-        setReviews(response.data);
+      .then(function (response) {
+        setReviews(response.data)
       })
-      .catch((error) => console.error(error));
-  };
+      .catch((error) => console.error(error))
+  }
 
-  useEffect(function() {
-    updateReviews();
-  }, []);
+  useEffect(function () {
+    updateReviews()
+  }, [])
 
   return (
-
     <div className="main-page-container">
-      <Header/>
+      <Header />
 
       <div className="product-card-component">
         <ProductDetails
@@ -79,9 +75,9 @@ function ProductCardPage() {
         />
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   )
 }
 
-export default ProductCardPage;
+export default ProductCardPage

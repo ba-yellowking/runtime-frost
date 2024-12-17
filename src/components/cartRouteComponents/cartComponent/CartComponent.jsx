@@ -1,12 +1,12 @@
-import CartItems from "../../../ui/cartItems/CartItems.jsx";
-import "./CartComponent.css";
+import CartItems from "../../../ui/cartItems/CartItems.jsx"
+import "./CartComponent.css"
 
-function CartComponent({setCurrentComponent}) {
+function CartComponent({ setCurrentComponent }) {
   return (
     <div className="cart-menu-container">
-      <CartItems setCurrentComponent={setCurrentComponent}/>
+      <CartItems setCurrentComponent={setCurrentComponent} />
     </div>
   )
 }
 
-export default CartComponent;
+export default CartComponent

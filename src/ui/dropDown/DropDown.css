@@ -8,7 +8,7 @@
 
 .dropdown-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding-left: 15px;
   color: #ffffff;
@@ -16,6 +16,21 @@
   width: 220px;
   height: 33px;
   background-color: #7fb364;
+}
+
+.dropdown-header:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("src/images/dropdown.png");
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-header.open:after {
+  transform: rotate(180deg);
 }
 
 .dropdown-option {
@@ -37,4 +52,17 @@
   top: 100%;
   left: 0;
   z-index: 10;
+}
+
+.dropdown-disabled {
+  width: 220px;
+  height: 33px;
+  background-color: #cccccc;
+  cursor: default;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+  color: #ffffff;
 }

@@ -1,27 +1,43 @@
-import "./CheckBox.css";
-import {useDispatch, useSelector} from "react-redux";
-import {setIsChecked} from "../../slices/filterSlice.jsx";
+import "./CheckBox.css"
+import { useDispatch, useSelector } from "react-redux"
+import { setIsChecked } from "../../slices/filterSlice.jsx"
 
 function CheckBox({ onChangeCheckBox }) {
+  const dispatch = useDispatch()
+  const isChecked = useSelector((state) => state.filter.isChecked)
 
-  const dispatch = useDispatch();
-  const isChecked = useSelector(state => state.filter.isChecked);
-
-  const checkBox = function() {
-    dispatch(setIsChecked(!isChecked));
-    onChangeCheckBox(!isChecked);
+  const checkBox = function () {
+    dispatch(setIsChecked(!isChecked))
+    onChangeCheckBox(!isChecked)
   }
 
   return (
-    <div className="available-container">
-      <div
-        className={`available-checkBox ${isChecked ? "is-checked" : ""}`}
+    <div className="flex h-[33px] w-[220px] items-center justify-start bg-[#7fb364] pl-4 sm:w-[300px] md:w-[400px] lg:w-[170px] xl:w-[220px]">
+      <input
+        id="checkBox"
+        // prettier-ignore
+        className="
+          mr-2
+          h-4
+          w-4
+          border-white
+          rounded-sm
+          checked:accent-white
+          cursor-pointer
+        "
+        type="checkBox"
         onClick={checkBox}
-      >
-      </div>
-      <span className="available-text">В наличии</span>
+      />
+      <label className="text-white" htmlFor="checkBox">
+        В наличии
+      </label>
     </div>
+
+    // <div className="available-container">
+    //   <div className={`available-checkBox ${isChecked ? "is-checked" : ""}`} onClick={checkBox}></div>
+    //   <span className="available-text">В наличии</span>
+    // </div>
   )
 }
 
-export default CheckBox;
+export default CheckBox

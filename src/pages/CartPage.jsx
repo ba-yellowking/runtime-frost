@@ -1,22 +1,21 @@
-import Header from "../components/header/Header.jsx";
-import Footer from "../components/footer/Footer.jsx";
-import CartRoute from "../ui/cartRoute/CartRoute.jsx";
-import {useState} from "react";
-import CartComponent from "../components/cartRouteComponents/cartComponent/CartComponent.jsx";
-import ContactDetails from "../components/cartRouteComponents/contactDetails/ContactDetails.jsx";
-import DeliveryDetails from "../components/cartRouteComponents/deliveryDetails/DeliveryDetails.jsx";
-import OrderComplete from "../components/cartRouteComponents/orderComplete/OrderComplete.jsx";
-import UserProfile from "../components/userProfile/UserProfile.jsx";
-import {useSelector} from "react-redux";
+import Header from "../components/header/Header.jsx"
+import Footer from "../components/footer/Footer.jsx"
+import CartRoute from "../ui/cartRoute/CartRoute.jsx"
+import { useState } from "react"
+import CartComponent from "../components/cartRouteComponents/cartComponent/CartComponent.jsx"
+import ContactDetails from "../components/cartRouteComponents/contactDetails/ContactDetails.jsx"
+import DeliveryDetails from "../components/cartRouteComponents/deliveryDetails/DeliveryDetails.jsx"
+import OrderComplete from "../components/cartRouteComponents/orderComplete/OrderComplete.jsx"
+import UserProfile from "../components/userProfile/UserProfile.jsx"
+import { useSelector } from "react-redux"
 
 function CartPage() {
+  const user = useSelector((state) => state.auth.user)
 
-  const user = useSelector(state => state.auth.user);
+  const totalCount = useSelector((state) => state.counter.counter)
 
-  const totalCount = useSelector((state) => state.counter.counter);
-
-  const [currentComponent, setCurrentComponent] = useState("cart");
-  const [orderNumber, setOrderNumber] = useState(null);
+  const [currentComponent, setCurrentComponent] = useState("cart")
+  const [orderNumber, setOrderNumber] = useState(null)
 
   const [ordersData, setOrdersData] = useState({
     phone: "",
@@ -37,18 +36,13 @@ function CartPage() {
   })
 
   // См. компонент <CartRoute>
-  const renderContent = function() {
-
+  const renderContent = function () {
     if (isProfilePage) {
-      return <UserProfile/>
+      return <UserProfile />
     }
 
     if (currentComponent === "cart") {
-      return (
-        <CartComponent
-          setCurrentComponent={setCurrentComponent}
-        />
-      )
+      return <CartComponent setCurrentComponent={setCurrentComponent} />
     } else if (currentComponent === "contacts") {
       return (
         <ContactDetails
@@ -83,40 +77,34 @@ function CartPage() {
   }
 
   // Состояние для открытия личного кабинета
-  const [isProfilePage, setIsProfilePage] = useState(false);
+  const [isProfilePage, setIsProfilePage] = useState(false)
 
   // Для <Header/>
   function openProfilePage() {
-    setIsProfilePage(true);
+    setIsProfilePage(true)
   }
 
   return (
     <div className="main-page-container">
       {isProfilePage && user ? (
-       <UserProfile/>
+        <UserProfile />
       ) : (
         <>
-          <Header
-            openProfilePage={openProfilePage}
-            totalCount={totalCount}
-          />
+          <Header openProfilePage={openProfilePage} totalCount={totalCount} />
 
           <div className="cart-route">
             <p className="cart-route-text">Оформление заказа</p>
 
-            <CartRoute
-              currentComponent={currentComponent}
-              setCurrentComponent={setCurrentComponent}
-            />
+            <CartRoute currentComponent={currentComponent} setCurrentComponent={setCurrentComponent} />
           </div>
 
           {renderContent()}
 
-          <Footer/>
+          <Footer />
         </>
       )}
     </div>
   )
 }
 
-export default CartPage;
+export default CartPage

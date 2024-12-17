@@ -1,49 +1,48 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./UserProfile.css";
-import Header from "../header/Header.jsx";
-import Footer from "../footer/Footer.jsx";
-import Spinner from "../../ui/spinner/Spinner.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {setLoading} from "../../slices/loadingSlice.jsx";
+import React, { useEffect, useState } from "react"
+import axios from "axios"
+import "./UserProfile.css"
+import Header from "../header/Header.jsx"
+import Footer from "../footer/Footer.jsx"
+import Spinner from "../../ui/spinner/Spinner.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { setLoading } from "../../slices/loadingSlice.jsx"
 
 function UserProfile() {
+  const dispatch = useDispatch()
+  const isLoading = useSelector((state) => state.loading.isLoading)
 
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.loading.isLoading);
-
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([])
 
   function dateFormatting(date) {
     return new Date(date).toLocaleString("ru-RU", {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    })
   }
 
-  useEffect(function() {
-    dispatch(setLoading(true));
+  useEffect(function () {
+    dispatch(setLoading(true))
 
     axios
       .get("https://frost.runtime.kz/api/orders")
 
-      .then(response => {
-        setOrders(response.data);
-        dispatch(setLoading(false));
+      .then((response) => {
+        setOrders(response.data)
+        dispatch(setLoading(false))
       })
 
-      .catch(error => {
-        console.log(error);
-        dispatch(setLoading(false));
-      });
-  }, []);
+      .catch((error) => {
+        console.log(error)
+        dispatch(setLoading(false))
+      })
+  }, [])
 
   return (
     <>
-      <Header/>
+      <Header />
 
       <div className="profile-top">
         <p className="profile-top-text">Личный кабинет</p>
@@ -54,7 +53,7 @@ function UserProfile() {
           <div className="profile-wrap">
             <div className="spinner-container">
               <div className="spinner-wrapper">
-                <Spinner/>
+                <Spinner />
               </div>
             </div>
           </div>
@@ -78,26 +77,17 @@ function UserProfile() {
                   return order.items.map(function (item, index) {
                     return (
                       <div className="profile-item" key={index}>
+                        <div className="profile-item-column">{order.id}</div>
 
-                        <div className="profile-item-column">
-                          {order.id}
-                        </div>
+                        <div className="profile-item-column">{item.product.name}</div>
 
-                        <div className="profile-item-column">
-                          {item.product.name}
-                        </div>
-
-                        <div className="profile-item-column">
-                          {item.count}
-                        </div>
+                        <div className="profile-item-column">{item.count}</div>
 
                         <div className="profile-item-column">
                           {(item.count * item.product.price).toLocaleString("ru-RU")} тг.
                         </div>
 
-                        <div className="profile-item-column">
-                          {dateFormatting(order.created_at)}
-                        </div>
+                        <div className="profile-item-column">{dateFormatting(order.created_at)}</div>
                       </div>
                     )
                   })
@@ -108,8 +98,11 @@ function UserProfile() {
             <div className="cart-menu-container">
               <span className="profile-text">Мои заказы</span>
               <div className="empty-orders">
-                <span>У Вас еще нет заказов.
-                  <a href="/" className="empty-cart-add-products">Добавить товары</a>
+                <span>
+                  У Вас еще нет заказов.
+                  <a href="/" className="empty-cart-add-products">
+                    Добавить товары
+                  </a>
                 </span>
               </div>
             </div>
@@ -117,9 +110,9 @@ function UserProfile() {
         </>
       )}
 
-      <Footer/>
+      <Footer />
     </>
-  );
+  )
 }
 
-export default UserProfile;
+export default UserProfile

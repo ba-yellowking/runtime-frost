@@ -1,15 +1,15 @@
-import {useEffect} from "react";
+import { useEffect } from "react"
 
 export function useClickOutsideDropDown(ref, callback) {
   useEffect(() => {
     function clickOutsideHandler(event) {
       if (ref.current !== event.target) {
-        callback();
+        callback()
       }
     }
-    document.addEventListener("click", clickOutsideHandler);
-    return function() {
-      document.removeEventListener("click", clickOutsideHandler);
+    document.addEventListener("click", clickOutsideHandler)
+    return function () {
+      document.removeEventListener("click", clickOutsideHandler)
     }
-  }, []);
+  }, [])
 }

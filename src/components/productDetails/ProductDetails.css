@@ -55,7 +55,9 @@
   font-size: 18px;
 }
 
-.code-product-card, .manufacturer-product-card, .description-product-card {
+.code-product-card,
+.manufacturer-product-card,
+.description-product-card {
   color: #5c5c5c;
   font-size: 15px;
 }

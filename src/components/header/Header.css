@@ -49,7 +49,8 @@
   cursor: pointer;
 }
 
-.cart-page, .log-in-section {
+.cart-page,
+.log-in-section {
   position: relative;
   text-align: center;
   margin: 0 5px;
@@ -68,7 +69,7 @@
   padding: 10px;
   text-decoration: none;
   color: #1c1c1c;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .cart-page:hover {
@@ -88,7 +89,7 @@
   padding: 10px;
   text-decoration: none;
   color: #1c1c1c;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .cart-page-active::after {
@@ -116,7 +117,7 @@
   width: 0;
   height: 2px;
   background-color: #7fb364;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   transition-property: width;
 }
 
