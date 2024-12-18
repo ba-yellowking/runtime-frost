@@ -7,6 +7,7 @@ import ProductCardPage from "./pages/ProductCardPage.jsx"
 import "./index.css"
 import { Provider as ReduxProvider } from "react-redux"
 import { store } from "./store.jsx"
+import ThemeHandler from "./components/themeHandler/ThemeHandler.jsx"
 
 const router = createBrowserRouter([
   { path: "/", element: <MainPage /> },
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <ReduxProvider store={store}>
+      <ThemeHandler />
       <RouterProvider router={router} />
     </ReduxProvider>
   </>

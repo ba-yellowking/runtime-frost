@@ -10,10 +10,18 @@
   font-family: "Roboto Light", sans-serif;
 }
 
+.dark {
+  background-color: #393939;
+  color: white;
+}
+
 body {
   min-height: 100vh;
   overflow-y: scroll;
   min-width: 300px;
+  background-color: #f0f2f3;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
 }
 
 .main-page-container {
@@ -23,7 +31,6 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #f0f2f3;
 }
 
 .main-page-container .products-container {

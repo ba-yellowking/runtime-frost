@@ -4,6 +4,7 @@ import { counterReducer } from "./slices/counterSlice.jsx"
 import { loadingReducer } from "./slices/loadingSlice.jsx"
 import { filterReducer } from "./slices/filterSlice.jsx"
 import { cartReducer } from "./slices/cartSlice.jsx"
+import { themeSliceReducer } from "./slices/themeSlice.jsx"
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     loading: loadingReducer,
     filter: filterReducer,
     cart: cartReducer,
+    theme: themeSliceReducer,
   },
 })

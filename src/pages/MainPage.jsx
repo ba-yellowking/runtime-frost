@@ -18,7 +18,7 @@ function MainPage() {
   }
 
   // State for profile
-  const [isProfilePage, setIsProfilePage] = useState(false)
+  const [isProfilePage, setIsProfilePage] = useState(undefined)
 
   // Для <Header/>
   function openProfilePage() {
@@ -26,16 +26,16 @@ function MainPage() {
   }
 
   return (
-    <div className="main-page-container">
+    <div className={`main-page-container`}>
       {isProfilePage ? (
         <UserProfile />
       ) : (
         <>
           <Header openProfilePage={openProfilePage} />
 
-          <Banner />
+          {/*<Banner />*/}
 
-          <div className="products-container">
+          <div className={`products-container`}>
             <FilterSection />
             <ProductsGrid />
             <PageNavigation onPageChange={onPageChange} />

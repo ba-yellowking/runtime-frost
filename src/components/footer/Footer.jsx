@@ -5,21 +5,21 @@ import phoneCallLogo from "../../images/phone-call.png"
 
 function Footer() {
   return (
-    <div className="footer-container">
+    <div className="footer-container dark:border-[#222222] dark:bg-[#222222]">
       <div className="footer-wrap">
-        <div className="footer-instagram">
+        <div className="footer-instagram dark:bg-[#222222]">
           <img className="instagram" src={instagramLogo} alt="instagram" />
-          <a href="http://instagram.com" className="instagram-text max-lg:hidden" target="_blank">
+          <a href="http://instagram.com" className="instagram-text dark:text-white max-lg:hidden" target="_blank">
             <p className="footer-text">bakytdreamer</p>
           </a>
         </div>
 
-        <div className="footer-gmail">
+        <div className="footer-gmail dark:bg-[#222222]">
           <img className="gmail" src={gmailLogo} alt="gmail" />
           <p className="footer-text max-lg:hidden">ba.temirgali@gmail.com</p>
         </div>
 
-        <div className="footer-whatsapp">
+        <div className="footer-whatsapp dark:bg-[#222222]">
           <img className="phone-call" src={phoneCallLogo} alt="phone-call" />
           <p className="footer-text max-lg:hidden">Astana: +7 775 000 77 49</p>
         </div>

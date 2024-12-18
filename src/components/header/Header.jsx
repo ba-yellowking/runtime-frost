@@ -8,6 +8,7 @@ import cart from "../../images/cart.png"
 import logout from "../../images/logout.png"
 import { checkTokenAndGetUser, signOut } from "../../slices/authSlice.jsx"
 import "./Header.css"
+import { toggleTheme } from "../../slices/themeSlice.jsx"
 
 function Header({ openProfilePage }) {
   const dispatch = useDispatch()
@@ -48,12 +49,22 @@ function Header({ openProfilePage }) {
     dispatch(signOut())
   }
 
+  const handleToggle = () => {
+    dispatch(toggleTheme())
+  }
+
+  const theme = useSelector((state) => state.theme.theme)
+
   return (
-    <div className="header-container">
+    <div className="header-container dark:border-b-[#222222] dark:bg-[#222222] dark:text-white">
       <div className="header-wrap">
         <div className="header-left">
           <a href="/">
-            <img className="header-left-logo" src="/src/images/logo.png" alt="Logo" />
+            {theme === "dark" ? (
+              <img className="header-left-logo" src="/src/images/logo2.png" alt="Logo" />
+            ) : (
+              <img className="header-left-logo" src="/src/images/logo.png" alt="Logo" />
+            )}
           </a>
         </div>
 
@@ -63,15 +74,33 @@ function Header({ openProfilePage }) {
               {displayName}
             </div>
 
+            <div className="mx-[5px] h-[40px] w-[40px] cursor-pointer p-[10px]">
+              <button onClick={handleToggle}>
+                {theme === "dark" ? (
+                  <img
+                    className="h-[20px] w-[20px] rotate-0 transform invert transition-transform duration-300 ease-in-out"
+                    src="src/images/theme_sun.png"
+                    alt="sun icon"
+                  />
+                ) : (
+                  <img
+                    className="h-[20px] w-[20px] rotate-180 transform transition-transform duration-300 ease-in-out"
+                    src="src/images/theme_moon.png"
+                    alt="moon icon"
+                  />
+                )}
+              </button>
+            </div>
+
             <a
               href="/cart"
               className={totalCount > 0 ? "cart-page-active" : "cart-page"}
               data-count={totalCount > 0 ? totalCount : null}
             >
-              <img className="cart-logo" src={cart} alt="cart-logo" />
+              <img className="cart-logo dark:invert" src={cart} alt="cart-logo" />
             </a>
 
-            <div className="logout">
+            <div className="logout dark:invert">
               <img className="logout-logo" src={logout} alt="logout-logo" onClick={handleSignOut} />
             </div>
           </div>

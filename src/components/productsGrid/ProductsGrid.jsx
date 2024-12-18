@@ -50,7 +50,7 @@ function ProductsGrid() {
   return (
     <>
       {isLoading || isInitialLoad ? ( // Условие для отображения спиннера
-        <div className="products-component-container">
+        <div className="products-component-container dark:bg-[#ffffff]">
           <div className="spinner-container">
             <div className="spinner-wrapper">
               <Spinner />
@@ -58,7 +58,7 @@ function ProductsGrid() {
           </div>
         </div>
       ) : products.length > 0 ? (
-        <div className="products-component-container">
+        <div className="products-component-container border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
           <div className="products-component-wrapper">
             {products.map((product) => (
               <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} />

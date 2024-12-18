@@ -16,7 +16,6 @@
   align-items: center;
   width: 260px;
   height: 310px;
-  background-color: #ffffff;
 }
 
 .product-image {
@@ -25,7 +24,6 @@
   align-items: center;
   width: 100%;
   height: 190px;
-  background-color: #ffffff;
 }
 
 .engine-image {
@@ -71,14 +69,4 @@
   background-color: #7fb364;
   color: #ffffff;
   border: none;
-}
-
-.product-name {
-  cursor: pointer;
-  color: #505050;
-}
-
-.product-name:hover {
-  color: #1c1c1c;
-  text-decoration: underline;
 }

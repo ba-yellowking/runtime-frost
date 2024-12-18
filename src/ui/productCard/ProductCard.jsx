@@ -33,18 +33,21 @@ function ProductCard({ id, name, price }) {
   const productImage = imagesArr[id] || engine
 
   return (
-    <div className="product-container">
-      <div className="product-wrapper">
-        <div className="product-image">
+    <div className="product-container dark:border-[#393939]">
+      <div className="product-wrapper bg-white dark:bg-[#393939]">
+        <div className="product-image bg-white dark:bg-[#393939]">
           <img className="engine-image" src={productImage} alt={name} />
         </div>
 
-        <div className="product-name" onClick={productCard}>
+        <div
+          className="ml-2 cursor-pointer text-[#505050] hover:text-[#1c1c1c] hover:underline dark:text-white"
+          onClick={productCard}
+        >
           {name}
         </div>
 
         <div className="product-price-container">
-          <div className="product-price">
+          <div className="product-price dark:text-white">
             <b>{price.toLocaleString("ru-RU")} ₸</b>
           </div>
 

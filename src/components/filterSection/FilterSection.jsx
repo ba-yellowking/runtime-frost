@@ -29,7 +29,7 @@ function FilterSection() {
   }
 
   return (
-    <div className="filter-container">
+    <div className="filter-container dark:border-[#252525] dark:bg-[#252525]">
       <div className="filter-wrapper">
         <div className="filter-dropdowns">
           <div className="filter-brands">
