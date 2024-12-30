@@ -7,6 +7,7 @@ import "./ProductDetails.css"
 import Spinner from "../../ui/spinner/Spinner.jsx"
 import { useNavigate } from "react-router-dom"
 import engine from "./../../images/engine.png"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 // Карточка продукта по его ID http://localhost:5173/products/1
 
@@ -35,6 +36,9 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
     }
   }, [productCardData.id, navigate])
 
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <div className="product-card-wrapper">
       {isLoading ? (
@@ -61,21 +65,21 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
 
                   <div className="code-product-card">
                     <span>
-                      <b>Артикул:</b>
+                      <b>{t("productDetailsItemNumber")}</b>
                     </span>{" "}
                     {productCardData.code}
                   </div>
 
                   <div className="manufacturer-product-card">
                     <span>
-                      <b>Производитель:</b>
+                      <b>{t("productDetailsProducer")}</b>
                     </span>{" "}
                     {productCardData.manufacturer}
                   </div>
 
                   <div className="description-product-card">
                     <span>
-                      <b>Описание:</b>
+                      <b>{t("productDetailsDescription")}</b>
                     </span>{" "}
                     {productCardData.description}
                   </div>
@@ -94,18 +98,18 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
                       {productCardData.available ? (
                         <>
                           <img src="/src/images/plus.png" className="available-logo" alt="available" />
-                          <span>В наличии</span>
+                          <span>{t("productDetailsAvailable")}</span>
                         </>
                       ) : (
                         <>
                           <img src="/src/images/minus.png" className="available-logo" alt="not available" />
-                          <span>Нет в наличии</span>
+                          <span>{t("productDetailsNotAvailable")}</span>
                         </>
                       )}
                     </div>
 
                     <ButtonStandard
-                      name="Купить"
+                      name={t("buyButton")}
                       clickHandler={handleClick}
                       isDisabled={!productCardData.available}
                       className="productCardComponent"
@@ -131,7 +135,7 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
           ) : (
             <div className="product-card-wrapper">
               <div className="error404">
-                <p className="error404-text">This page does not exist. Returning to the home page.</p>
+                <p className="error404-text">{t("productDetails404")}</p>
                 <Spinner />
               </div>
             </div>

@@ -6,8 +6,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../../../slices/authSlice.jsx"
 import Spinner from "../../../ui/spinner/Spinner.jsx"
 import { setLoading } from "../../../slices/loadingSlice.jsx"
+import { useTranslation } from "../../../hooks/useTranslation.jsx"
 
 function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   const dispatch = useDispatch()
   const isLoading = useSelector((state) => state.loading.isLoading)
 
@@ -37,8 +41,8 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
       })
       .catch(function () {
         dispatch(setLoading(false))
-        setErrorLogin("Неверно введена почта")
-        setErrorPassword("Неверно введен пароль")
+        setErrorLogin(t("loginInvalidEmail"))
+        setErrorPassword(t("loginInvalidPassword"))
       })
   }
 
@@ -61,7 +65,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
       <Modal open={isOpen} close={handleClose}>
         <div className="modal-content-top">
-          <p>Вход в учетную запись</p>
+          <p>{t("loginSignIn")}</p>
         </div>
 
         {isLoading ? (
@@ -80,7 +84,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
               type="text"
               value={emailInput}
               onChange={handleEmailInput}
-              placeholder={"Электронная почта"}
+              placeholder={t("loginEmail")}
             />
 
             {errorPassword && <div className="error-container">{errorPassword}</div>}
@@ -91,18 +95,18 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
               type="password"
               value={passInput}
               onChange={handlePassInput}
-              placeholder={"Пароль"}
+              placeholder={t("loginPassword")}
             />
           </div>
         )}
 
         <div className="modal-content-bottom">
-          <ButtonStandard name="Войти в учетную запись" className="logInModal" clickHandler={handleClick} />
+          <ButtonStandard name={t("loginSignInButton")} className="logInModal" clickHandler={handleClick} />
 
           <span className="signin-signup">
-            Нет учетной записи?{" "}
+            {t("loginNoProfile")}{" "}
             <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>
-              Зарегистрироваться
+              {t("loginSignUp")}
             </span>
           </span>
         </div>

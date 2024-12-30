@@ -6,6 +6,7 @@ import Spinner from "../../ui/spinner/Spinner.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { setLoading } from "../../slices/loadingSlice.jsx"
 import { setTotalPages } from "../../slices/filterSlice.jsx"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function ProductsGrid() {
   const dispatch = useDispatch()
@@ -17,6 +18,9 @@ function ProductsGrid() {
   const currentPage = useSelector((state) => state.filter.currentPage)
   const [products, setProducts] = useState([])
   const [isInitialLoad, setIsInitialLoad] = useState(true) // Для отслеживания первой загрузки
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,7 +54,7 @@ function ProductsGrid() {
   return (
     <>
       {isLoading || isInitialLoad ? ( // Условие для отображения спиннера
-        <div className="products-component-container dark:bg-[#ffffff]">
+        <div className="products-component-container border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
           <div className="spinner-container">
             <div className="spinner-wrapper">
               <Spinner />
@@ -67,7 +71,7 @@ function ProductsGrid() {
         </div>
       ) : (
         <div className="empty-products">
-          <p>No items available</p>
+          <p>{t("productsGridNotAvailable")}</p>
         </div>
       )}
     </>

@@ -9,17 +9,25 @@ import engine1 from "../../images/engine1.png"
 import engine2 from "../../images/engine2.png"
 import engine3 from "../../images/engine3.png"
 import engine4 from "../../images/engine4.png"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function ProductCard({ id, name, price }) {
+  const navigate = useNavigate()
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
+  // useModal.jsx
   const [isOpenProductInCartModal, openProductInCartModal, closeProductInCartModal] = useModal()
 
   const handleClick = () => {
     openProductInCartModal()
   }
 
-  const navigate = useNavigate()
+  // Transition to <ProductCardPage/>
   function productCard() {
-    return navigate(`/products/${id}`)
+    const path = `/products/${id}`
+    navigate(path)
   }
 
   const imagesArr = {
@@ -51,7 +59,7 @@ function ProductCard({ id, name, price }) {
             <b>{price.toLocaleString("ru-RU")} ₸</b>
           </div>
 
-          <ButtonStandard name="Купить" clickHandler={handleClick} />
+          <ButtonStandard name={t("buyButton")} clickHandler={handleClick} />
         </div>
       </div>
 

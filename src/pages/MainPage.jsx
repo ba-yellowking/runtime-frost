@@ -4,7 +4,7 @@ import FilterSection from "../components/filterSection/FilterSection.jsx"
 import ProductsGrid from "../components/productsGrid/ProductsGrid.jsx"
 import PageNavigation from "../components/pageNavigation/PageNavigation.jsx"
 import { useState } from "react"
-import UserProfile from "../components/userProfile/UserProfile.jsx"
+import UserProfile from "./UserProfile.jsx"
 import { useDispatch } from "react-redux"
 import { setCurrentPage } from "../slices/filterSlice.jsx"
 import Banner from "../ui/banner/Banner.jsx"
@@ -20,18 +20,13 @@ function MainPage() {
   // State for profile
   const [isProfilePage, setIsProfilePage] = useState(undefined)
 
-  // Для <Header/>
-  function openProfilePage() {
-    setIsProfilePage(true)
-  }
-
   return (
     <div className={`main-page-container`}>
       {isProfilePage ? (
         <UserProfile />
       ) : (
         <>
-          <Header openProfilePage={openProfilePage} />
+          <Header />
 
           {/*<Banner />*/}
 

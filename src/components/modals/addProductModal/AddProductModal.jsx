@@ -4,14 +4,17 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useSelector } from "react-redux"
 import "./AddProductModal.css"
+import { useTranslation } from "../../../hooks/useTranslation.jsx"
 
 // Модальное окно при добавлении товара в корзину
 // cart/add?productId=...&count=...
 
 function AddProductModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
   const user = useSelector((state) => state.auth.user)
-
   const [counter, setCounter] = useState(1)
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   useEffect(
     function () {
@@ -29,7 +32,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
     axios
       .get(`https://frost.runtime.kz/api/cart/add?productId=${newProductId}&count=${counter}`)
       .then(function (response) {
-        console.log("Товар успешно добавлен в корзину", response.data)
+        console.log(response.data)
       })
       .catch((error) => console.error(error))
     close()
@@ -62,7 +65,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
     <div className="modal-container">
       <Modal open={isOpen} close={close}>
         <div className="modal-content-top">
-          <span>Добавление товара в корзину</span>
+          <span>{t("addProductAddingToCart")}</span>
         </div>
 
         <div className="modal-content-center">
@@ -83,14 +86,14 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
 
         <div className="modal-content-bottom">
           <ButtonStandard
-            name="Отправить в корзину"
+            name={t("addToCartButton")}
             className="productInCartModal"
             clickHandler={clickHandler}
             isDisabled={!user}
           />
 
           <span className="continue-shopping" onClick={close}>
-            Продолжить покупки
+            {t("addProductContinueShopping")}
           </span>
         </div>
       </Modal>

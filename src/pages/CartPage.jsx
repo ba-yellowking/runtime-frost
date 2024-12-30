@@ -6,8 +6,9 @@ import CartComponent from "../components/cartRouteComponents/cartComponent/CartC
 import ContactDetails from "../components/cartRouteComponents/contactDetails/ContactDetails.jsx"
 import DeliveryDetails from "../components/cartRouteComponents/deliveryDetails/DeliveryDetails.jsx"
 import OrderComplete from "../components/cartRouteComponents/orderComplete/OrderComplete.jsx"
-import UserProfile from "../components/userProfile/UserProfile.jsx"
+import UserProfile from "./UserProfile.jsx"
 import { useSelector } from "react-redux"
+import { useTranslation } from "../hooks/useTranslation.jsx"
 
 function CartPage() {
   const user = useSelector((state) => state.auth.user)
@@ -79,10 +80,8 @@ function CartPage() {
   // Состояние для открытия личного кабинета
   const [isProfilePage, setIsProfilePage] = useState(false)
 
-  // Для <Header/>
-  function openProfilePage() {
-    setIsProfilePage(true)
-  }
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   return (
     <div className="main-page-container">
@@ -90,10 +89,10 @@ function CartPage() {
         <UserProfile />
       ) : (
         <>
-          <Header openProfilePage={openProfilePage} totalCount={totalCount} />
+          <Header totalCount={totalCount} />
 
           <div className="cart-route">
-            <p className="cart-route-text">Оформление заказа</p>
+            <p className="cart-route-text">{t("cartPageHeader")}</p>
 
             <CartRoute currentComponent={currentComponent} setCurrentComponent={setCurrentComponent} />
           </div>

@@ -1,4 +1,5 @@
 import "./CartRoute.css"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function CartRoute({ currentComponent, setCurrentComponent }) {
   function handleCurrentComponent(component) {
@@ -11,6 +12,9 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
     }
   }
 
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <div className="route-container">
       <div
@@ -19,7 +23,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
           handleCurrentComponent("cart")
         }}
       >
-        <span>Корзина</span>
+        <span>{t("cartRouteCart")}</span>
       </div>
 
       <div
@@ -28,7 +32,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
           handleCurrentComponent("contacts")
         }}
       >
-        <span>Контакты</span>
+        <span>{t("cartRouteContacts")}</span>
       </div>
 
       <div
@@ -37,7 +41,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
           handleCurrentComponent("delivery")
         }}
       >
-        <span>Доставка</span>
+        <span>{t("cartRouteDelivery")}</span>
       </div>
 
       <div
@@ -46,7 +50,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
           handleCurrentComponent("final")
         }}
       >
-        <span>Завершение</span>
+        <span>{t("cartRouteComplete")}</span>
       </div>
     </div>
   )

@@ -2,8 +2,12 @@ import "./Footer.css"
 import instagramLogo from "../../images/instagram.png"
 import gmailLogo from "../../images/gmail.png"
 import phoneCallLogo from "../../images/phone-call.png"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function Footer() {
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <div className="footer-container dark:border-[#222222] dark:bg-[#222222]">
       <div className="footer-wrap">
@@ -21,7 +25,7 @@ function Footer() {
 
         <div className="footer-whatsapp dark:bg-[#222222]">
           <img className="phone-call" src={phoneCallLogo} alt="phone-call" />
-          <p className="footer-text max-lg:hidden">Astana: +7 775 000 77 49</p>
+          <p className="footer-text max-lg:hidden">{t("footerContacts")}</p>
         </div>
       </div>
     </div>

@@ -7,8 +7,12 @@ import Spinner from "../../../ui/spinner/Spinner.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../../../slices/authSlice.jsx"
 import { setLoading } from "../../../slices/loadingSlice.jsx"
+import { useTranslation } from "../../../hooks/useTranslation.jsx"
 
 function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegistration }) {
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   const dispatch = useDispatch()
   const isLoading = useSelector((state) => state.loading.isLoading)
 
@@ -102,7 +106,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
 
       <Modal open={isOpen} close={handleClose}>
         <div className="modal-content-top">
-          <p>Создание учетной записи</p>
+          <p>{t("signUpCreate")}</p>
         </div>
 
         {isLoading ? (
@@ -125,7 +129,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                     type="text"
                     value={firstNameInput}
                     onChange={handleFirstNameInput}
-                    placeholder="Имя"
+                    placeholder={t("signUpFirstName")}
                   />
                 </div>
 
@@ -139,7 +143,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                     type="text"
                     value={lastNameInput}
                     onChange={handleLastNameInput}
-                    placeholder="Фамилия"
+                    placeholder={t("signUpLastName")}
                   />
                 </div>
               </div>
@@ -153,7 +157,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                 type="email"
                 value={emailInput}
                 onChange={handleEmailInput}
-                placeholder="Электронная почта"
+                placeholder={t("signUpEmail")}
               />
 
               <div className="invalid">
@@ -165,7 +169,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                 type="password"
                 value={passInput}
                 onChange={handlePassInput}
-                placeholder="Пароль"
+                placeholder={t("signUpPassword")}
               />
 
               <input
@@ -173,7 +177,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                 type="password"
                 value={confirmPassInput}
                 onChange={handleConfirmPassInput}
-                placeholder="Повторите пароль"
+                placeholder={t("signUpRepeatPassword")}
               />
             </div>
 
@@ -181,9 +185,9 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
               <ButtonStandard name="Зарегистрироваться" clickHandler={handleClick} className="signUpModal" />
 
               <span className="signin-signup">
-                Есть учетная запись?{" "}
+                {t("signUpProfileExists")}{" "}
                 <span className="signin-signup-style" onClick={onClickLogIn}>
-                  Войти
+                  {t("signUpSignIn")}
                 </span>
               </span>
             </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import CheckBox from "../../ui/checkBox/CheckBox.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { changeBrand, changeGeneration, changeModel, fetchBrands, setAvailable } from "../../slices/filterSlice.jsx"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function FilterSection() {
   const dispatch = useDispatch()
@@ -13,6 +14,9 @@ function FilterSection() {
 
   const selectedBrand = useSelector((state) => state.filter.selectedBrand)
   const selectedModel = useSelector((state) => state.filter.selectedModel)
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(fetchBrands())
@@ -34,7 +38,7 @@ function FilterSection() {
         <div className="filter-dropdowns">
           <div className="filter-brands">
             <DropDown
-              defaultOption="Все марки"
+              defaultOption={t("filterAllBrands")}
               options={brands}
               selectHandler={function (brandId) {
                 dispatch(changeBrand(brandId))
@@ -45,28 +49,32 @@ function FilterSection() {
           <div className="filter-models">
             {selectedBrand ? (
               <DropDown
-                defaultOption="Все модели"
+                defaultOption={t("filterAllModels")}
                 options={models}
                 selectHandler={function (modelId) {
                   dispatch(changeModel(modelId))
                 }}
               />
             ) : (
-              <DropDown defaultOption="Все модели" isDropdownDisabled={true} className="dropdown-disabled" />
+              <DropDown defaultOption={t("filterAllModels")} isDropdownDisabled={true} className="dropdown-disabled" />
             )}
           </div>
 
           <div className="filter-generations">
             {selectedModel && selectedBrand ? (
               <DropDown
-                defaultOption="Все поколения"
+                defaultOption={t("filterAllGenerations")}
                 options={generations}
                 selectHandler={function (generationId) {
                   dispatch(changeGeneration(generationId))
                 }}
               />
             ) : (
-              <DropDown defaultOption="Все поколения" isDropdownDisabled={true} className="dropdown-disabled" />
+              <DropDown
+                defaultOption={t("filterAllGenerations")}
+                isDropdownDisabled={true}
+                className="dropdown-disabled"
+              />
             )}
           </div>
 

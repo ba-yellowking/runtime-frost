@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx"
 import { useSelector } from "react-redux"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function Reviews({ reviewData, productId, updateReviews }) {
   const user = useSelector((state) => state.auth.user)
@@ -64,6 +65,9 @@ function Reviews({ reviewData, productId, updateReviews }) {
       .catch((error) => console.error(error))
   }
 
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <>
       {existingFeedback === false ? (
@@ -71,18 +75,22 @@ function Reviews({ reviewData, productId, updateReviews }) {
           {user ? (
             <>
               <div className="reviews-top">
-                <div className="reviews-divider">Напишите свой отзыв</div>
+                <div className="reviews-divider">{t("reviewAddFeedback")}</div>
 
                 <textarea
                   className="reviews-input"
                   rows="2"
                   cols="50"
-                  placeholder="Введите комментарий"
+                  placeholder={t("reviewAddComment")}
                   onChange={handleNewReview}
                   maxLength="250"
                 />
 
-                <ButtonStandard name="Добавить" className="reviewsComponent" clickHandler={addNewFeedback} />
+                <ButtonStandard
+                  name={t("reviewAddReviewButton")}
+                  className="reviewsComponent"
+                  clickHandler={addNewFeedback}
+                />
               </div>
             </>
           ) : (
@@ -98,18 +106,18 @@ function Reviews({ reviewData, productId, updateReviews }) {
           )}
 
           <div className="reviews-bottom">
-            <div className="reviews-divider">Последние отзывы</div>
+            <div className="reviews-divider">{t("reviewRecentFeedbacks")}</div>
             {renderReviewData()}
           </div>
         </div>
       ) : (
         <>
           <div className="existing-review">
-            <p>Thank you for your feedback!</p>
+            <p>{t("reviewExistingFeedback")}</p>
           </div>
 
           <div className="reviews-bottom">
-            <div className="reviews-divider">Последние отзывы</div>
+            <div className="reviews-divider">{t("reviewRecentFeedbacks")}</div>
             {renderReviewData()}
           </div>
         </>

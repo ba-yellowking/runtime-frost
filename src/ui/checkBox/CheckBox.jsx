@@ -1,6 +1,7 @@
 import "./CheckBox.css"
 import { useDispatch, useSelector } from "react-redux"
 import { setIsChecked } from "../../slices/filterSlice.jsx"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function CheckBox({ onChangeCheckBox }) {
   const dispatch = useDispatch()
@@ -10,6 +11,9 @@ function CheckBox({ onChangeCheckBox }) {
     dispatch(setIsChecked(!isChecked))
     onChangeCheckBox(!isChecked)
   }
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   return (
     <div className="flex h-[33px] w-[220px] items-center justify-start bg-[#7fb364] pl-4 sm:w-[300px] md:w-[400px] lg:w-[170px] xl:w-[220px]">
@@ -29,7 +33,7 @@ function CheckBox({ onChangeCheckBox }) {
         onClick={checkBox}
       />
       <label className="text-white" htmlFor="checkBox">
-        В наличии
+        {t("checkBoxAvailable")}
       </label>
     </div>
 

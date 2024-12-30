@@ -3,11 +3,15 @@ import PageNavButton from "../../ui/pageNavButton/PageNavButton.jsx"
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { setCurrentPage } from "../../slices/filterSlice.jsx"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function PageNavigation() {
   // totalPages - общее количество страниц из ProductsGrid
   // onPageChange - функция, передаваемая в PageNavButton
   // currentPage - текущая страница
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   const dispatch = useDispatch()
 
@@ -109,7 +113,7 @@ function PageNavigation() {
       {totalPages > 0 && (
         <>
           <ButtonStandard
-            name="Назад"
+            name={t("pageNavBack")}
             clickHandler={function () {
               pageBack()
             }}
@@ -122,7 +126,7 @@ function PageNavigation() {
           {lastPage()}
 
           <ButtonStandard
-            name="Вперед"
+            name={t("pageNavForward")}
             clickHandler={function () {
               pageForward()
             }}

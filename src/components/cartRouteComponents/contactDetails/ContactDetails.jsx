@@ -1,13 +1,16 @@
 import "./ContactDetails.css"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx"
 import InputMask from "react-input-mask"
 import { useSelector } from "react-redux"
+import { useTranslation } from "../../../hooks/useTranslation.jsx"
 
 function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
   const user = useSelector((state) => state.auth.user)
-
   const [errorPhone, setErrorPhone] = useState("")
+
+  // useTranslation.jsx
+  const { t } = useTranslation()
 
   function onChangePhoneNumber(event) {
     setOrdersData({
@@ -25,17 +28,17 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
     if (isPhoneComplete(ordersData.phone)) {
       setCurrentComponent("delivery")
     } else {
-      setErrorPhone("Введите номер телефона")
+      setErrorPhone(t("contactsPhone"))
     }
   }
 
   return (
     <div className="cart-menu-container">
-      <span className="cart-text">Контактные данные</span>
+      <span className="cart-text">{t("contactsDetails")}</span>
 
       <div className="contacts-container">
         <div className="contacts-container-left">
-          <p className="contacts-text">Фамилия</p>
+          <p className="contacts-text">{t("contactsLastName")}</p>
 
           <input
             className="contacts-last-name contacts-style"
@@ -44,18 +47,18 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
             defaultValue={user.lastName}
           />
 
-          <p className="contacts-text">Имя</p>
+          <p className="contacts-text">{t("contactsFirstName")}</p>
           <input className="contacts-first-name contacts-style" type="text" defaultValue={user.firstName} />
 
           <p className="contacts-text">
-            Отчество <span className="optional-text">(необязательно)</span>
+            {t("contactsPatronym")} <span className="optional-text">{t("contactsOptional")}</span>
           </p>
           <input className="contacts-patronymic contacts-style" type="text" />
 
           {/*InputMask для номера телефона*/}
           {errorPhone ? (
             <>
-              <p className="error-message">{errorPhone}</p>
+              <p className="error-message">{t("contactsPhone")}</p>
               <InputMask
                 mask="+7 999 999 99 99"
                 value={ordersData.phone}
@@ -84,29 +87,29 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
         </div>
 
         <div className="contacts-container-right">
-          <p className="contacts-text">Электронная почта</p>
+          <p className="contacts-text">{t("contactsEmail")}</p>
 
           <input className="contacts-email contacts-style" type="text" defaultValue={user.email} />
 
           {user ? (
             <>
-              <p className="contacts-text-disabled">Пароль</p>
+              <p className="contacts-text-disabled">{t("contactsPassword")}</p>
               <input className="contacts-password contacts-style" type="text" disabled />
 
-              <p className="contacts-text-disabled">Повторите пароль</p>
+              <p className="contacts-text-disabled">{t("contactsRepeatPassword")}</p>
               <input className="contacts-confirm-password contacts-style" type="text" disabled />
             </>
           ) : (
             <>
-              <p className="contacts-text">Пароль</p>
+              <p className="contacts-text">{t("contactsPassword")}</p>
               <input className="contacts-password contacts-style" type="text" />
 
-              <p className="contacts-text">Повторите пароль</p>
+              <p className="contacts-text">{t("contactsRepeatPassword")}</p>
               <input className="contacts-confirm-password contacts-style" type="text" />
             </>
           )}
           <div className="contacts-button-container">
-            <ButtonStandard name="Подтвердить" className="contactsCartComponent" clickHandler={proceed} />
+            <ButtonStandard name={t("confirmButton")} className="contactsCartComponent" clickHandler={proceed} />
           </div>
         </div>
       </div>

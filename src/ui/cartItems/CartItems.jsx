@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setTotalCount } from "../../slices/counterSlice.jsx"
 import { setLoading } from "../../slices/loadingSlice.jsx"
 import { decreaseCartItems, deleteCartItems, fetchCartItems, increaseCartItems } from "../../slices/cartSlice.jsx"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function CartItems({ setCurrentComponent }) {
   const dispatch = useDispatch()
@@ -52,6 +53,9 @@ function CartItems({ setCurrentComponent }) {
     dispatch(decreaseCartItems(productId))
   }
 
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <>
       {isLoading ? (
@@ -62,13 +66,13 @@ function CartItems({ setCurrentComponent }) {
         </div>
       ) : (
         <>
-          <span className="cart-text">Корзина</span>
+          <span className="cart-text">{t("cartItemsCart")}</span>
           {cartItems.length > 0 ? (
             <>
               <div className="cart-header">
-                <div className="cart-header-item title">Наименование товара</div>
-                <div className="cart-header-item">Количество</div>
-                <div className="cart-header-item">Цена</div>
+                <div className="cart-header-item title">{t("cartItemsItem")}</div>
+                <div className="cart-header-item">{t("cartItemsQuantity")}</div>
+                <div className="cart-header-item">{t("cartItemsPrice")}</div>
               </div>
 
               <div className="cart-body">
@@ -78,7 +82,9 @@ function CartItems({ setCurrentComponent }) {
                       <div className="cart-item-detail">{item.product.name}</div>
 
                       <div className="cart-item-bottom">
-                        <div className="cart-item-number">Артикул: {item.product.code}</div>
+                        <div className="cart-item-number">
+                          {t("cartItemsItemNo")} {item.product.code}
+                        </div>
 
                         <div
                           className="cart-item-delete"
@@ -86,7 +92,7 @@ function CartItems({ setCurrentComponent }) {
                             deleteItem(item.product.id)
                           }}
                         >
-                          Удалить из корзины
+                          {t("cartItemsRemoveItem")}
                         </div>
                       </div>
                     </div>
@@ -110,14 +116,14 @@ function CartItems({ setCurrentComponent }) {
               </div>
 
               <div className="cart-footer">
-                <div className="cart-footer-item">Итого к оплате:</div>
+                <div className="cart-footer-item">{t("cartItemsTotalPrice")}</div>
                 <div className="cart-footer-item"></div>
                 <div className="cart-footer-item">{totalAmount.toLocaleString("ru-RU")} ₸</div>
               </div>
 
               <div className="cart-button-container">
                 <ButtonStandard
-                  name="Оформить заказ"
+                  name={t("cartItemsConfirmButton")}
                   className="cartProductList"
                   clickHandler={() => setCurrentComponent("contacts")}
                 />
@@ -126,9 +132,9 @@ function CartItems({ setCurrentComponent }) {
           ) : (
             <div className="empty-cart">
               <span>
-                Ваша корзина пуста.
+                {t("cartItemsEmpty")}
                 <a href="/" className="empty-cart-add-products">
-                  Добавить товары
+                  {t("cartItemsAddItems")}
                 </a>
               </span>
             </div>

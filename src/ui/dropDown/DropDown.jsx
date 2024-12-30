@@ -13,7 +13,7 @@ function DropDown({ defaultOption, options = [], selectHandler, isDropdownDisabl
 
   useEffect(() => {
     setSelectedOption(defaultOption)
-  }, [options])
+  }, [options, defaultOption])
 
   const allOptions = [defaultOption, ...options]
 

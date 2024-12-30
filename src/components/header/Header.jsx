@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import useModal from "../../hooks/useModal.jsx"
 import LogInModal from "../modals/logInModal/LogInModal.jsx"
 import SignUpModal from "../modals/signUpModal/SignUpModal.jsx"
@@ -9,14 +9,16 @@ import logout from "../../images/logout.png"
 import { checkTokenAndGetUser, signOut } from "../../slices/authSlice.jsx"
 import "./Header.css"
 import { toggleTheme } from "../../slices/themeSlice.jsx"
+import { APP_LOCALES } from "../../locales/locales.jsx"
+import { LocalizationContext } from "../../contexts/localizationContext/LocalizationContext.jsx"
+import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
 
-function Header({ openProfilePage }) {
+function Header() {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
   const tokenInfo = useSelector((state) => state.auth.tokenInfo)
   const totalCount = useSelector((state) => state.counter.counter)
   const displayName = user ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) : ""
-
   const navigate = useNavigate()
 
   // Modal state hooks
@@ -53,13 +55,20 @@ function Header({ openProfilePage }) {
     dispatch(toggleTheme())
   }
 
+  // Dark/light theme
   const theme = useSelector((state) => state.theme.theme)
+
+  // Transition to cart
+  const handleCartClick = () => {
+    const path = `/cart`
+    navigate(path)
+  }
 
   return (
     <div className="header-container dark:border-b-[#222222] dark:bg-[#222222] dark:text-white">
       <div className="header-wrap">
         <div className="header-left">
-          <a href="/">
+          <a href={`/`}>
             {theme === "dark" ? (
               <img className="header-left-logo" src="/src/images/logo2.png" alt="Logo" />
             ) : (
@@ -69,11 +78,16 @@ function Header({ openProfilePage }) {
         </div>
 
         {user !== null && tokenInfo ? (
+          // Profile
           <div className="header-right-profile">
-            <div className="header-right-username" onClick={openProfilePage}>
+            <div className="header-right-username" onClick={() => navigate("/account")}>
               {displayName}
             </div>
 
+            {/* Choose language */}
+            <LocaleDropdown />
+
+            {/*Dark or light theme*/}
             <div className="mx-[5px] h-[40px] w-[40px] cursor-pointer p-[10px]">
               <button onClick={handleToggle}>
                 {theme === "dark" ? (
@@ -92,19 +106,22 @@ function Header({ openProfilePage }) {
               </button>
             </div>
 
-            <a
-              href="/cart"
+            {/*Cart*/}
+            <div
               className={totalCount > 0 ? "cart-page-active" : "cart-page"}
               data-count={totalCount > 0 ? totalCount : null}
+              onClick={handleCartClick}
             >
               <img className="cart-logo dark:invert" src={cart} alt="cart-logo" />
-            </a>
+            </div>
 
+            {/*Log out*/}
             <div className="logout dark:invert">
               <img className="logout-logo" src={logout} alt="logout-logo" onClick={handleSignOut} />
             </div>
           </div>
         ) : (
+          // not authorized
           <div className="header-right">
             {!tokenInfo ? (
               <>

@@ -1,6 +1,7 @@
 import "./DeliveryDetails.css"
 import ButtonStandard from "../../../ui/buttonStandard/ButtonStandard.jsx"
 import axios from "axios"
+import { useTranslation } from "../../../hooks/useTranslation.jsx"
 
 function DeliveryDetails({
   setCurrentComponent,
@@ -76,23 +77,26 @@ function DeliveryDetails({
     submitDelivery()
   }
 
+  // useTranslation.jsx
+  const { t } = useTranslation()
+
   return (
     <div className="cart-menu-container">
-      <span className="cart-text">Доставка</span>
+      <span className="cart-text">{t("deliveryDetails")}</span>
 
       <div className="delivery-container">
         <div className="delivery-container-left">
           {errorMessages.area ? (
             <p className="error-message">{errorMessages.area}</p>
           ) : (
-            <p className="delivery-text">Область</p>
+            <p className="delivery-text">{t("deliveryRegion")}</p>
           )}
           <input className="delivery-area contacts-style" type="text" value={ordersData.area} onChange={onChangeArea} />
 
           {errorMessages.city ? (
             <p className="error-message">{errorMessages.city}</p>
           ) : (
-            <p className="delivery-text">Город или поселок</p>
+            <p className="delivery-text">{t("deliveryCity")}</p>
           )}
           <input className="delivery-city contacts-style" type="text" value={ordersData.city} onChange={onChangeCity} />
         </div>
@@ -101,7 +105,7 @@ function DeliveryDetails({
           {errorMessages.street ? (
             <p className="error-message">{errorMessages.street}</p>
           ) : (
-            <p className="delivery-text">Улица</p>
+            <p className="delivery-text">{t("deliveryStreet")}</p>
           )}
           <input
             className="delivery-street contacts-style"
@@ -115,7 +119,7 @@ function DeliveryDetails({
               {errorMessages.house ? (
                 <p className="error-message">{errorMessages.house}</p>
               ) : (
-                <p className="delivery-text">Дом</p>
+                <p className="delivery-text">{t("deliveryHouse")}</p>
               )}
               <input
                 className="delivery-house ha-style"
@@ -129,7 +133,7 @@ function DeliveryDetails({
               {errorMessages.apartment ? (
                 <p className="error-message">{errorMessages.apartment}</p>
               ) : (
-                <p className="delivery-text">Квартира</p>
+                <p className="delivery-text">{t("deliveryApartment")}</p>
               )}
               <input
                 className="delivery-apt ha-style"
@@ -141,7 +145,7 @@ function DeliveryDetails({
           </div>
 
           <div className="delivery-button-container">
-            <ButtonStandard name="Подтвердить" className="deliveryComponent" clickHandler={proceed} />
+            <ButtonStandard name={t("confirmButton")} className="deliveryComponent" clickHandler={proceed} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./ButtonStandard.css"
 
-function ButtonStandard({ name, clickHandler, isDisabled, style, className }) {
+function ButtonStandard({ name, clickHandler, isDisabled, className }) {
   const [isActive, setIsActive] = useState(false)
 
   const handleMouseDown = function () {
@@ -20,7 +20,6 @@ function ButtonStandard({ name, clickHandler, isDisabled, style, className }) {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       disabled={isDisabled}
-      // style={style}
     >
       {name}
     </button>
