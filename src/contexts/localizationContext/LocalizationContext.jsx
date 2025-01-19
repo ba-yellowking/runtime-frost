@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState, startTransition } from "react"
 
 export const LocalizationContext = createContext()
 
@@ -8,7 +8,9 @@ export const LocalizationProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    localStorage.setItem("selectedLanguage", currentLanguage)
+    startTransition(() => {
+      localStorage.setItem("selectedLanguage", currentLanguage)
+    })
   }, [currentLanguage])
 
   return (

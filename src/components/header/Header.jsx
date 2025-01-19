@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
 import useModal from "../../hooks/useModal.jsx"
 import LogInModal from "../modals/logInModal/LogInModal.jsx"
 import SignUpModal from "../modals/signUpModal/SignUpModal.jsx"
@@ -9,8 +9,6 @@ import logout from "../../images/logout.png"
 import { checkTokenAndGetUser, signOut } from "../../slices/authSlice.jsx"
 import "./Header.css"
 import { toggleTheme } from "../../slices/themeSlice.jsx"
-import { APP_LOCALES } from "../../locales/locales.jsx"
-import { LocalizationContext } from "../../contexts/localizationContext/LocalizationContext.jsx"
 import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
 
 function Header() {
