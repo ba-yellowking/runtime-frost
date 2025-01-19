@@ -107,6 +107,8 @@
 }
 
 .available-product-card {
+  display: flex;
+  align-items: center;
   margin: 10px;
 }
 

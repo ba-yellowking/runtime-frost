@@ -62,21 +62,21 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
   }
 
   return (
-    <div className="modal-container">
+    <div className="modal-containe">
       <Modal open={isOpen} close={close}>
-        <div className="modal-content-top">
+        <div className="modal-content-top dark:bg-[#252525]">
           <span>{t("addProductAddingToCart")}</span>
         </div>
 
-        <div className="modal-content-center">
+        <div className="modal-content-center dark:bg-[#252525]">
           <div className="modal-content-name">{newProductName}</div>
 
           <div className="modal-content-quantity">
-            <button className="modal-content-button" onClick={decrease}>
+            <button className="modal-content-button dark:bg-[#252525]" onClick={decrease}>
               -
             </button>
             {counter}
-            <button className="modal-content-button" onClick={increase}>
+            <button className="modal-content-button dark:bg-[#252525]" onClick={increase}>
               +
             </button>
           </div>
@@ -84,7 +84,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
           <div className="modal-content-price">{`${(newProductPrice * counter).toLocaleString("ru-RU")} ₸`}</div>
         </div>
 
-        <div className="modal-content-bottom">
+        <div className="modal-content-bottom dark:bg-[#252525]">
           <ButtonStandard
             name={t("addToCartButton")}
             className="productInCartModal"
@@ -92,7 +92,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
             isDisabled={!user}
           />
 
-          <span className="continue-shopping" onClick={close}>
+          <span className="continue-shopping dark:text-white" onClick={close}>
             {t("addProductContinueShopping")}
           </span>
         </div>

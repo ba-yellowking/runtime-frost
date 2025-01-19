@@ -54,7 +54,7 @@ function UserProfile() {
 
         {isLoading ? (
           <>
-            <div className="profile-wrap">
+            <div className="profile-wrap dark:border-[#252525] dark:bg-[#252525]">
               <div className="spinner-container">
                 <div className="spinner-wrapper">
                   <Spinner />
@@ -65,10 +65,10 @@ function UserProfile() {
         ) : (
           <>
             {orders.length > 0 ? (
-              <div className="profile-wrap">
+              <div className="profile-wrap dark:border-[#252525] dark:bg-[#252525]">
                 <span className="profile-text">{t("profileMyOrders")}</span>
 
-                <div className="profile-header">
+                <div className="profile-header dark:bg-[#393939]">
                   <div className="profile-header-item">{t("profileOrderNo")}</div>
                   <div className="profile-header-item">{t("profileProduct")}</div>
                   <div className="profile-header-item">{t("profileQuantity")}</div>
@@ -99,12 +99,12 @@ function UserProfile() {
                 </div>
               </div>
             ) : (
-              <div className="cart-menu-container">
+              <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
                 <span className="profile-text">{t("profileMyOrders")}</span>
                 <div className="empty-orders">
                   <span>
                     {t("profileNoOrders")}
-                    <a href="/public" className="empty-cart-add-products">
+                    <a href="/" className="empty-cart-add-products">
                       {t("profileAddProducts")}
                     </a>
                   </span>

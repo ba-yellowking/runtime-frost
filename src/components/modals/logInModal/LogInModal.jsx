@@ -59,13 +59,13 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
   return (
     <div className="modal-container">
-      <span className="modal-title" onClick={onClick}>
+      <span className="modal-title dark:text-white" onClick={onClick}>
         {title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>
-        <div className="modal-content-top">
-          <p>{t("loginSignIn")}</p>
+        <div className="modal-content-top dark:bg-[#393939]">
+          <p className="dark:text-white">{t("loginSignIn")}</p>
         </div>
 
         {isLoading ? (
@@ -75,12 +75,12 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
             </div>
           </div>
         ) : (
-          <div className="modal-content-center">
+          <div className="modal-content-center dark:bg-[#252525]">
             {errorLogin && <div className="error-container">{errorLogin}</div>}
 
             <input
               // className={`authorization-input ${errorLogin ? 'error' : ''}`}
-              className="authorization-input"
+              className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
               type="text"
               value={emailInput}
               onChange={handleEmailInput}
@@ -91,7 +91,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
             <input
               // className={`authorization-input ${errorPassword ? 'error' : ''}`}
-              className="authorization-input"
+              className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
               type="password"
               value={passInput}
               onChange={handlePassInput}
@@ -100,10 +100,10 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
           </div>
         )}
 
-        <div className="modal-content-bottom">
+        <div className="modal-content-bottom dark:bg-[#252525]">
           <ButtonStandard name={t("loginSignInButton")} className="logInModal" clickHandler={handleClick} />
 
-          <span className="signin-signup">
+          <span className="signin-signup dark:text-white">
             {t("loginNoProfile")}{" "}
             <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>
               {t("loginSignUp")}

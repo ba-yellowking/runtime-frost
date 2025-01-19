@@ -120,9 +120,28 @@ function Header() {
           </div>
         ) : (
           // not authorized
+
           <div className="header-right">
             {!tokenInfo ? (
               <>
+                <div className="mx-[5px] h-[40px] w-[40px] cursor-pointer p-[10px]">
+                  <button onClick={handleToggle}>
+                    {theme === "dark" ? (
+                      <img
+                        className="h-[20px] w-[20px] rotate-0 transform invert transition-transform duration-300 ease-in-out"
+                        src="src/images/theme_sun.png"
+                        alt="sun icon"
+                      />
+                    ) : (
+                      <img
+                        className="h-[20px] w-[20px] rotate-180 transform transition-transform duration-300 ease-in-out"
+                        src="src/images/theme_moon.png"
+                        alt="moon icon"
+                      />
+                    )}
+                  </button>
+                </div>
+
                 <div className="log-in-section">
                   <LogInModal
                     title="Войти"

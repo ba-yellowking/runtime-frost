@@ -1,6 +1,6 @@
 import "./FilterSection.css"
 import DropDown from "../../ui/dropDown/DropDown.jsx"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import CheckBox from "../../ui/checkBox/CheckBox.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { changeBrand, changeGeneration, changeModel, fetchBrands, setAvailable } from "../../slices/filterSlice.jsx"

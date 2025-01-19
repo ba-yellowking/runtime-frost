@@ -24,12 +24,12 @@ function Reviews({ reviewData, productId, updateReviews }) {
   const renderReviewData = function () {
     return reviewData.map(function (reviewItem, index) {
       return (
-        <div key={index} className="review-item">
-          <div className="review-item-name">
+        <div key={index} className="review-item dark:border-[#393939]">
+          <div className="review-item-name dark:text-white">
             <b>{`${reviewItem.user.firstName} ${reviewItem.user.lastName}`}</b>
           </div>
 
-          <div className="review-item-feedback">{reviewItem.review}</div>
+          <div className="review-item-feedback dark:text-white">{reviewItem.review}</div>
         </div>
       )
     })
@@ -71,14 +71,14 @@ function Reviews({ reviewData, productId, updateReviews }) {
   return (
     <>
       {existingFeedback === false ? (
-        <div className="reviews-wrap">
+        <div className="reviews-wrap dark:bg-[#252525]">
           {user ? (
             <>
-              <div className="reviews-top">
-                <div className="reviews-divider">{t("reviewAddFeedback")}</div>
+              <div className="reviews-top dark:border-[#393939]">
+                <div className="reviews-divider dark:bg-[#393939]">{t("reviewAddFeedback")}</div>
 
                 <textarea
-                  className="reviews-input"
+                  className="reviews-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
                   rows="2"
                   cols="50"
                   placeholder={t("reviewAddComment")}
@@ -105,8 +105,8 @@ function Reviews({ reviewData, productId, updateReviews }) {
             </>
           )}
 
-          <div className="reviews-bottom">
-            <div className="reviews-divider">{t("reviewRecentFeedbacks")}</div>
+          <div className="reviews-bottom dark:border-[#393939]">
+            <div className="reviews-divider dark:bg-[#393939]">{t("reviewRecentFeedbacks")}</div>
             {renderReviewData()}
           </div>
         </div>
@@ -117,7 +117,7 @@ function Reviews({ reviewData, productId, updateReviews }) {
           </div>
 
           <div className="reviews-bottom">
-            <div className="reviews-divider">{t("reviewRecentFeedbacks")}</div>
+            <div className="reviews-divider dark:bg-[#393939]">{t("reviewRecentFeedbacks")}</div>
             {renderReviewData()}
           </div>
         </>

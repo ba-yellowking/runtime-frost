@@ -21,7 +21,7 @@ function MainPage() {
   const [isProfilePage, setIsProfilePage] = useState(undefined)
 
   return (
-    <div className={`main-page-container`}>
+    <div className={`main-page-container dark:bg-[#393939]`}>
       {isProfilePage ? (
         <UserProfile />
       ) : (

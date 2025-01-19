@@ -81,7 +81,7 @@ function DeliveryDetails({
   const { t } = useTranslation()
 
   return (
-    <div className="cart-menu-container">
+    <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
       <span className="cart-text">{t("deliveryDetails")}</span>
 
       <div className="delivery-container">
@@ -89,26 +89,36 @@ function DeliveryDetails({
           {errorMessages.area ? (
             <p className="error-message">{errorMessages.area}</p>
           ) : (
-            <p className="delivery-text">{t("deliveryRegion")}</p>
+            <p className="delivery-text dark:text-white">{t("deliveryRegion")}</p>
           )}
-          <input className="delivery-area contacts-style" type="text" value={ordersData.area} onChange={onChangeArea} />
+          <input
+            className="delivery-area contacts-style dark:border-[#393939] dark:bg-[#393939]"
+            type="text"
+            value={ordersData.area}
+            onChange={onChangeArea}
+          />
 
           {errorMessages.city ? (
             <p className="error-message">{errorMessages.city}</p>
           ) : (
-            <p className="delivery-text">{t("deliveryCity")}</p>
+            <p className="delivery-text dark:text-white">{t("deliveryCity")}</p>
           )}
-          <input className="delivery-city contacts-style" type="text" value={ordersData.city} onChange={onChangeCity} />
+          <input
+            className="delivery-city contacts-style dark:border-[#393939] dark:bg-[#393939]"
+            type="text"
+            value={ordersData.city}
+            onChange={onChangeCity}
+          />
         </div>
 
         <div className="delivery-container-right">
           {errorMessages.street ? (
             <p className="error-message">{errorMessages.street}</p>
           ) : (
-            <p className="delivery-text">{t("deliveryStreet")}</p>
+            <p className="delivery-text dark:text-white">{t("deliveryStreet")}</p>
           )}
           <input
-            className="delivery-street contacts-style"
+            className="delivery-street contacts-style dark:border-[#393939] dark:bg-[#393939]"
             type="text"
             value={ordersData.street}
             onChange={onChangeStreet}
@@ -119,10 +129,10 @@ function DeliveryDetails({
               {errorMessages.house ? (
                 <p className="error-message">{errorMessages.house}</p>
               ) : (
-                <p className="delivery-text">{t("deliveryHouse")}</p>
+                <p className="delivery-text dark:text-white">{t("deliveryHouse")}</p>
               )}
               <input
-                className="delivery-house ha-style"
+                className="delivery-house ha-style dark:border-[#393939] dark:bg-[#393939]"
                 type="text"
                 value={ordersData.house}
                 onChange={onChangeHouse}
@@ -133,10 +143,10 @@ function DeliveryDetails({
               {errorMessages.apartment ? (
                 <p className="error-message">{errorMessages.apartment}</p>
               ) : (
-                <p className="delivery-text">{t("deliveryApartment")}</p>
+                <p className="delivery-text dark:text-white">{t("deliveryApartment")}</p>
               )}
               <input
-                className="delivery-apt ha-style"
+                className="delivery-apt ha-style dark:border-[#393939] dark:bg-[#393939]"
                 type="text"
                 value={ordersData.apartment}
                 onChange={onChangeApartment}

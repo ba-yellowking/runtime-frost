@@ -69,7 +69,7 @@ function CartItems({ setCurrentComponent }) {
           <span className="cart-text">{t("cartItemsCart")}</span>
           {cartItems.length > 0 ? (
             <>
-              <div className="cart-header">
+              <div className="cart-header dark:bg-[#393939]">
                 <div className="cart-header-item title">{t("cartItemsItem")}</div>
                 <div className="cart-header-item">{t("cartItemsQuantity")}</div>
                 <div className="cart-header-item">{t("cartItemsPrice")}</div>
@@ -115,7 +115,7 @@ function CartItems({ setCurrentComponent }) {
                 ))}
               </div>
 
-              <div className="cart-footer">
+              <div className="cart-footer dark:bg-[#393939]">
                 <div className="cart-footer-item">{t("cartItemsTotalPrice")}</div>
                 <div className="cart-footer-item"></div>
                 <div className="cart-footer-item">{totalAmount.toLocaleString("ru-RU")} ₸</div>

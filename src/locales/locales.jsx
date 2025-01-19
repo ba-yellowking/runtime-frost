@@ -149,7 +149,7 @@ export const APP_TRANSLATIONS = {
     productDetailsNotAvailable: "Not available",
     productDetails404: "This page does not exist. Returning to the home page",
 
-    reviewAddFeedback: "Write your feedback",
+    reviewAddFeedback: "Feedback",
     reviewAddComment: "Write your comment",
     reviewAddReviewButton: "Add review",
     reviewRecentFeedbacks: "Recent feedbacks",

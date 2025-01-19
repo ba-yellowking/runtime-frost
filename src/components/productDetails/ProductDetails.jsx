@@ -40,9 +40,9 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
   const { t } = useTranslation()
 
   return (
-    <div className="product-card-wrapper">
+    <div className="product-card-wrapper dark:border-[#252525] dark:bg-[#252525]">
       {isLoading ? (
-        <div className="spinner-container">
+        <div className="spinner-container dark:bg-[#252525]">
           <div className="spinner-wrapper">
             <Spinner />
           </div>
@@ -51,9 +51,9 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
         <>
           {productCardData ? (
             <>
-              <div className="top-product-card">
+              <div className="top-product-card dark:bg-[#252525]">
                 <div className="image-product-card">
-                  <div className="main-image-product-card">
+                  <div className="main-image-product-card dark:bg-[#252525]">
                     <img className="engine-image" src={engine} alt="image" />
                   </div>
                 </div>
@@ -63,21 +63,21 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
                     <b>{productCardData.name}</b>
                   </div>
 
-                  <div className="code-product-card">
+                  <div className="code-product-card dark:text-white">
                     <span>
                       <b>{t("productDetailsItemNumber")}</b>
                     </span>{" "}
                     {productCardData.code}
                   </div>
 
-                  <div className="manufacturer-product-card">
+                  <div className="manufacturer-product-card dark:text-white">
                     <span>
                       <b>{t("productDetailsProducer")}</b>
                     </span>{" "}
                     {productCardData.manufacturer}
                   </div>
 
-                  <div className="description-product-card">
+                  <div className="description-product-card dark:text-white">
                     <span>
                       <b>{t("productDetailsDescription")}</b>
                     </span>{" "}
@@ -85,8 +85,8 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
                   </div>
                 </div>
 
-                <div className="add-info-product-card">
-                  <div className="add-info-product-card-wrap">
+                <div className="add-info-product-card dark:bg-[#252525]">
+                  <div className="add-info-product-card-wrap dark:bg-[#393939]">
                     <div className="price-product-card">
                       <b>
                         {typeof productCardData.price === "number" &&
