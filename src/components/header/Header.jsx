@@ -10,6 +10,8 @@ import { checkTokenAndGetUser, signOut } from "../../slices/authSlice.jsx"
 import "./Header.css"
 import { toggleTheme } from "../../slices/themeSlice.jsx"
 import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
+import theme_sun from "../../images/theme_sun.png"
+import theme_moon from "../../images/theme_moon.png"
 
 function Header() {
   const dispatch = useDispatch()
@@ -91,13 +93,13 @@ function Header() {
                 {theme === "dark" ? (
                   <img
                     className="h-[20px] w-[20px] rotate-0 transform invert transition-transform duration-300 ease-in-out"
-                    src="src/images/theme_sun.png"
+                    src={theme_sun}
                     alt="sun icon"
                   />
                 ) : (
                   <img
                     className="h-[20px] w-[20px] rotate-180 transform transition-transform duration-300 ease-in-out"
-                    src="src/images/theme_moon.png"
+                    src={theme_moon}
                     alt="moon icon"
                   />
                 )}
@@ -120,7 +122,6 @@ function Header() {
           </div>
         ) : (
           // not authorized
-
           <div className="header-right">
             {!tokenInfo ? (
               <>
