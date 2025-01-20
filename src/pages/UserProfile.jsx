@@ -80,7 +80,7 @@ function UserProfile() {
                   {orders.map(function (order) {
                     return order.items.map(function (item, index) {
                       return (
-                        <div className="profile-item" key={index}>
+                        <div className="profile-item dark:border-[#393939]" key={index}>
                           <div className="profile-item-column">{order.id}</div>
 
                           <div className="profile-item-column">{item.product.name}</div>

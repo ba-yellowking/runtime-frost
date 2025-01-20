@@ -116,7 +116,7 @@ function Reviews({ reviewData, productId, updateReviews }) {
             <p>{t("reviewExistingFeedback")}</p>
           </div>
 
-          <div className="reviews-bottom">
+          <div className="reviews-bottom dark:border-[#393939]">
             <div className="reviews-divider dark:bg-[#393939]">{t("reviewRecentFeedbacks")}</div>
             {renderReviewData()}
           </div>
