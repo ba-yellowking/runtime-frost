@@ -48,7 +48,7 @@ function UserProfile() {
     <>
       <Header />
 
-      <div className="main-page-container">
+      <div className="main-page">
         <div className="profile__section">
           <p className="profile__section--text">{t("profileMyAccount")}</p>
         </div>
@@ -57,7 +57,7 @@ function UserProfile() {
           <>
             <div className="profile__wrap dark:border-[#252525] dark:bg-[#252525]">
               <div className="spinner-container">
-                <div className="spinner-wrapper">
+                <div className="spinner-container__wrap">
                   <Spinner />
                 </div>
               </div>
@@ -116,7 +116,7 @@ function UserProfile() {
                 </div>
               </div>
             ) : (
-              <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
+              <div className="cart dark:border-[#252525] dark:bg-[#252525]">
                 <span className="profile__orders">{t("profileMyOrders")}</span>
                 <div className="profile__empty">
                   <span>

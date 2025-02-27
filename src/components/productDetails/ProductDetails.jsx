@@ -43,7 +43,7 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
     <div className="product-details dark:border-[#252525] dark:bg-[#252525]">
       {isLoading ? (
         <div className="spinner-container dark:bg-[#252525]">
-          <div className="spinner-wrapper">
+          <div className="spinner-container__wrap">
             <Spinner />
           </div>
         </div>

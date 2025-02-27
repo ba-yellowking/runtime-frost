@@ -41,9 +41,9 @@ function ProductCard({ id, name, price }) {
   const productImage = imagesArr[id] || engine
 
   return (
-    <div className="product-container dark:border-[#393939]">
-      <div className="product-wrapper bg-white dark:bg-[#393939]">
-        <div className="product-image bg-white dark:bg-[#393939]">
+    <div className="product-tile dark:border-[#393939]">
+      <div className="product-tile__wrap bg-white dark:bg-[#393939]">
+        <div className="product-tile__image bg-white dark:bg-[#393939]">
           <img className="engine" src={productImage} alt={name} />
         </div>
 
@@ -54,8 +54,8 @@ function ProductCard({ id, name, price }) {
           {name}
         </div>
 
-        <div className="product-price-container">
-          <div className="product-price dark:text-white">
+        <div className="product-tile__details">
+          <div className="product-tile__price dark:text-white">
             <b>{price.toLocaleString("ru-RU")} ₸</b>
           </div>
 

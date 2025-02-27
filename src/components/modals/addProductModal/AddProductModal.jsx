@@ -62,7 +62,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
   }
 
   return (
-    <div className="modal__container">
+    <div>
       <Modal open={isOpen} close={close}>
         <div className="modal__header dark:bg-[#252525]">
           <span>{t("addProductAddingToCart")}</span>

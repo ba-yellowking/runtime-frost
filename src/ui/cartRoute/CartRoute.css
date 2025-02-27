@@ -1,4 +1,4 @@
-.route-container {
+.route {
   display: flex;
   justify-content: center;
   border: 1px solid #cccccc;
@@ -9,7 +9,7 @@
 .route-cart,
 .route-contacts,
 .route-delivery,
-.route-final {
+.route-completed {
   display: flex;
   align-items: center;
   justify-content: center;

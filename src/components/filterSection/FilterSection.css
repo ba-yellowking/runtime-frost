@@ -1,4 +1,4 @@
-.filter-container {
+.filter {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -10,7 +10,7 @@
   border-radius: 5px;
 }
 
-.filter-wrapper {
+.filter__wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
   height: 90px;
 }
 
-.filter-dropdowns {
+.filter__dropdown {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +32,7 @@
   margin: 5px 0;
 }
 
-.filter-available {
+.filter__checkbox {
   display: flex;
   justify-content: flex-start;
   align-items: center;

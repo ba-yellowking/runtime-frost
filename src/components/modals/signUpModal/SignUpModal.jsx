@@ -99,7 +99,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
   }
 
   return (
-    <div className="modal__container">
+    <div>
       <span className="modal__title dark:text-white" onClick={onClick}>
         {title}
       </span>
@@ -111,7 +111,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
 
         {isLoading ? (
           <div className="spinner-container">
-            <div className="spinner-wrapper">
+            <div className="spinner-container__wrap">
               <Spinner />
             </div>
           </div>

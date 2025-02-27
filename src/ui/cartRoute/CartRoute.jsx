@@ -16,7 +16,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
   const { t } = useTranslation()
 
   return (
-    <div className="route-container dark:border-[#252525]">
+    <div className="route dark:border-[#252525]">
       <div
         className={`route-cart dark:bg-[#252525] ${currentComponent === "cart" ? "activeRoute dark:text-white" : "dark:text-[#393939]"}`}
         onClick={function () {
@@ -45,7 +45,7 @@ function CartRoute({ currentComponent, setCurrentComponent }) {
       </div>
 
       <div
-        className={`route-final dark:bg-[#252525] ${currentComponent === "final" ? "activeRoute dark:text-white" : "dark:text-[#393939]"}`}
+        className={`route-completed dark:bg-[#252525] ${currentComponent === "final" ? "activeRoute dark:text-white" : "dark:text-[#393939]"}`}
         onClick={function () {
           handleCurrentComponent("final")
         }}

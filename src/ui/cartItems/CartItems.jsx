@@ -60,34 +60,34 @@ function CartItems({ setCurrentComponent }) {
     <>
       {isLoading ? (
         <div className="spinner-container">
-          <div className="spinner-wrapper">
+          <div className="spinner-container__wrap">
             <Spinner />
           </div>
         </div>
       ) : (
         <>
-          <span className="cart-text">{t("cartItemsCart")}</span>
+          <span className="cart__header">{t("cartItemsCart")}</span>
           {cartItems.length > 0 ? (
             <>
-              <div className="cart-header dark:bg-[#393939]">
-                <div className="cart-header-item title">{t("cartItemsItem")}</div>
-                <div className="cart-header-item">{t("cartItemsQuantity")}</div>
-                <div className="cart-header-item">{t("cartItemsPrice")}</div>
+              <div className="cart-item__header dark:bg-[#393939]">
+                <div className="cart-item__th">{t("cartItemsItem")}</div>
+                <div className="cart-item__th">{t("cartItemsQuantity")}</div>
+                <div className="cart-item__th">{t("cartItemsPrice")}</div>
               </div>
 
-              <div className="cart-body">
+              <div className="cart-item__body">
                 {cartItems.map((item) => (
                   <div className="cart-item" key={item.product.id}>
-                    <div className="cart-item-column">
-                      <div className="cart-item-detail">{item.product.name}</div>
+                    <div className="cart-item__column">
+                      <div className="cart-item__name">{item.product.name}</div>
 
-                      <div className="cart-item-bottom">
-                        <div className="cart-item-number">
+                      <div className="cart-item__info">
+                        <div className="cart-item__number">
                           {t("cartItemsItemNo")} {item.product.code}
                         </div>
 
                         <div
-                          className="cart-item-delete"
+                          className="cart-item__delete"
                           onClick={function () {
                             deleteItem(item.product.id)
                           }}
@@ -97,31 +97,31 @@ function CartItems({ setCurrentComponent }) {
                       </div>
                     </div>
 
-                    <div className="cart-item-column">
-                      <button className="cart-item-btn" onClick={() => decreaseQuantity(item.product.id)}>
+                    <div className="cart-item__column">
+                      <button className="cart-item__button" onClick={() => decreaseQuantity(item.product.id)}>
                         -
                       </button>
 
                       {item.count}
 
-                      <button className="cart-item-btn" onClick={() => increaseQuantity(item.product.id)}>
+                      <button className="cart-item__button" onClick={() => increaseQuantity(item.product.id)}>
                         +
                       </button>
                     </div>
-                    <div className="cart-item-column">
+                    <div className="cart-item__column">
                       {(item.product.price * item.count).toLocaleString("ru-RU")} ₸
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="cart-footer dark:bg-[#393939]">
-                <div className="cart-footer-item">{t("cartItemsTotalPrice")}</div>
-                <div className="cart-footer-item"></div>
-                <div className="cart-footer-item">{totalAmount.toLocaleString("ru-RU")} ₸</div>
+              <div className="cart-item__footer dark:bg-[#393939]">
+                <div className="cart-item__summary">{t("cartItemsTotalPrice")}</div>
+                <div className="cart-item__summary"></div>
+                <div className="cart-item__summary">{totalAmount.toLocaleString("ru-RU")} ₸</div>
               </div>
 
-              <div className="cart-button-container">
+              <div className="cart-details__button">
                 <ButtonStandard
                   name={t("cartItemsConfirmButton")}
                   className="cartProductList"

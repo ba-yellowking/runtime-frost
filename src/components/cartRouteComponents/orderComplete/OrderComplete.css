@@ -1,26 +1,26 @@
-.final-container {
+.order-complete {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 10px 0;
   width: 920px;
 }
 
-.final-left {
+.order-complete__no {
   width: 520px;
 }
 
-.final-left p {
+.order-complete__no p {
   color: #505050;
 }
 
-.final-right {
+.order-complete__account {
   display: flex;
   justify-content: flex-end;
   width: 400px;
   cursor: pointer;
 }
 
-.final-right a {
+.order-complete__account a {
   text-decoration: underline;
   color: #83b669;
 }

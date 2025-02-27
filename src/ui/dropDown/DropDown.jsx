@@ -32,7 +32,7 @@ function DropDown({ defaultOption, options = [], selectHandler, isDropdownDisabl
       if (isOpen && selectedOption !== (option.name || defaultOption)) {
         return (
           <div
-            className="dropdown-option dark:border-[#252525] dark:bg-[#393939]"
+            className="dropdown__option dark:border-[#252525] dark:bg-[#393939]"
             key={index}
             onClick={() => selectOption(option)}
           >
@@ -44,15 +44,15 @@ function DropDown({ defaultOption, options = [], selectHandler, isDropdownDisabl
   }
 
   return (
-    <div className="dropdown-wrap">
+    <div className="dropdown">
       <div
-        className={`${isDropdownDisabled ? "dropdown-disabled dark:bg-[#393939]" : `dropdown-header ${isOpen ? "open" : ""}`}`}
+        className={`${isDropdownDisabled ? "dropdown--disabled dark:bg-[#393939]" : `dropdown__header ${isOpen ? "open" : ""}`}`}
         onClick={openMenu}
         ref={dropDownRef}
       >
         {selectedOption}
       </div>
-      {isOpen && <div className="dropdown-list">{renderOptions()}</div>}
+      {isOpen && <div className="dropdown__list">{renderOptions()}</div>}
     </div>
   )
 }

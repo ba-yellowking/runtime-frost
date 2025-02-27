@@ -1,4 +1,4 @@
-.contacts-container {
+.contacts__body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -6,17 +6,17 @@
   width: 920px;
 }
 
-.delivery-text {
+.delivery__label {
   font-size: 14px;
   color: #1c1c1c;
 }
 
-.contacts-text-disabled {
+.contacts__label--disabled {
   font-size: 14px;
   color: #9e9e9e;
 }
 
-.contacts-style {
+.cart__input {
   margin: 10px 0 20px 0;
   width: 350px;
   height: 30px;
@@ -25,21 +25,21 @@
   background-color: #f9f9f9;
 }
 
-.contacts-style[disabled] {
+.cart__input[disabled] {
   background-color: #ffffff;
 }
 
-.contacts-button-container {
+.cart-details__button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.optional-text {
+.contacts__label--optional {
   color: #8c8c8c;
 }
 
-.error-message {
+.cart-error {
   color: red;
   font-size: 12px;
 }

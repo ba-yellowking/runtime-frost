@@ -24,7 +24,7 @@
   height: 40px;
 }
 
-.spinner-wrapper {
+.spinner-container__wrap {
   display: flex;
   justify-content: center;
   align-items: center;

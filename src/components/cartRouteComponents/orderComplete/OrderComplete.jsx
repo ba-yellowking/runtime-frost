@@ -11,14 +11,14 @@ function OrderComplete({ orderNumber, setIsProfilePage }) {
   }
 
   return (
-    <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
-      <span className="cart-text">{t("orderCompleteNotification")}</span>
+    <div className="cart dark:border-[#252525] dark:bg-[#252525]">
+      <span className="cart__header">{t("orderCompleteNotification")}</span>
 
-      <div className="final-container">
-        <div className="final-left">
+      <div className="order-complete">
+        <div className="order-complete__no">
           <p className="dark:text-white">{`${t("orderCompleteOrderNumber")} ${orderNumber}. ${t("orderCompleteSeeProfile")}`}</p>
         </div>
-        <div className="final-right">
+        <div className="order-complete__account">
           <a onClick={handleProfileRedirect}>{t("orderCompleteProfile")}</a>
         </div>
       </div>

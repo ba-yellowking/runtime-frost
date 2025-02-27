@@ -20,14 +20,14 @@ function MainPage() {
   const [isProfilePage, setIsProfilePage] = useState(undefined)
 
   return (
-    <div className={`main-page-container dark:bg-[#393939]`}>
+    <div className={`main-page dark:bg-[#393939]`}>
       {isProfilePage ? (
         <UserProfile />
       ) : (
         <>
           <Header />
 
-          <div className={`products-container`}>
+          <div className="products">
             <FilterSection />
             <ProductsGrid />
             <PageNavigation onPageChange={onPageChange} />

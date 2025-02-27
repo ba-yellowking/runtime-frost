@@ -70,7 +70,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
 
         {isLoading ? (
           <div className="spinner-container">
-            <div className="spinner-wrapper">
+            <div className="spinner-container__wrap">
               <Spinner />
             </div>
           </div>

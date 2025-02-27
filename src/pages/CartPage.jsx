@@ -84,7 +84,7 @@ function CartPage() {
   const { t } = useTranslation()
 
   return (
-    <div className="main-page-container dark:bg-[#393939]">
+    <div className="main-page dark:bg-[#393939]">
       {isProfilePage && user ? (
         <UserProfile />
       ) : (
@@ -92,7 +92,7 @@ function CartPage() {
           <Header totalCount={totalCount} />
 
           <div className="cart-route dark:bg-[#393939]">
-            <p className="cart-route-text">{t("cartPageHeader")}</p>
+            <p className="cart-route__header">{t("cartPageHeader")}</p>
 
             <CartRoute currentComponent={currentComponent} setCurrentComponent={setCurrentComponent} />
           </div>

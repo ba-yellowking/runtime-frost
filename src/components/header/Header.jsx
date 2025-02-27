@@ -14,6 +14,7 @@ import theme_sun from "../../images/theme_sun.png"
 import theme_moon from "../../images/theme_moon.png"
 import main_logo from "../../images/logo.png"
 import main_logo_dark from "../../images/logo2.png"
+import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function Header() {
   const dispatch = useDispatch()
@@ -22,6 +23,8 @@ function Header() {
   const totalCount = useSelector((state) => state.counter.counter)
   const displayName = user ? user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) : ""
   const navigate = useNavigate()
+
+  const { t } = useTranslation()
 
   // Modal state hooks
   const [isOpenLogIn, openLogIn, closeLogIn] = useModal()
@@ -127,6 +130,8 @@ function Header() {
           <div className="header__authorization">
             {!tokenInfo ? (
               <>
+                <LocaleDropdown />
+
                 <div className="mx-[5px] h-[40px] w-[40px] cursor-pointer p-[10px]">
                   <button onClick={handleToggle}>
                     {theme === "dark" ? (
@@ -147,7 +152,7 @@ function Header() {
 
                 <div className="header__login">
                   <LogInModal
-                    title="Войти"
+                    title={t("loginSignUp")}
                     onClick={openLogIn}
                     isOpen={isOpenLogIn}
                     close={closeLogIn}
@@ -157,7 +162,8 @@ function Header() {
 
                 <div className="header__signup">
                   <SignUpModal
-                    title="Регистрация"
+                    // title="Регистрация"
+                    title={t("signUpSignIn")}
                     onClick={openSignUp}
                     isOpen={isOpenSignUp}
                     close={closeSignUp}

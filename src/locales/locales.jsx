@@ -81,7 +81,7 @@ export const APP_TRANSLATIONS = {
     loginPassword: "Пароль",
     loginSignInButton: "Войти в учетную запись",
     loginNoProfile: "Нет учетной записи?",
-    loginSignUp: "Зарегистрироваться",
+    loginSignUp: "Войти",
 
     // signUpModal
     signUpCreate: "Создание учетной записи",
@@ -91,7 +91,7 @@ export const APP_TRANSLATIONS = {
     signUpPassword: "Пароль",
     signUpRepeatPassword: "Повторите пароль",
     signUpProfileExists: "Есть учетная запись?",
-    signUpSignIn: "Войти",
+    signUpSignIn: "Зарегистрироваться",
 
     // pageNavigation
     pageNavBack: "Назад",
@@ -193,7 +193,7 @@ export const APP_TRANSLATIONS = {
     loginPassword: "Password",
     loginSignInButton: "Sign in",
     loginNoProfile: "No account?",
-    loginSignUp: "Sign up",
+    loginSignUp: "Sign in",
 
     signUpCreate: "Creating a new account",
     signUpFirstName: "First name",
@@ -202,7 +202,7 @@ export const APP_TRANSLATIONS = {
     signUpPassword: "Password",
     signUpRepeatPassword: "Confirm password",
     signUpProfileExists: "Have an account?",
-    signUpSignIn: "Sign in",
+    signUpSignIn: "Sign up",
 
     pageNavBack: "Back",
     pageNavForward: "Forward",
@@ -297,7 +297,7 @@ export const APP_TRANSLATIONS = {
     loginPassword: "Құпия сөз",
     loginSignInButton: "Есептік жазбаға кіру",
     loginNoProfile: "Есептік жазбаңыз жоқ па?",
-    loginSignUp: "Тіркелу",
+    loginSignUp: "Кіру",
 
     signUpCreate: "Есептік жазба жасау",
     signUpFirstName: "Аты",
@@ -306,7 +306,7 @@ export const APP_TRANSLATIONS = {
     signUpPassword: "Құпия сөз",
     signUpRepeatPassword: "Құпия сөзді қайталаңыз",
     signUpProfileExists: "Есептік жазбаңыз бар ма?",
-    signUpSignIn: "Кіру",
+    signUpSignIn: "Тіркелу",
 
     pageNavBack: "Артқа",
     pageNavForward: "Алға",

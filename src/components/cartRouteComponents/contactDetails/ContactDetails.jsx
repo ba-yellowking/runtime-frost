@@ -33,41 +33,41 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
   }
 
   return (
-    <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
-      <span className="cart-text">{t("contactsDetails")}</span>
+    <div className="cart dark:border-[#252525] dark:bg-[#252525]">
+      <span className="cart__header">{t("contactsDetails")}</span>
 
-      <div className="contacts-container">
-        <div className="contacts-container-left">
-          <p className="contacts-text dark:text-white">{t("contactsLastName")}</p>
+      <div className="contacts__body">
+        <div>
+          <p className="contacts__label dark:text-white">{t("contactsLastName")}</p>
 
           <input
-            className="contacts-last-name contacts-style dark:border-[#393939] dark:bg-[#393939]"
+            className="cart__input dark:border-[#393939] dark:bg-[#393939]"
             type="text"
             // defaultValue вместо Value
             defaultValue={user.lastName}
           />
 
-          <p className="contacts-text dark:text-white">{t("contactsFirstName")}</p>
+          <p className="contacts__label dark:text-white">{t("contactsFirstName")}</p>
           <input
-            className="contacts-first-name contacts-style dark:border-[#393939] dark:bg-[#393939]"
+            className="cart__input dark:border-[#393939] dark:bg-[#393939]"
             type="text"
             defaultValue={user.firstName}
           />
 
-          <p className="contacts-text dark:text-white">
-            {t("contactsPatronym")} <span className="optional-text dark:text-white">{t("contactsOptional")}</span>
+          <p className="contacts__label dark:text-white">
+            {t("contactsPatronym")} <span className="contacts__label--optional dark:text-white">{t("contactsOptional")}</span>
           </p>
-          <input className="contacts-patronymic contacts-style dark:border-[#393939] dark:bg-[#393939]" type="text" />
+          <input className="cart__input dark:border-[#393939] dark:bg-[#393939]" type="text" />
 
           {/*InputMask для номера телефона*/}
           {errorPhone ? (
             <>
-              <p className="error-message">{t("contactsPhone")}</p>
+              <p className="contacts__phone-error">{t("contactsPhone")}</p>
               <InputMask
                 mask="+7 999 999 99 99"
                 value={ordersData.phone}
                 onChange={onChangePhoneNumber}
-                className="contacts-phone contacts-style dark:border-[#393939] dark:bg-[#393939]"
+                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
                 maskChar={null}
                 placeholder="+7"
               >
@@ -76,12 +76,12 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
             </>
           ) : (
             <>
-              <p className="contacts-text dark:text-white">{t("contactsPhone")}</p>
+              <p className="contacts__label dark:text-white">{t("contactsPhone")}</p>
               <InputMask
                 mask="+7 999 999 99 99"
                 value={ordersData.phone}
                 onChange={onChangePhoneNumber}
-                className="contacts-phone contacts-style dark:border-[#393939] dark:bg-[#393939]"
+                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
                 maskChar={null}
                 placeholder="+7"
               >
@@ -91,41 +91,41 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
           )}
         </div>
 
-        <div className="contacts-container-right">
-          <p className="contacts-text dark:text-white">{t("contactsEmail")}</p>
+        <div>
+          <p className="contacts__label dark:text-white">{t("contactsEmail")}</p>
 
           <input
-            className="contacts-email contacts-style dark:border-[#393939] dark:bg-[#393939]"
+            className="cart__input dark:border-[#393939] dark:bg-[#393939]"
             type="text"
             defaultValue={user.email}
           />
 
           {user ? (
             <>
-              <p className="contacts-text-disabled dark:text-white">{t("contactsPassword")}</p>
+              <p className="contacts__label--disabled dark:text-white">{t("contactsPassword")}</p>
               <input
-                className="contacts-password contacts-style dark:border-[#393939] dark:bg-[#393939]"
+                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
                 type="text"
                 disabled
               />
 
-              <p className="contacts-text-disabled dark:text-white">{t("contactsRepeatPassword")}</p>
+              <p className="contacts__label--disabled dark:text-white">{t("contactsRepeatPassword")}</p>
               <input
-                className="contacts-confirm-password contacts-style dark:border-[#393939] dark:bg-[#393939]"
+                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
                 type="text"
                 disabled
               />
             </>
           ) : (
             <>
-              <p className="contacts-text dark:text-white">{t("contactsPassword")}</p>
-              <input className="contacts-password contacts-style" type="text" />
+              <p className="contacts__label dark:text-white">{t("contactsPassword")}</p>
+              <input className="cart__input" type="text" />
 
-              <p className="contacts-text dark:text-white">{t("contactsRepeatPassword")}</p>
-              <input className="contacts-confirm-password contacts-style" type="text" />
+              <p className="contacts__label dark:text-white">{t("contactsRepeatPassword")}</p>
+              <input className="cart__input" type="text" />
             </>
           )}
-          <div className="contacts-button-container">
+          <div className="cart-details__button">
             <ButtonStandard name={t("confirmButton")} className="contactsCartComponent" clickHandler={proceed} />
           </div>
         </div>

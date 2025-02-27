@@ -56,7 +56,7 @@ function ProductsGrid() {
       {isLoading || isInitialLoad ? ( // Условие для отображения спиннера
         <div className="products-grid border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
           <div className="spinner-container">
-            <div className="spinner-wrapper">
+            <div className="spinner-container__wrap">
               <Spinner />
             </div>
           </div>

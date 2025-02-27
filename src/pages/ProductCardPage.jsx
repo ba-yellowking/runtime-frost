@@ -63,10 +63,10 @@ function ProductCardPage() {
   }, [])
 
   return (
-    <div className="main-page-container">
+    <div className="main-page">
       <Header />
 
-      <div className="product-card-component dark:bg-[#393939]">
+      <div className="product-card dark:bg-[#393939]">
         <ProductDetails
           productCardData={productCardData}
           reviewData={reviews}

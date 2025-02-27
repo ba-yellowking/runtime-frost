@@ -109,7 +109,7 @@ function PageNavigation() {
   }
 
   return (
-    <div className="page-nav-container dark:border-[#222222] dark:bg-[#222222]">
+    <div className="pagination dark:border-[#222222] dark:bg-[#222222]">
       {totalPages > 0 && (
         <>
           <ButtonStandard

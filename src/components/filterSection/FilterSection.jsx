@@ -27,52 +27,47 @@ function FilterSection() {
   }
 
   return (
-    <div className="filter-container dark:border-[#252525] dark:bg-[#252525]">
-      <div className="filter-wrapper">
-        <div className="filter-dropdowns">
-          <div className="filter-brands">
+    <div className="filter dark:border-[#252525] dark:bg-[#252525]">
+      <div className="filter__wrap">
+        <div className="filter__dropdown">
+
+          <DropDown
+            defaultOption={t("filterAllBrands")}
+            options={brands}
+            selectHandler={function (brandId) {
+              dispatch(changeBrand(brandId))
+            }}
+          />
+
+          {selectedBrand ? (
             <DropDown
-              defaultOption={t("filterAllBrands")}
-              options={brands}
-              selectHandler={function (brandId) {
-                dispatch(changeBrand(brandId))
+              defaultOption={t("filterAllModels")}
+              options={models}
+              selectHandler={function (modelId) {
+                dispatch(changeModel(modelId))
               }}
             />
-          </div>
+          ) : (
+            <DropDown defaultOption={t("filterAllModels")} isDropdownDisabled={true} className="dropdown--disabled" />
+          )}
 
-          <div className="filter-models">
-            {selectedBrand ? (
-              <DropDown
-                defaultOption={t("filterAllModels")}
-                options={models}
-                selectHandler={function (modelId) {
-                  dispatch(changeModel(modelId))
-                }}
-              />
-            ) : (
-              <DropDown defaultOption={t("filterAllModels")} isDropdownDisabled={true} className="dropdown-disabled" />
-            )}
-          </div>
+          {selectedModel && selectedBrand ? (
+            <DropDown
+              defaultOption={t("filterAllGenerations")}
+              options={generations}
+              selectHandler={function (generationId) {
+                dispatch(changeGeneration(generationId))
+              }}
+            />
+          ) : (
+            <DropDown
+              defaultOption={t("filterAllGenerations")}
+              isDropdownDisabled={true}
+              className="dropdown--disabled"
+            />
+          )}
 
-          <div className="filter-generations">
-            {selectedModel && selectedBrand ? (
-              <DropDown
-                defaultOption={t("filterAllGenerations")}
-                options={generations}
-                selectHandler={function (generationId) {
-                  dispatch(changeGeneration(generationId))
-                }}
-              />
-            ) : (
-              <DropDown
-                defaultOption={t("filterAllGenerations")}
-                isDropdownDisabled={true}
-                className="dropdown-disabled"
-              />
-            )}
-          </div>
-
-          <div className="filter-available">
+          <div className="filter__checkbox">
             <CheckBox onChangeCheckBox={onChangeCheckBox} />
           </div>
         </div>
