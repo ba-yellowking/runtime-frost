@@ -12,6 +12,9 @@ import { toggleTheme } from "../../slices/themeSlice.jsx"
 import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
 import theme_sun from "../../images/theme_sun.png"
 import theme_moon from "../../images/theme_moon.png"
+import main_logo from "../../images/logo.png";
+import main_logo_dark from "../../images/logo2.png";
+
 
 function Header() {
   const dispatch = useDispatch()
@@ -70,9 +73,9 @@ function Header() {
         <div className="header-left">
           <a href={`/`}>
             {theme === "dark" ? (
-              <img className="header-left-logo" src="/src/images/logo2.png" alt="Logo" />
+              <img className="header-left-logo" src={main_logo_dark} alt="Logo" />
             ) : (
-              <img className="header-left-logo" src="/src/images/logo.png" alt="Logo" />
+              <img className="header-left-logo" src={main_logo} alt="Logo" />
             )}
           </a>
         </div>
@@ -143,7 +146,7 @@ function Header() {
                   </button>
                 </div>
 
-                <div className="log-in-section">
+                <div className="login">
                   <LogInModal
                     title="Войти"
                     onClick={openLogIn}
@@ -153,7 +156,7 @@ function Header() {
                   />
                 </div>
 
-                <div className="sign-up-section">
+                <div className="signup">
                   <SignUpModal
                     title="Регистрация"
                     onClick={openSignUp}

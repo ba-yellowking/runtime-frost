@@ -22,12 +22,6 @@ function FilterSection() {
     dispatch(fetchBrands())
   }, [dispatch])
 
-  // const changeGeneration = function(generationId) {
-  //   if (generationId > 0) {
-  //     dispatch(setSelectedGeneration(generationId));
-  //   }
-  // }
-
   const onChangeCheckBox = function (availableBoolean) {
     dispatch(setAvailable(availableBoolean ? 1 : 0))
   }

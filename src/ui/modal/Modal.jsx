@@ -6,11 +6,14 @@ function Modal(props) {
   }
 
   return (
-    <div className={`modal-wrap ${props.open ? "visible" : ""}`}>
-      <div className="modal-shade" onClick={props.close}>
-        <div className="modal-content dark:border-[#252525] dark:bg-[#252525]" onClick={handleContentClick}>
+    <div className={`modal ${props.open ? "visible" : ""}`}>
+      <div className="modal__shade" onClick={props.close}>
+        <div
+          className="modal__content dark:border-[#252525] dark:bg-[#252525]"
+          onClick={handleContentClick}
+        >
           {props.children}
-          <span className="close" onClick={props.close}>
+          <span className="modal__close" onClick={props.close}>
             &times;
           </span>
         </div>

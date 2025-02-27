@@ -50,7 +50,7 @@
 }
 
 .cart-page,
-.log-in-section {
+.login {
   position: relative;
   text-align: center;
   margin: 0 5px;
@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-.sign-up-section {
+.signup {
   position: relative;
   text-align: center;
   margin: 0 5px;

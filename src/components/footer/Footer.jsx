@@ -9,23 +9,23 @@ function Footer() {
   const { t } = useTranslation()
 
   return (
-    <div className="footer-container dark:border-[#222222] dark:bg-[#222222]">
-      <div className="footer-wrap">
-        <div className="footer-instagram dark:bg-[#222222]">
-          <img className="instagram" src={instagramLogo} alt="instagram" />
+    <div className="footer dark:border-[#222222] dark:bg-[#222222]">
+      <div className="footer__wrapper">
+        <div className="footer__item--instagram dark:bg-[#222222]">
+          <img className="footer__icon" src={instagramLogo} alt="Instagram logo" />
           <a href="http://instagram.com" className="instagram-text dark:text-white max-lg:hidden" target="_blank">
-            <p className="footer-text">bakytdreamer</p>
+            <span>bakytdreamer</span>
           </a>
         </div>
 
-        <div className="footer-gmail dark:bg-[#222222]">
-          <img className="gmail" src={gmailLogo} alt="gmail" />
-          <p className="footer-text max-lg:hidden">ba.temirgali@gmail.com</p>
+        <div className="footer__item--gmail dark:bg-[#222222]">
+          <img className="footer__icon" src={gmailLogo} alt="Gmail logo" />
+          <span className="max-lg:hidden">ba.temirgali@gmail.com</span>
         </div>
 
-        <div className="footer-whatsapp dark:bg-[#222222]">
-          <img className="phone-call" src={phoneCallLogo} alt="phone-call" />
-          <p className="footer-text max-lg:hidden">{t("footerContacts")}</p>
+        <div className="footer__item--whatsapp dark:bg-[#222222]">
+          <img className="footer__icon" src={phoneCallLogo} alt="Phone logo" />
+          <span className="max-lg:hidden">{t("footerContacts")}</span>
         </div>
       </div>
     </div>

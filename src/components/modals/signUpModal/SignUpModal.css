@@ -1,12 +1,12 @@
-.modal-title {
+.modal__title {
   cursor: pointer;
 }
 
-.modal-title:hover {
+.modal__title:hover {
   color: #7fb364;
 }
 
-.modal-title::before {
+.modal__title::before {
   content: " ";
   position: absolute;
   left: 5px;
@@ -18,7 +18,7 @@
   transition-property: width;
 }
 
-.modal-title:hover::before {
+.modal__title:hover::before {
   width: calc(100% - 10px);
 }
 
@@ -31,7 +31,7 @@
   width: 195px;
 }
 
-.signin-signup-style {
+.modal__signup--link {
   color: #7fb364;
   cursor: pointer;
 }

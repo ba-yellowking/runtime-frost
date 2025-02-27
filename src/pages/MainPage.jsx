@@ -7,7 +7,6 @@ import { useState } from "react"
 import UserProfile from "./UserProfile.jsx"
 import { useDispatch } from "react-redux"
 import { setCurrentPage } from "../slices/filterSlice.jsx"
-import Banner from "../ui/banner/Banner.jsx"
 
 function MainPage() {
   const dispatch = useDispatch()
@@ -28,13 +27,12 @@ function MainPage() {
         <>
           <Header />
 
-          {/*<Banner />*/}
-
           <div className={`products-container`}>
             <FilterSection />
             <ProductsGrid />
             <PageNavigation onPageChange={onPageChange} />
           </div>
+
           <Footer />
         </>
       )}

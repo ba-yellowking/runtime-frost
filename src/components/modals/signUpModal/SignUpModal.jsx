@@ -99,13 +99,13 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
   }
 
   return (
-    <div className="modal-container">
-      <span className="modal-title dark:text-white" onClick={onClick}>
+    <div className="modal__container">
+      <span className="modal__title dark:text-white" onClick={onClick}>
         {title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>
-        <div className="modal-content-top dark:bg-[#393939] dark:text-white">
+        <div className="modal__header dark:bg-[#393939] dark:text-white">
           <p>{t("signUpCreate")}</p>
         </div>
 
@@ -117,15 +117,15 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
           </div>
         ) : (
           <>
-            <div className="modal-content-center dark:bg-[#252525]">
-              <div className="authorization-full-name">
-                <div className="authorization-first-name">
-                  <div className="invalid">
+            <div className="modal__body dark:bg-[#252525]">
+              <div className="modal__full-name">
+                <div className="modal__first-name">
+                  <div className="modal__signup--error">
                     <span>{errorMessage.first_name}</span>
                   </div>
 
                   <input
-                    className={`authorization-input firstNameLastName dark:border-[#393939] dark:bg-[#393939] dark:text-white`}
+                    className={`modal__input firstNameLastName dark:border-[#393939] dark:bg-[#393939] dark:text-white`}
                     type="text"
                     value={firstNameInput}
                     onChange={handleFirstNameInput}
@@ -133,13 +133,13 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                   />
                 </div>
 
-                <div className="authorization-last-name">
-                  <div className="invalid">
+                <div className="modal__last-name">
+                  <div className="modal__signup--error">
                     <span>{errorMessage.last_name}</span>
                   </div>
 
                   <input
-                    className="authorization-input firstNameLastName dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+                    className="modal__input firstNameLastName dark:border-[#393939] dark:bg-[#393939] dark:text-white"
                     type="text"
                     value={lastNameInput}
                     onChange={handleLastNameInput}
@@ -148,24 +148,24 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
                 </div>
               </div>
 
-              <div className="invalid">
+              <div className="modal__signup--error">
                 <span>{errorMessage.email}</span>
               </div>
 
               <input
-                className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+                className="modal__input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
                 type="email"
                 value={emailInput}
                 onChange={handleEmailInput}
                 placeholder={t("signUpEmail")}
               />
 
-              <div className="invalid">
+              <div className="modal__signup--error">
                 <span>{errorMessage.password}</span>
               </div>
 
               <input
-                className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+                className="modal__input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
                 type="password"
                 value={passInput}
                 onChange={handlePassInput}
@@ -173,7 +173,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
               />
 
               <input
-                className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+                className="modal__input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
                 type="password"
                 value={confirmPassInput}
                 onChange={handleConfirmPassInput}
@@ -181,12 +181,12 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
               />
             </div>
 
-            <div className="modal-content-bottom dark:bg-[#252525]">
+            <div className="modal__footer dark:bg-[#252525]">
               <ButtonStandard name="Зарегистрироваться" clickHandler={handleClick} className="signUpModal" />
 
-              <span className="signin-signup dark:text-white">
+              <span className="modal__signup dark:text-white">
                 {t("signUpProfileExists")}{" "}
-                <span className="signin-signup-style" onClick={onClickLogIn}>
+                <span className="modal__signup--link" onClick={onClickLogIn}>
                   {t("signUpSignIn")}
                 </span>
               </span>

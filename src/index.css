@@ -141,7 +141,7 @@ body {
 }
 
 /*User Profile*/
-.profile-header {
+.profile__header {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
   background-color: #f5f5f5;
@@ -150,16 +150,16 @@ body {
   font-weight: bold;
 }
 
-.profile-header-item {
+.profile__header--column {
   padding: 5px;
 }
 
-.profile-body {
+.profile__body {
   display: flex;
   flex-direction: column;
 }
 
-.profile-item {
+.profile__item {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
   align-items: center;
@@ -168,18 +168,18 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.profile-item-column {
+.profile__item--column {
   text-align: center;
 }
 
-.empty-orders {
+.profile__empty {
   display: flex;
   justify-content: flex-start;
   margin: 0 0 10px 0;
   text-align: center;
 }
 
-.profile-wrap {
+.profile__wrap {
   display: flex;
   flex-direction: column;
   margin: 0 0 50px 0;
@@ -191,7 +191,7 @@ body {
   border-radius: 5px;
 }
 
-.profile-top {
+.profile__section {
   height: 110px;
   display: flex;
   justify-content: space-between;
@@ -200,11 +200,11 @@ body {
   padding: 10px;
 }
 
-.profile-top-text {
+.profile__section--text {
   font-size: 1.5rem;
 }
 
-.profile-text {
+.profile__orders {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0 30px 0;

@@ -58,13 +58,13 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
   }
 
   return (
-    <div className="modal-container">
-      <span className="modal-title dark:text-white" onClick={onClick}>
+    <>
+      <span className="modal__title dark:text-white" onClick={onClick}>
         {title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>
-        <div className="modal-content-top dark:bg-[#393939]">
+        <div className="modal__header dark:bg-[#393939]">
           <p className="dark:text-white">{t("loginSignIn")}</p>
         </div>
 
@@ -75,23 +75,21 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
             </div>
           </div>
         ) : (
-          <div className="modal-content-center dark:bg-[#252525]">
-            {errorLogin && <div className="error-container">{errorLogin}</div>}
+          <div className="modal__body dark:bg-[#252525]">
+            {errorLogin && <div className="modal__error">{errorLogin}</div>}
 
             <input
-              // className={`authorization-input ${errorLogin ? 'error' : ''}`}
-              className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+              className="modal__input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
               type="text"
               value={emailInput}
               onChange={handleEmailInput}
               placeholder={t("loginEmail")}
             />
 
-            {errorPassword && <div className="error-container">{errorPassword}</div>}
+            {errorPassword && <div className="modal__error">{errorPassword}</div>}
 
             <input
-              // className={`authorization-input ${errorPassword ? 'error' : ''}`}
-              className="authorization-input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
+              className="modal__input dark:border-[#393939] dark:bg-[#393939] dark:text-white"
               type="password"
               value={passInput}
               onChange={handlePassInput}
@@ -100,18 +98,18 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
           </div>
         )}
 
-        <div className="modal-content-bottom dark:bg-[#252525]">
+        <div className="modal__footer dark:bg-[#252525]">
           <ButtonStandard name={t("loginSignInButton")} className="logInModal" clickHandler={handleClick} />
 
-          <span className="signin-signup dark:text-white">
+          <span className="modal__signup dark:text-white">
             {t("loginNoProfile")}{" "}
-            <span className="signin-signup-style" onClick={goToSignUpFromLogIn}>
+            <span className="modal__signup--link" onClick={goToSignUpFromLogIn}>
               {t("loginSignUp")}
             </span>
           </span>
         </div>
       </Modal>
-    </div>
+    </>
   )
 }
 

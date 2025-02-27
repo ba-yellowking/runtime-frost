@@ -1,4 +1,4 @@
-.footer-container {
+.footer {
   margin-top: auto;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@
   border-top: 1px solid #cccccc;
 }
 
-.footer-wrap {
+.footer__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,7 @@
   height: 40px;
 }
 
-.footer-instagram {
+.footer__item--instagram {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -24,7 +24,7 @@
   background-color: #ffffff;
 }
 
-.instagram {
+.footer__icon {
   margin: 10px;
   width: 20px;
   height: auto;
@@ -35,7 +35,7 @@
   color: black;
 }
 
-.footer-gmail {
+.footer__item--gmail {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,13 +44,7 @@
   background-color: #ffffff;
 }
 
-.gmail {
-  margin: 10px;
-  width: 20px;
-  height: auto;
-}
-
-.footer-whatsapp {
+.footer__item--whatsapp {
   margin-right: 10px;
   display: flex;
   justify-content: space-between;
@@ -66,15 +60,3 @@
 .footer-right-right {
   width: 200px;
 }
-
-.phone-call {
-  margin: 10px;
-  width: 20px;
-  height: auto;
-}
-
-/*@media (max-width: 768px) {*/
-/*  .footer-text {*/
-/*    font-size: 10px;*/
-/*  }*/
-/*}*/

@@ -133,7 +133,7 @@ function CartItems({ setCurrentComponent }) {
             <div className="empty-cart">
               <span>
                 {t("cartItemsEmpty")}
-                <a href="/" className="empty-cart-add-products">
+                <a href="/" className="profile__empty--add">
                   {t("cartItemsAddItems")}
                 </a>
               </span>

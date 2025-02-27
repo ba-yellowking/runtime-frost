@@ -62,29 +62,29 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
   }
 
   return (
-    <div className="modal-containe">
+    <div className="modal__container">
       <Modal open={isOpen} close={close}>
-        <div className="modal-content-top dark:bg-[#252525]">
+        <div className="modal__header dark:bg-[#252525]">
           <span>{t("addProductAddingToCart")}</span>
         </div>
 
-        <div className="modal-content-center dark:bg-[#252525]">
-          <div className="modal-content-name">{newProductName}</div>
+        <div className="modal__body dark:bg-[#252525]">
+          <div className="modal__body--name">{newProductName}</div>
 
-          <div className="modal-content-quantity">
-            <button className="modal-content-button dark:bg-[#252525]" onClick={decrease}>
+          <div className="modal__body--quantity">
+            <button className="modal__body--button dark:bg-[#252525]" onClick={decrease}>
               -
             </button>
             {counter}
-            <button className="modal-content-button dark:bg-[#252525]" onClick={increase}>
+            <button className="modal__body--button dark:bg-[#252525]" onClick={increase}>
               +
             </button>
           </div>
 
-          <div className="modal-content-price">{`${(newProductPrice * counter).toLocaleString("ru-RU")} ₸`}</div>
+          <div className="modal__body--price">{`${(newProductPrice * counter).toLocaleString("ru-RU")} ₸`}</div>
         </div>
 
-        <div className="modal-content-bottom dark:bg-[#252525]">
+        <div className="modal__footer dark:bg-[#252525]">
           <ButtonStandard
             name={t("addToCartButton")}
             className="productInCartModal"
@@ -92,7 +92,7 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
             isDisabled={!user}
           />
 
-          <span className="continue-shopping dark:text-white" onClick={close}>
+          <span className="modal__footer--continue dark:text-white" onClick={close}>
             {t("addProductContinueShopping")}
           </span>
         </div>

@@ -1,12 +1,10 @@
-.modal-title {
+.modal__title {
   cursor: pointer;
 }
-
-.modal-title:hover {
+.modal__title:hover {
   color: #7fb364;
 }
-
-.modal-title::before {
+.modal__title::before {
   content: " ";
   position: absolute;
   left: 5px;
@@ -17,8 +15,7 @@
   transition-duration: 0.3s;
   transition-property: width;
 }
-
-.modal-title:hover::before {
+.modal__title:hover::before {
   width: calc(100% - 10px);
 }
 
@@ -27,11 +24,12 @@
   height: 40px;
 }
 
-.error-container {
+.modal__error {
   width: 400px;
   height: 30px;
   color: red;
   display: flex;
   justify-content: start;
   align-items: center;
+  cursor: text;
 }

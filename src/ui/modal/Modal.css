@@ -1,16 +1,16 @@
-.modal-wrap {
+.modal {
   visibility: hidden;
   position: absolute;
   display: none;
 }
 
-.modal-wrap.visible {
+.modal.visible {
   visibility: visible;
   position: relative;
   display: inline-block;
 }
 
-.modal-shade {
+.modal__shade {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modal__content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   border: 1px solid #cccccc;
 }
 
-.close {
+.modal__close {
   position: absolute;
   top: 0;
   right: 0;
@@ -44,12 +44,12 @@
   font-size: 28px;
 }
 
-.close:hover {
+.modal__close:hover {
   color: black;
   cursor: pointer;
 }
 
-.modal-content-top {
+.modal__header {
   margin-bottom: 10px;
   padding: 15px;
   display: flex;
@@ -61,7 +61,7 @@
   background-color: #efefef;
 }
 
-.modal-content-center {
+.modal__body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,7 @@
   background-color: #ffffff;
 }
 
-.modal-content-button {
+.modal__body--button {
   width: 20px;
   height: 20px;
   border: 1px solid gray;
@@ -88,15 +88,15 @@
   margin: 10px;
 }
 
-.modal-content-name {
+.modal__body--name {
   padding: 10px;
 }
 
-.modal-content-price {
+.modal__body--price {
   padding: 10px;
 }
 
-.modal-content-bottom {
+.modal__footer {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -106,21 +106,21 @@
   background-color: #ffffff;
 }
 
-.continue-shopping {
+.modal__footer--continue {
   padding: 10px;
   color: #303030;
   font-size: 14px;
   cursor: pointer;
 }
 
-.signin-signup {
+.modal__signup {
   width: 400px;
   padding: 10px;
   color: #303030;
   font-size: 14px;
 }
 
-.authorization-input {
+.modal__input {
   margin: 5px;
   width: 100%;
   max-width: 400px;
@@ -129,38 +129,33 @@
   font-size: 16px;
 }
 
-.authorization-input:focus {
+.modal__input:focus {
   border-color: #7fb364;
   outline: none;
 }
 
-.authorization-input::placeholder {
+.modal__input::placeholder {
   color: #a1a1a1;
   font-size: 14px;
 }
 
-/*Вместо стандартного Placeholder приневерной  авторизации – предупреждение об ошибке*/
-/*.authorization-input.error::placeholder {*/
-/*  color: #f65656;*/
-/*}*/
-
-.authorization-full-name {
+.modal__full-name {
   display: flex;
 }
 
-.authorization-first-name {
+.modal__first-name {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.authorization-last-name {
+.modal__last-name {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.invalid {
+.modal__signup--error {
   color: #ff3a3a;
   font-size: 14px;
 }

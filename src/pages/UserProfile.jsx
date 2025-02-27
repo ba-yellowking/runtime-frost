@@ -31,6 +31,7 @@ function UserProfile() {
 
       .then((response) => {
         setOrders(response.data)
+        console.log(orders)
         dispatch(setLoading(false))
       })
 
@@ -48,13 +49,13 @@ function UserProfile() {
       <Header />
 
       <div className="main-page-container">
-        <div className="profile-top">
-          <p className="profile-top-text">{t("profileMyAccount")}</p>
+        <div className="profile__section">
+          <p className="profile__section--text">{t("profileMyAccount")}</p>
         </div>
 
         {isLoading ? (
           <>
-            <div className="profile-wrap dark:border-[#252525] dark:bg-[#252525]">
+            <div className="profile__wrap dark:border-[#252525] dark:bg-[#252525]">
               <div className="spinner-container">
                 <div className="spinner-wrapper">
                   <Spinner />
@@ -65,46 +66,62 @@ function UserProfile() {
         ) : (
           <>
             {orders.length > 0 ? (
-              <div className="profile-wrap dark:border-[#252525] dark:bg-[#252525]">
-                <span className="profile-text">{t("profileMyOrders")}</span>
+              <div className="profile__wrap dark:border-[#252525] dark:bg-[#252525]">
+                <span className="profile__orders">{t("profileMyOrders")}</span>
 
-                <div className="profile-header dark:bg-[#393939]">
-                  <div className="profile-header-item">{t("profileOrderNo")}</div>
-                  <div className="profile-header-item">{t("profileProduct")}</div>
-                  <div className="profile-header-item">{t("profileQuantity")}</div>
-                  <div className="profile-header-item">{t("profilePrice")}</div>
-                  <div className="profile-header-item">{t("profileDate")}</div>
+                <div className="profile__header dark:bg-[#393939]">
+                  <div className="profile__header--column">{t("profileOrderNo")}</div>
+                  <div className="profile__header--column">{t("profileProduct")}</div>
+                  <div className="profile__header--column">{t("profileQuantity")}</div>
+                  <div className="profile__header--column">{t("profilePrice")}</div>
+                  <div className="profile__header--column">{t("profileDate")}</div>
                 </div>
 
-                <div className="profile-body">
-                  {orders.map(function (order) {
-                    return order.items.map(function (item, index) {
-                      return (
-                        <div className="profile-item dark:border-[#393939]" key={index}>
-                          <div className="profile-item-column">{order.id}</div>
+                <div className="profile__body">
 
-                          <div className="profile-item-column">{item.product.name}</div>
+                    {orders.map((order, index) => (
+                      <div className="profile__item dark:border-[#393939]" key={index}>
 
-                          <div className="profile-item-column">{item.count}</div>
-
-                          <div className="profile-item-column">
-                            {(item.count * item.product.price).toLocaleString("ru-RU")} тг.
-                          </div>
-
-                          <div className="profile-item-column">{dateFormatting(order.created_at)}</div>
+                        <div className="profile__item--column">
+                          {order.id}
                         </div>
-                      )
-                    })
-                  })}
+
+                        <div className="profile__item--column">
+                          {order.items.map((item, i) => (
+                            <li key={i}>{item.product.name}</li>
+                          ))}
+                        </div>
+
+                        <div className="profile__item--column">
+                          {order.items.map((item, i) => (
+                            <div key={i}>{item.count}</div>
+                          ))}
+                        </div>
+
+                        <div className="profile__item--column">
+                          {order.items.map((item, i) => (
+                            <div key={i}>
+                              {(item.count * item.product.price).toLocaleString("ru-RU")} тг.
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="profile__item--column">
+                          {dateFormatting(order.created_at)}
+                        </div>
+
+                      </div>
+                    ))}
+
                 </div>
               </div>
             ) : (
               <div className="cart-menu-container dark:border-[#252525] dark:bg-[#252525]">
-                <span className="profile-text">{t("profileMyOrders")}</span>
-                <div className="empty-orders">
+                <span className="profile__orders">{t("profileMyOrders")}</span>
+                <div className="profile__empty">
                   <span>
                     {t("profileNoOrders")}
-                    <a href="/" className="empty-cart-add-products">
+                    <a href="/" className="profile__empty--add">
                       {t("profileAddProducts")}
                     </a>
                   </span>

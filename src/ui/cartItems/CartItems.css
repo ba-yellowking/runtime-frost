@@ -80,7 +80,7 @@
   margin: 0 0 10px 0;
 }
 
-.empty-cart-add-products {
+.profile__empty--add {
   text-decoration: none;
   color: #83b669;
   font-weight: bold;
