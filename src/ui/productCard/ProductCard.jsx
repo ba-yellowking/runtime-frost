@@ -44,7 +44,7 @@ function ProductCard({ id, name, price }) {
     <div className="product-container dark:border-[#393939]">
       <div className="product-wrapper bg-white dark:bg-[#393939]">
         <div className="product-image bg-white dark:bg-[#393939]">
-          <img className="engine-image" src={productImage} alt={name} />
+          <img className="engine" src={productImage} alt={name} />
         </div>
 
         <div

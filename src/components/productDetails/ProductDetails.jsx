@@ -40,7 +40,7 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
   const { t } = useTranslation()
 
   return (
-    <div className="product-card-wrapper dark:border-[#252525] dark:bg-[#252525]">
+    <div className="product-details dark:border-[#252525] dark:bg-[#252525]">
       {isLoading ? (
         <div className="spinner-container dark:bg-[#252525]">
           <div className="spinner-wrapper">
@@ -51,33 +51,33 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
         <>
           {productCardData ? (
             <>
-              <div className="top-product-card dark:bg-[#252525]">
-                <div className="image-product-card">
-                  <div className="main-image-product-card dark:bg-[#252525]">
-                    <img className="engine-image" src={engine} alt="image" />
+              <div className="product-details__header dark:bg-[#252525]">
+                <div className="product-details__image-container">
+                  <div className="product-details__image dark:bg-[#252525]">
+                    <img className="engine" src={engine} alt="image" />
                   </div>
                 </div>
 
-                <div className="info-product-card">
-                  <div className="name-product-card">
+                <div className="product-details__info">
+                  <div className="product-details__name">
                     <b>{productCardData.name}</b>
                   </div>
 
-                  <div className="code-product-card dark:text-white">
+                  <div className="product-details__code dark:text-white">
                     <span>
                       <b>{t("productDetailsItemNumber")}</b>
                     </span>{" "}
                     {productCardData.code}
                   </div>
 
-                  <div className="manufacturer-product-card dark:text-white">
+                  <div className="product-details__manufacturer dark:text-white">
                     <span>
                       <b>{t("productDetailsProducer")}</b>
                     </span>{" "}
                     {productCardData.manufacturer}
                   </div>
 
-                  <div className="description-product-card dark:text-white">
+                  <div className="product-details__description dark:text-white">
                     <span>
                       <b>{t("productDetailsDescription")}</b>
                     </span>{" "}
@@ -85,24 +85,24 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
                   </div>
                 </div>
 
-                <div className="add-info-product-card dark:bg-[#252525]">
-                  <div className="add-info-product-card-wrap dark:bg-[#393939]">
-                    <div className="price-product-card">
+                <div className="product-details__additional dark:bg-[#252525]">
+                  <div className="product-details__wrapper dark:bg-[#393939]">
+                    <div className="product_details__price">
                       <b>
                         {typeof productCardData.price === "number" &&
                           `${productCardData.price.toLocaleString("ru-RU")} ₸`}
                       </b>
                     </div>
 
-                    <div className="available-product-card">
+                    <div className="product-details__availability">
                       {productCardData.available ? (
                         <>
-                          <img src="/src/images/plus.png" className="available-logo" alt="available" />
+                          <img src="/src/images/plus.png" className="logo_available" alt="available" />
                           <span>{t("productDetailsAvailable")}</span>
                         </>
                       ) : (
                         <>
-                          <img src="/src/images/minus.png" className="available-logo" alt="not available" />
+                          <img src="/src/images/minus.png" className="logo_available" alt="not available" />
                           <span>{t("productDetailsNotAvailable")}</span>
                         </>
                       )}
@@ -118,8 +118,8 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
                 </div>
               </div>
 
-              <div className="bottom-product-card">
-                <div className="review-product-card">
+              <div className="product-details__bottom">
+                <div className="product-details__review">
                   <Reviews reviewData={reviewData} productId={productCardData.id} updateReviews={updateReviews} />
                 </div>
               </div>
@@ -133,9 +133,9 @@ function ProductDetails({ productCardData, reviewData, updateReviews, isLoading 
               />
             </>
           ) : (
-            <div className="product-card-wrapper">
-              <div className="error404">
-                <p className="error404-text">{t("productDetails404")}</p>
+            <div className="product-details">
+              <div className="product-details__error">
+                <p className="product-details__error-message">{t("productDetails404")}</p>
                 <Spinner />
               </div>
             </div>

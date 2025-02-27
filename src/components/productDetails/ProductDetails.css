@@ -1,4 +1,4 @@
-.product-card-wrapper {
+.product-details {
   margin: 25px 0;
   width: 960px;
   min-height: 80px;
@@ -11,7 +11,7 @@
   background-color: #ffffff;
 }
 
-.top-product-card {
+.product-details__header {
   display: flex;
   justify-content: space-between;
   align-self: center;
@@ -21,14 +21,14 @@
   padding: 20px 30px;
 }
 
-.image-product-card {
+.product-details__image-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 230px;
   height: 230px;
 }
-.main-image-product-card {
+.product-details__image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,12 +37,12 @@
   background-color: #ececec;
 }
 
-.engine-image {
+.engine {
   width: 200px;
   height: auto;
 }
 
-.info-product-card {
+.product-details__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,24 +51,24 @@
   padding: 10px;
 }
 
-.name-product-card {
+.product-details__name {
   font-size: 18px;
 }
 
-.code-product-card,
-.manufacturer-product-card,
-.description-product-card {
+.product-details__code,
+.product-details__manufacturer,
+.product-details__description {
   color: #5c5c5c;
   font-size: 15px;
 }
 
-.add-info-product-card {
+.product-details__additional {
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-.add-info-product-card-wrap {
+.product-details__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,16 +78,12 @@
   background-color: #ececec;
 }
 
-.price-product-card {
+.product_details__price {
   margin: 10px;
   font-size: 1.5rem;
 }
 
-.available-product-card {
-  margin: 0 0 10px 0;
-}
-
-.bottom-product-card {
+.product-details__bottom {
   display: flex;
   justify-content: center;
   align-self: center;
@@ -98,7 +94,7 @@
   padding: 10px;
   width: 335px;
 }
-.review-product-card {
+.product-details__review {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,13 +102,13 @@
   width: 960px;
 }
 
-.available-product-card {
+.product-details__availability {
   display: flex;
   align-items: center;
-  margin: 10px;
+  margin: 0 0 10px 0;
 }
 
-.available-logo {
+.logo_available {
   margin-right: 10px;
   width: 15px;
   height: 15px;
@@ -122,7 +118,7 @@
   margin: 10px;
 }
 
-.error404 {
+.product-details__error {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,6 +126,6 @@
   height: 100px;
 }
 
-.error404-text {
+.product-details__error-message {
   padding: 10px;
 }

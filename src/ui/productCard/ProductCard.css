@@ -26,11 +26,11 @@
   height: 190px;
 }
 
-.engine-image {
+.engine {
   transition: 1s;
 }
 
-.engine-image:hover {
+.engine:hover {
   transform: scale(1.1);
 }
 

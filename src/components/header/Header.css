@@ -1,4 +1,4 @@
-.header-container {
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   border-bottom: 1px solid #cccccc;
 }
 
-.header-wrap {
+.header__wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,7 @@
   padding: 10px;
 }
 
-.header-left {
+.header__logo-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -24,33 +24,34 @@
   height: 80px;
 }
 
-.header-left-logo {
+.header__logo {
   height: 80px;
   width: auto;
 }
 
-.header-right {
+.header__dash {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 80px;
 }
 
-.header-right-profile {
+.header__authorization {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.header-right-username {
+.header__username {
   color: #7fb364;
   font-weight: bold;
-  /*transition: background-color 0.3s ease, color 0.3s ease;*/
   cursor: pointer;
+  padding: 10px;
+  margin: 0 5px;
 }
 
 .cart-page,
-.login {
+.header__login {
   position: relative;
   text-align: center;
   margin: 0 5px;
@@ -62,7 +63,7 @@
   cursor: pointer;
 }
 
-.signup {
+.header__signup {
   position: relative;
   text-align: center;
   margin: 0 5px;
@@ -94,45 +95,7 @@
   cursor: pointer;
 }
 
-/*.cart-page-active::after {*/
-/*  content: attr(data-count);*/
-/*  position: absolute;*/
-/*  top: -1px;*/
-/*  right: -1px;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  background-color: #7fb364;*/
-/*  color: white;*/
-/*  border-radius: 50%;*/
-/*  padding: 8px;*/
-/*  font-size: 12px;*/
-/*  width: 7px;*/
-/*  height: 7px;*/
-/*}*/
-
-/*.header-right .cart-page::before {*/
-/*  content: " ";*/
-/*  position: absolute;*/
-/*  left: 5px;*/
-/*  top: 100%;*/
-/*  width: 0;*/
-/*  height: 2px;*/
-/*  background-color: #7fb364;*/
-/*  transition-duration: 0.3s;*/
-/*  transition-property: width;*/
-/*}*/
-
-/*.header-right .cart-page:hover::before {*/
-/*  width: calc(100% - 10px);*/
-/*}*/
-
-.header-right-username {
-  padding: 10px;
-  margin: 0 5px;
-}
-
-.logout {
+.header__logout {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,12 +104,12 @@
   margin: 0 5px;
 }
 
-.cart-logo {
+.header__cart-icon {
   width: 20px;
   height: 20px;
 }
 
-.logout-logo {
+.header__logout-icon {
   width: 20px;
   height: 22px;
 }

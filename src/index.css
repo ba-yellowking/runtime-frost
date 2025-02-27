@@ -64,12 +64,12 @@ body {
 
 /*Responsive layout*/
 /*Changing the width of main containers*/
-.header-wrap,
+.header__wrap,
 .footer-wrap,
 .filter-container,
 .products-container,
 .banner-component,
-.products-component-wrapper,
+.products-grid__wrap,
 .page-nav-container {
   @apply
     xl:max-w-[960px]
@@ -110,7 +110,7 @@ body {
 }
 
 /*Changing the logo size*/
-.header-left-logo {
+.header__logo {
   @apply
     xl:w-[183px] xl:h-auto
     lg:w-[183px] lg:h-auto
@@ -120,7 +120,7 @@ body {
 }
 
 /*Changing grids to flex columns*/
-.products-component-wrapper {
+.products-grid__wrap {
   @apply
     xl:grid xl:grid-cols-3 xl:gap-[30px]
     lg:grid lg:grid-cols-2 lg:gap-[30px]

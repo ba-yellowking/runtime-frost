@@ -54,7 +54,7 @@ function ProductsGrid() {
   return (
     <>
       {isLoading || isInitialLoad ? ( // Условие для отображения спиннера
-        <div className="products-component-container border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
+        <div className="products-grid border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
           <div className="spinner-container">
             <div className="spinner-wrapper">
               <Spinner />
@@ -62,15 +62,15 @@ function ProductsGrid() {
           </div>
         </div>
       ) : products.length > 0 ? (
-        <div className="products-component-container border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
-          <div className="products-component-wrapper">
+        <div className="products-grid border-[#cccccc] bg-[#ffffff] dark:border-[#252525] dark:bg-[#252525]">
+          <div className="products-grid__wrap">
             {products.map((product) => (
               <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} />
             ))}
           </div>
         </div>
       ) : (
-        <div className="empty-products">
+        <div className="products-grid__empty">
           <p>{t("productsGridNotAvailable")}</p>
         </div>
       )}

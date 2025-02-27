@@ -12,9 +12,8 @@ import { toggleTheme } from "../../slices/themeSlice.jsx"
 import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
 import theme_sun from "../../images/theme_sun.png"
 import theme_moon from "../../images/theme_moon.png"
-import main_logo from "../../images/logo.png";
-import main_logo_dark from "../../images/logo2.png";
-
+import main_logo from "../../images/logo.png"
+import main_logo_dark from "../../images/logo2.png"
 
 function Header() {
   const dispatch = useDispatch()
@@ -68,22 +67,22 @@ function Header() {
   }
 
   return (
-    <div className="header-container dark:border-b-[#222222] dark:bg-[#222222] dark:text-white">
-      <div className="header-wrap">
-        <div className="header-left">
+    <div className="header dark:border-b-[#222222] dark:bg-[#222222] dark:text-white">
+      <div className="header__wrap">
+        <div className="header__logo-container">
           <a href={`/`}>
             {theme === "dark" ? (
-              <img className="header-left-logo" src={main_logo_dark} alt="Logo" />
+              <img className="header__logo" src={main_logo_dark} alt="Logo" />
             ) : (
-              <img className="header-left-logo" src={main_logo} alt="Logo" />
+              <img className="header__logo" src={main_logo} alt="Logo" />
             )}
           </a>
         </div>
 
         {user !== null && tokenInfo ? (
           // Profile
-          <div className="header-right-profile">
-            <div className="header-right-username" onClick={() => navigate("/account")}>
+          <div className="header__dash">
+            <div className="header__username" onClick={() => navigate("/account")}>
               {displayName}
             </div>
 
@@ -115,17 +114,17 @@ function Header() {
               data-count={totalCount > 0 ? totalCount : null}
               onClick={handleCartClick}
             >
-              <img className="cart-logo dark:invert" src={cart} alt="cart-logo" />
+              <img className="header__cart-icon dark:invert" src={cart} alt="Cart icon" />
             </div>
 
             {/*Log out*/}
-            <div className="logout dark:invert">
-              <img className="logout-logo" src={logout} alt="logout-logo" onClick={handleSignOut} />
+            <div className="header__logout dark:invert">
+              <img className="header__logout-icon" src={logout} alt="logout icon" onClick={handleSignOut} />
             </div>
           </div>
         ) : (
           // not authorized
-          <div className="header-right">
+          <div className="header__authorization">
             {!tokenInfo ? (
               <>
                 <div className="mx-[5px] h-[40px] w-[40px] cursor-pointer p-[10px]">
@@ -146,7 +145,7 @@ function Header() {
                   </button>
                 </div>
 
-                <div className="login">
+                <div className="header__login">
                   <LogInModal
                     title="Войти"
                     onClick={openLogIn}
@@ -156,7 +155,7 @@ function Header() {
                   />
                 </div>
 
-                <div className="signup">
+                <div className="header__signup">
                   <SignUpModal
                     title="Регистрация"
                     onClick={openSignUp}
