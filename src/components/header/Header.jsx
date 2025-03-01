@@ -68,15 +68,11 @@ function Header() {
   return (
     <div className="header dark:border-b-[#222222] dark:bg-[#222222] dark:text-white">
       <div className="header__wrap">
-        <div className="header__logo-container">
-          <a href={`/`}>
-            {theme === "dark" ? (
-              <img className="header__logo" src={main_logo_dark} alt="Logo" />
-            ) : (
-              <img className="header__logo" src={main_logo} alt="Logo" />
-            )}
-          </a>
-        </div>
+
+        <a className="header__logo-container" href={`/`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6l6 6zm5.2 0l4.6-4.6l-4.6-4.6L16 6l6 6l-6 6z"/></svg>
+          <p className="header__logo--text">RUNTIME-FROST</p>
+        </a>
 
         {user !== null && tokenInfo ? (
           // Profile
