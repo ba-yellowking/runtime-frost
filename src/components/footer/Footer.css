@@ -30,11 +30,6 @@
   height: auto;
 }
 
-.instagram-text {
-  text-decoration: none;
-  color: black;
-}
-
 .footer__item--gmail {
   display: flex;
   justify-content: center;

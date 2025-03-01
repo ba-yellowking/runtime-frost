@@ -10,8 +10,10 @@ import engine2 from "../../images/engine2.png"
 import engine3 from "../../images/engine3.png"
 import engine4 from "../../images/engine4.png"
 import { useTranslation } from "../../hooks/useTranslation.jsx"
+import { useSelector } from "react-redux"
 
 function ProductCard({ id, name, price }) {
+
   const navigate = useNavigate()
 
   // useTranslation.jsx
@@ -60,6 +62,7 @@ function ProductCard({ id, name, price }) {
           </div>
 
           <ButtonStandard name={t("buyButton")} clickHandler={handleClick} />
+
         </div>
       </div>
 

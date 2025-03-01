@@ -59,7 +59,6 @@
   padding: 10px;
   text-decoration: none;
   color: #1c1c1c;
-  /*transition: .2s;*/
   cursor: pointer;
 }
 
@@ -74,7 +73,8 @@
   transition: 0.2s;
 }
 
-.cart-page:hover {
+.header__logout-icon:hover,
+.header__cart-icon:hover {
   color: #7fb364;
 }
 
@@ -111,7 +111,7 @@
 
 .header__logout-icon {
   width: 20px;
-  height: 22px;
+  height: 20px;
 }
 
 .icon-sun {

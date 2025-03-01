@@ -5,8 +5,9 @@ import "./ProductsGrid.css"
 import Spinner from "../../ui/spinner/Spinner.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { setLoading } from "../../slices/loadingSlice.jsx"
-import { setTotalPages } from "../../slices/filterSlice.jsx"
+import { setAvailable, setTotalPages } from "../../slices/filterSlice.jsx"
 import { useTranslation } from "../../hooks/useTranslation.jsx"
+import { setAvailableProduct } from "../../slices/availableProductSlice.jsx"
 
 function ProductsGrid() {
   const dispatch = useDispatch()
@@ -21,6 +22,8 @@ function ProductsGrid() {
 
   // useTranslation.jsx
   const { t } = useTranslation()
+
+  const availableProduct = useSelector((state) => [...state.available.isAvailable]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -37,9 +40,12 @@ function ProductsGrid() {
             available: available,
           },
         })
-
         setProducts(response.data.items)
+
         dispatch(setTotalPages(response.data.totalPages))
+
+        // Writing "available" data (0 or 1) into redux for "AddProductModal" component
+        dispatch(setAvailableProduct(response.data.items))
       } catch (error) {
         console.error(error)
       } finally {

@@ -4,6 +4,7 @@ import axios from "axios"
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx"
 import { useSelector } from "react-redux"
 import { useTranslation } from "../../hooks/useTranslation.jsx"
+import * as logger from "react-dom/test-utils"
 
 function Reviews({ reviewData, productId, updateReviews }) {
   const user = useSelector((state) => state.auth.user)
@@ -11,14 +12,6 @@ function Reviews({ reviewData, productId, updateReviews }) {
   const [existingFeedback, setExistingFeedBack] = useState(false)
 
   const [newReview, setNewReview] = useState()
-
-  // Проверка на то, был ли оставлен отзыв на товар с заданным Id
-  useEffect(
-    function () {
-      isExistedFeedback()
-    },
-    [productId, existingFeedback]
-  )
 
   // Отзывы пользователей
   const renderReviewData = function () {
@@ -28,7 +21,6 @@ function Reviews({ reviewData, productId, updateReviews }) {
           <div className="review-item-name dark:text-white">
             <b>{`${reviewItem.user.firstName} ${reviewItem.user.lastName}`}</b>
           </div>
-
           <div className="review-item-feedback dark:text-white">{reviewItem.review}</div>
         </div>
       )
@@ -38,14 +30,21 @@ function Reviews({ reviewData, productId, updateReviews }) {
   // Запрос на установку состояния, отправлял ли пользователь отзыв на товар с конкретным id
   // Если отправлял – true, если не отправлял – false
 
-  const isExistedFeedback = function () {
-    axios
-      .get(`https://frost.runtime.kz/api/reviews/exists?productId=${productId}`)
-      .then(function (response) {
+  // Проверка на то, был ли оставлен отзыв на товар с заданным Id
+  useEffect(() => {
+    const fetchFeedbackStatus = async function () {
+      if (!productId) return;
+
+      try {
+        const response = await axios.get(`https://frost.runtime.kz/api/reviews/exists?productId=${productId}`)
         setExistingFeedBack(response.data)
-      })
-      .catch((error) => console.error(error))
-  }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchFeedbackStatus();
+  }, [productId])
 
   const handleNewReview = function (event) {
     setNewReview(event.target.value)

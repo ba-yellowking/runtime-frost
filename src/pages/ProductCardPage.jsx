@@ -39,14 +39,14 @@ function ProductCardPage() {
         }
 
         setProductCardData(productData)
+
         dispatch(setLoading(false))
       } catch (error) {
         console.error(error)
       }
     }
-
     fetchProductData()
-  }, [params.productId])
+  }, [dispatch])
 
   // Запрос на получение отзывов
   const updateReviews = function () {

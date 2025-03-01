@@ -20,13 +20,14 @@ export const APP_TRANSLATIONS = {
     buyButton: "В корзину",
     confirmButton: "Подтвердить",
     addToCartButton: "Добавить в корзину",
+    notAvailableButton: "Нет в наличии",
 
     // productDetails
     productDetailsItemNumber: "Артикул",
     productDetailsProducer: "Производитель",
     productDetailsDescription: "Описание",
     productDetailsAvailable: "В наличии",
-    productDetailsNotAvailable: "Не в наличии",
+    productDetailsNotAvailable: "Нет в наличии",
     productDetails404: "Такой страницы нет. Возвращаюсь на главную страницу",
 
     // reviews
@@ -141,6 +142,7 @@ export const APP_TRANSLATIONS = {
     buyButton: "Add to cart",
     confirmButton: "Confirm",
     addToCartButton: "Add to cart",
+    notAvailableButton: "Out of stock",
 
     productDetailsItemNumber: "Item number:",
     productDetailsProducer: "Producer:",
@@ -245,6 +247,7 @@ export const APP_TRANSLATIONS = {
     buyButton: "Сатып алу",
     confirmButton: "Растау",
     addToCartButton: "Тауарды себетке қосу",
+    notAvailableButton: "Қоймада жоқ",
 
     productDetailsItemNumber: "Тауар нөмірі:",
     productDetailsProducer: "Өндіруші:",
