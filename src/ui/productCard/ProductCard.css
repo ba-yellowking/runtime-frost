@@ -6,6 +6,7 @@
   width: 275px;
   height: 325px;
   border: 1px solid #e3e3e3;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -43,7 +44,7 @@
 
 .product-tile__details {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 260px;
   height: 50px;
@@ -56,6 +57,7 @@
   height: 50px;
   margin-right: 20px;
 }
+
 .product-buy {
   height: 50px;
   display: flex;
@@ -63,10 +65,13 @@
   align-items: center;
 }
 
-.product-buy-button {
+.productCardButton {
   width: 115px;
   height: 30px;
   background-color: #7fb364;
   color: #ffffff;
-  border: none;
+  border-radius: 2px;
+}
+.productCardButton:hover {
+  background-color: #88bd6c;
 }

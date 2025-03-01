@@ -73,11 +73,6 @@
   transition: 0.2s;
 }
 
-.header__logout-icon:hover,
-.header__cart-icon:hover {
-  color: #7fb364;
-}
-
 .cart-page-image {
   width: 20px;
   height: 20px;
@@ -95,7 +90,7 @@
   cursor: pointer;
 }
 
-.header__logout {
+.header__icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,6 +107,11 @@
 .header__logout-icon {
   width: 20px;
   height: 20px;
+}
+
+.header__logout-icon:hover,
+.header__cart-icon:hover {
+  color: #7fb364;
 }
 
 .icon-sun {

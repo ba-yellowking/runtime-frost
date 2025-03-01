@@ -9,13 +9,10 @@ import { useTranslation } from "../../../hooks/useTranslation.jsx"
 // Модальное окно при добавлении товара в корзину
 // cart/add?productId=...&count=...
 
-function AddProductModal({ isOpen, close, newProductName, newProductPrice, newProductId }) {
+function AddProductModal({ isOpen, close, newProductName, newProductPrice, newProductId, newProductAvailable }) {
 
   const user = useSelector((state) => state.auth.user)
   const [counter, setCounter] = useState(1)
-
-  const availableProduct = useSelector((state) => state.available.isAvailable);
-  const isAvailable = availableProduct[newProductId];
 
   // useTranslation.jsx
   const { t } = useTranslation()
@@ -89,12 +86,21 @@ function AddProductModal({ isOpen, close, newProductName, newProductPrice, newPr
         </div>
 
         <div className="modal__footer dark:bg-[#252525]">
-          <ButtonStandard
-            name={isAvailable === 1 ? t("addToCartButton") : t("notAvailableButton")}
-            className="productInCartModal"
-            clickHandler={clickHandler}
-            isDisabled={isAvailable !== 1 || !user}
-          />
+          {newProductAvailable !== 0 ? (
+            <ButtonStandard
+              name={t("addToCartButton")}
+              className="productInCartModal"
+              clickHandler={clickHandler}
+              isDisabled={!user}
+            />
+          ) : (
+            <ButtonStandard
+              name={t("notAvailableButton")}
+              className="productInCartModal"
+              clickHandler={clickHandler}
+              isDisabled={true}
+            />
+          )}
 
           <span className="modal__footer--continue dark:text-white" onClick={close}>
             {t("addProductContinueShopping")}
