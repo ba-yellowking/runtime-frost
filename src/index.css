@@ -345,15 +345,15 @@ body {
   }
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-  .header__wrap, .filter {
-    width: 700px;
-  }
-}
+/*@media (min-width: 641px) and (max-width: 1024px) {*/
+/*  .header__wrap, .filter {*/
+/*    width: 700px;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 1025px) {
-  .header__wrap, .filter {
-    background-color: green;
-    width: 960px;
-  }
-}
+/*@media (min-width: 1025px) {*/
+/*  .header__wrap, .filter {*/
+/*    !*background-color: green;*!*/
+/*    width: 960px;*/
+/*  }*/
+/*}*/
