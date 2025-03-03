@@ -99,7 +99,7 @@ function CartItems({ setCurrentComponent }) {
 
                     <div className="cart-item__column">
                       <button className="cart-item__button" onClick={() => decreaseQuantity(item.product.id)}>
-                        -
+                        –
                       </button>
 
                       {item.count}

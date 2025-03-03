@@ -8,8 +8,6 @@ import { checkTokenAndGetUser, signOut } from "../../slices/authSlice.jsx"
 import "./Header.css"
 import { toggleTheme } from "../../slices/themeSlice.jsx"
 import LocaleDropdown from "../../ui/dropDown/LocaleDropdown.jsx"
-import main_logo from "../../images/logo.png"
-import main_logo_dark from "../../images/logo2.png"
 import { useTranslation } from "../../hooks/useTranslation.jsx"
 
 function Header() {
