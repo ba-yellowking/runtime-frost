@@ -26,7 +26,7 @@ function LocaleDropdown() {
   return (
     <div className="locale__dropdown relative mx-5">
       <button
-        className="locale__dropdown--button h-[30px] w-[50px] rounded-[5px] bg-[#7fb364] text-white dark:bg-[#393939] dark:text-white"
+        className="locale__dropdown--button h-[30px] w-[40px] rounded-[5px] bg-[#7fb364] text-white dark:bg-[#393939] dark:text-white"
         onClick={toggleDropdown}
         ref={localeDropdownRef}
       >

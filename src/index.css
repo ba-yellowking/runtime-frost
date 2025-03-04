@@ -131,8 +131,6 @@ body {
 @media (max-width: 640px) {
 
   .main-page {
-    /*max-width: 100%;*/
-    /*min-height: 200px;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +145,7 @@ body {
   }
   .header__wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
   }
@@ -189,7 +187,7 @@ body {
   .footer__wrapper {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .products {
