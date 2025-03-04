@@ -7,6 +7,8 @@ import { signIn } from "../../../slices/authSlice.jsx"
 import Spinner from "../../../ui/spinner/Spinner.jsx"
 import { setLoading } from "../../../slices/loadingSlice.jsx"
 import { useTranslation } from "../../../hooks/useTranslation.jsx"
+import { useMediaQuery } from "react-responsive"
+import loginSvg from "/src/images/login.svg"
 
 function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
   // useTranslation.jsx
@@ -15,15 +17,15 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
   const dispatch = useDispatch()
   const isLoading = useSelector((state) => state.loading.isLoading)
 
-  // States for login and password
+  // States for login.svg and password
   const [emailInput, setEmailInput] = useState("")
   const [passInput, setPassInput] = useState("")
 
-  // Errors for wrong login and password
+  // Errors for wrong login.svg and password
   const [errorLogin, setErrorLogin] = useState("")
   const [errorPassword, setErrorPassword] = useState("")
 
-  // Email (login)
+  // Email (login.svg)
   const handleEmailInput = function (content) {
     setEmailInput(content.target.value)
   }
@@ -57,10 +59,13 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
     resetForm()
   }
 
+  // React-responsive
+  const responsiveMobile = useMediaQuery({ maxWidth: 640 })
+
   return (
     <>
       <span className="modal__title dark:text-white" onClick={onClick}>
-        {title}
+        {responsiveMobile ? <img className="header__login--icon" src={loginSvg} alt="login icon" /> : title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>

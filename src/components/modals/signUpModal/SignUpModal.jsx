@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../../../slices/authSlice.jsx"
 import { setLoading } from "../../../slices/loadingSlice.jsx"
 import { useTranslation } from "../../../hooks/useTranslation.jsx"
+import { useMediaQuery } from "react-responsive"
+import signupSvg from "../../../images/signup.svg"
 
 function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegistration }) {
   // useTranslation.jsx
@@ -98,10 +100,13 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
     resetForm()
   }
 
+  // React-responsive
+  const responsiveMobile = useMediaQuery({ maxWidth: 640 })
+
   return (
     <div>
       <span className="modal__title dark:text-white" onClick={onClick}>
-        {title}
+        {responsiveMobile ? <img className="header__signup--icon" src={signupSvg} alt="login icon" /> : title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>

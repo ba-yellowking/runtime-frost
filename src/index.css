@@ -135,6 +135,12 @@ body {
 
 @media (max-width: 640px) {
 
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .main-page {
     width: 375px;
     min-height: 200px;
@@ -144,11 +150,12 @@ body {
   }
 
   .header {
-    width: 375px;
+    width: 100vw;
   }
   .header__wrap {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     width: 360px;
   }
   .header__logo-container {
@@ -160,13 +167,32 @@ body {
     margin: 0 5px;
     padding: 10px;
   }
+  .header__authorization {
+    width: 200px;
+    height: 50px;
+  }
+  .header__login,
+  .header__signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+  }
+  .header__login--icon,
+  .header__signup--icon {
+    width: auto;
+    height: 30px;
+  }
 
   .footer {
-    width: 375px;
+    width: 100vw;
   }
   .footer__wrapper {
+    width: 360px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   .products {
@@ -342,6 +368,29 @@ body {
   }
   .route-cart, .route-contacts, .route-delivery, .route-completed {
     width: 100%;
+  }
+
+  .modal__content {
+    width: 360px;
+    max-height: 800px;
+  }
+  .modal__input {
+    width: 300px;
+  }
+  .modal__footer button,
+  .modal__signup {
+    width: 100%;
+  }
+  .modal__body {
+    max-height: 800px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal__full-name {
+    display: flex;
+    flex-direction: column;
   }
 }
 
