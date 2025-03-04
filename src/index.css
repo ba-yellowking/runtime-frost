@@ -17,12 +17,8 @@
 
 body {
   min-height: 100vh;
-  overflow-y: scroll;
-  min-width: 300px;
   background-color: #f0f2f3;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
-
 .main-page {
   min-height: 100vh;
   max-width: 100vw;
@@ -132,41 +128,37 @@ body {
 }
 
 /*Responsive Layout*/
-
 @media (max-width: 640px) {
 
-  body {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .main-page {
-    width: 375px;
-    min-height: 200px;
+    /*max-width: 100%;*/
+    /*min-height: 200px;*/
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .header {
-    width: 100vw;
+    width: 100%;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   .header__wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 360px;
+    width: 100%;
   }
   .header__logo-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    margin: 0 5px;
-    padding: 10px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
   .header__authorization {
     width: 200px;
@@ -188,17 +180,21 @@ body {
   }
 
   .footer {
-    width: 100vw;
+    width: 100%;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   .footer__wrapper {
-    width: 360px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }
 
   .products {
     margin: 25px 0;
-    width: 360px;
+    width: 100%;
     overflow: hidden;
   }
 
@@ -206,7 +202,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 360px;
+    width: 100%;
     margin-top: 25px;
     border-radius: 5px;
   }
@@ -215,11 +211,10 @@ body {
   }
   .pagination button {
     margin: 5px;
-    border-radius: 4px;
   }
 
   .filter {
-    width: 360px;
+    width: 100%;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -246,12 +241,18 @@ body {
     display: none;
   }
 
+  .locale__dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .locale__dropdown--button {
-    display: none;
+    width: 40px;
+    height: 30px;
   }
 
   .products-grid {
-    width: 360px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -298,11 +299,11 @@ body {
   }
 
   .profile__section {
-    width: 360px;
+    width: 80%;
     padding: 0;
   }
   .profile__wrap {
-    width: 360px;
+    width: 80%;
     font-size: 8px;
   }
   .profile__item {
@@ -310,8 +311,13 @@ body {
   }
 
   .cart {
-    width: 360px;
+    width: 80%;
     font-size: 8px;
+  }
+  .cart__input {
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
   }
   .cart-item__number, .cart-item__delete {
     font-size: 8px;
@@ -321,16 +327,17 @@ body {
     font-size: 8px;
   }
   .contacts__body {
-    width: 318px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  .cart__input {
-    width: 300px;
-    height: 30px;
-    font-size: 12px;
+  .contacts-top,
+  .contacts-bottom,
+  .delivery-top,
+  .delivery-bottom {
+    width: 100%;
   }
   .cart-details__button {
     height: 30px;
@@ -339,25 +346,23 @@ body {
   .cart-details__button button {
     margin: 0;
   }
-
   .delivery__body {
-    width: 318px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
   }
   .delivery__address-details--style {
-    width: 140px;
+    width: 100%;
     font-size: 12px;
   }
-
   .order-complete {
-    width: 318px;
+    width: 100%;
   }
 
   .cart-route {
-    width: 360px;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -372,11 +377,11 @@ body {
   }
 
   .modal__content {
-    width: 360px;
+    width: 90%;
     max-height: 800px;
   }
   .modal__input {
-    width: 300px;
+    width: 90%;
   }
   .modal__footer button,
   .modal__signup {
@@ -384,14 +389,24 @@ body {
   }
   .modal__body {
     max-height: 800px;
-    width: 360px;
+    width: 90%;
     display: flex;
     flex-direction: column;
   }
-
   .modal__full-name {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal__first-name,
+  .modal__last-name {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 

@@ -46,6 +46,9 @@
 }
 
 .header__username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #7fb364;
   font-weight: bold;
   cursor: pointer;

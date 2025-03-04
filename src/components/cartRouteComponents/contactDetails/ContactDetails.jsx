@@ -37,7 +37,7 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
       <span className="cart__header">{t("contactsDetails")}</span>
 
       <div className="contacts__body">
-        <div>
+        <div className="contacts-top">
           <p className="contacts__label dark:text-white">{t("contactsLastName")}</p>
 
           <input
@@ -55,7 +55,8 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
           />
 
           <p className="contacts__label dark:text-white">
-            {t("contactsPatronym")} <span className="contacts__label--optional dark:text-white">{t("contactsOptional")}</span>
+            {t("contactsPatronym")}{" "}
+            <span className="contacts__label--optional dark:text-white">{t("contactsOptional")}</span>
           </p>
           <input className="cart__input dark:border-[#393939] dark:bg-[#393939]" type="text" />
 
@@ -91,7 +92,7 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
           )}
         </div>
 
-        <div>
+        <div className="contacts-bottom">
           <p className="contacts__label dark:text-white">{t("contactsEmail")}</p>
 
           <input
@@ -103,18 +104,10 @@ function ContactDetails({ setCurrentComponent, ordersData, setOrdersData }) {
           {user ? (
             <>
               <p className="contacts__label--disabled dark:text-white">{t("contactsPassword")}</p>
-              <input
-                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
-                type="text"
-                disabled
-              />
+              <input className="cart__input dark:border-[#393939] dark:bg-[#393939]" type="text" disabled />
 
               <p className="contacts__label--disabled dark:text-white">{t("contactsRepeatPassword")}</p>
-              <input
-                className="cart__input dark:border-[#393939] dark:bg-[#393939]"
-                type="text"
-                disabled
-              />
+              <input className="cart__input dark:border-[#393939] dark:bg-[#393939]" type="text" disabled />
             </>
           ) : (
             <>

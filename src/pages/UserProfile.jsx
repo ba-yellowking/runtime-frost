@@ -46,9 +46,9 @@ function UserProfile() {
 
   return (
     <>
-      <Header />
-
       <div className="main-page">
+        <Header />
+
         <div className="profile__section">
           <p className="profile__section--text">{t("profileMyAccount")}</p>
         </div>
@@ -78,41 +78,31 @@ function UserProfile() {
                 </div>
 
                 <div className="profile__body">
+                  {orders.map((order, index) => (
+                    <div className="profile__item dark:border-[#393939]" key={index}>
+                      <div className="profile__item--column">{order.id}</div>
 
-                    {orders.map((order, index) => (
-                      <div className="profile__item dark:border-[#393939]" key={index}>
-
-                        <div className="profile__item--column">
-                          {order.id}
-                        </div>
-
-                        <div className="profile__item--column">
-                          {order.items.map((item, i) => (
-                            <li key={i}>{item.product.name}</li>
-                          ))}
-                        </div>
-
-                        <div className="profile__item--column">
-                          {order.items.map((item, i) => (
-                            <div key={i}>{item.count}</div>
-                          ))}
-                        </div>
-
-                        <div className="profile__item--column">
-                          {order.items.map((item, i) => (
-                            <div key={i}>
-                              {(item.count * item.product.price).toLocaleString("ru-RU")} тг.
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="profile__item--column">
-                          {dateFormatting(order.created_at)}
-                        </div>
-
+                      <div className="profile__item--column">
+                        {order.items.map((item, i) => (
+                          <li key={i}>{item.product.name}</li>
+                        ))}
                       </div>
-                    ))}
 
+                      <div className="profile__item--column">
+                        {order.items.map((item, i) => (
+                          <div key={i}>{item.count}</div>
+                        ))}
+                      </div>
+
+                      <div className="profile__item--column">
+                        {order.items.map((item, i) => (
+                          <div key={i}>{(item.count * item.product.price).toLocaleString("ru-RU")} тг.</div>
+                        ))}
+                      </div>
+
+                      <div className="profile__item--column">{dateFormatting(order.created_at)}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ) : (
@@ -130,9 +120,9 @@ function UserProfile() {
             )}
           </>
         )}
-      </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   )
 }

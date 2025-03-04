@@ -85,7 +85,7 @@ function DeliveryDetails({
       <span className="cart__header">{t("deliveryDetails")}</span>
 
       <div className="delivery__body">
-        <div>
+        <div className="delivery-top">
           {errorMessages.area ? (
             <p className="cart-error">{errorMessages.area}</p>
           ) : (
@@ -111,7 +111,7 @@ function DeliveryDetails({
           />
         </div>
 
-        <div>
+        <div className="delivery-bottom">
           {errorMessages.street ? (
             <p className="cart-error">{errorMessages.street}</p>
           ) : (

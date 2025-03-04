@@ -1,15 +1,18 @@
 export const APP_LOCALES = [
   {
     serviceName: "ru",
-    displayName: "Русский",
+    displayName: "RU",
+    shortName: "RU",
   },
   {
     serviceName: "en",
-    displayName: "English",
+    displayName: "EN",
+    shortName: "EN",
   },
   {
     serviceName: "kk",
-    displayName: "Қазақша",
+    displayName: "KZ",
+    shortName: "KZ",
   },
 ]
 
