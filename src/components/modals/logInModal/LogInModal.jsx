@@ -65,7 +65,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
   return (
     <>
       <span className="modal__title dark:text-white" onClick={onClick}>
-        {responsiveMobile ? <img className="header__login--icon" src={loginSvg} alt="login icon" /> : title}
+        {responsiveMobile ? <img className="header__login--icon dark:invert" src={loginSvg} alt="login icon" /> : title}
       </span>
 
       <Modal open={isOpen} close={handleClose}>

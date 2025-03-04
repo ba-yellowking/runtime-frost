@@ -106,7 +106,11 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
   return (
     <div>
       <span className="modal__title dark:text-white" onClick={onClick}>
-        {responsiveMobile ? <img className="header__signup--icon" src={signupSvg} alt="login icon" /> : title}
+        {responsiveMobile ? (
+          <img className="header__signup--icon dark:invert" src={signupSvg} alt="login icon" />
+        ) : (
+          title
+        )}
       </span>
 
       <Modal open={isOpen} close={handleClose}>
