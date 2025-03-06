@@ -16,6 +16,7 @@
   width: 220px;
   height: 33px;
   background-color: #7fb364;
+  border-radius: 4px;
 }
 
 .dropdown__header:after {
@@ -59,7 +60,7 @@
   height: 33px;
   background-color: #cccccc;
   cursor: default;
-
+  border-radius: 4px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

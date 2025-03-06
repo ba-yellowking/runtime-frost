@@ -16,7 +16,7 @@ function CheckBox({ onChangeCheckBox }) {
   const { t } = useTranslation()
 
   return (
-    <div className="checkbox flex h-[33px] w-[220px] items-center justify-start bg-[#7fb364] pl-4 sm:w-[300px] md:w-[400px] lg:w-[170px] xl:w-[220px]">
+    <div className="checkbox rounded-[4px] flex h-[33px] w-[220px] items-center justify-start bg-[#7fb364] pl-4">
       <input
         id="checkBox"
         // prettier-ignore

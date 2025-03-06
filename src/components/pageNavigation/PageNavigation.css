@@ -10,10 +10,16 @@
   border-radius: 5px;
 }
 
+.pagination__button {
+  border-radius: 4px;
+}
+
 .pageNavComponentForward {
   margin: 5px 37px 5px 5px;
+  border-radius: 4px;
 }
 
 .pageNavComponentBack {
   margin: 5px;
+  border-radius: 4px;
 }
