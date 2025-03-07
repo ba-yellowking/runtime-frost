@@ -55,7 +55,10 @@
   padding: 10px;
   margin: 0 5px;
   height: 40px;
-
+  transition: 0.5s ease;
+}
+.header__username:hover {
+  text-decoration: underline;
 }
 
 .cart-page,
