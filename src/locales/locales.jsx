@@ -86,6 +86,8 @@ export const APP_TRANSLATIONS = {
     loginSignInButton: "Войти в учетную запись",
     loginNoProfile: "Нет учетной записи?",
     loginSignUp: "Войти",
+    loginReviewStart: "Чтобы оставить отзыв, ",
+    loginReviewEnd: "необходимо авторизоваться",
 
     // signUpModal
     signUpCreate: "Создание учетной записи",
@@ -199,6 +201,8 @@ export const APP_TRANSLATIONS = {
     loginSignInButton: "Sign in",
     loginNoProfile: "No account?",
     loginSignUp: "Sign in",
+    loginReviewStart: "If you want to leave your feedback, ",
+    loginReviewEnd: "sign in",
 
     signUpCreate: "Creating a new account",
     signUpFirstName: "First name",
@@ -304,6 +308,8 @@ export const APP_TRANSLATIONS = {
     loginSignInButton: "Есептік жазбаға кіру",
     loginNoProfile: "Есептік жазбаңыз жоқ па?",
     loginSignUp: "Кіру",
+    loginReviewStart: "Пікір қалдыру үшін ",
+    loginReviewEnd: "жүйеге кіріңіз",
 
     signUpCreate: "Есептік жазба жасау",
     signUpFirstName: "Аты",

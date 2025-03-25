@@ -196,7 +196,7 @@ function SignUpModal({ isOpen, close, onClick, title, onClickLogIn, openEndRegis
               <span className="modal__signup dark:text-white">
                 {t("signUpProfileExists")}{" "}
                 <span className="modal__signup--link" onClick={onClickLogIn}>
-                  {t("signUpSignIn")}
+                  {t("loginSignUp")}
                 </span>
               </span>
             </div>

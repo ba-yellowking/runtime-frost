@@ -43,10 +43,11 @@
   margin: 3px 20px;
   color: #ffffff;
   font-size: 28px;
+  transition: 1s;
 }
 
 .modal__close:hover {
-  color: black;
+  scale: 0.8;
   cursor: pointer;
 }
 

@@ -4,7 +4,8 @@ import axios from "axios"
 import ButtonStandard from "../../ui/buttonStandard/ButtonStandard.jsx"
 import { useSelector } from "react-redux"
 import { useTranslation } from "../../hooks/useTranslation.jsx"
-import * as logger from "react-dom/test-utils"
+import useModal from "../../hooks/useModal.jsx"
+import LogInModal from "../modals/logInModal/LogInModal.jsx"
 
 function Reviews({ reviewData, productId, updateReviews }) {
   const user = useSelector((state) => state.auth.user)
@@ -12,6 +13,9 @@ function Reviews({ reviewData, productId, updateReviews }) {
   const [existingFeedback, setExistingFeedBack] = useState(false)
 
   const [newReview, setNewReview] = useState()
+
+  const [isOpenLogIn, openLogIn, closeLogIn] = useModal()
+
 
   // Отзывы пользователей
   const renderReviewData = function () {
@@ -94,12 +98,14 @@ function Reviews({ reviewData, productId, updateReviews }) {
             </>
           ) : (
             <>
-              {`Чтобы оставить отзыв, `}
-              <span
-                className="reviews-sign-in"
-                // onClick
-              >
-                {`войдите на сайт.`}
+              <span>
+                {t("loginReviewStart")}
+                <LogInModal
+                  title={t("loginReviewEnd")}
+                  onClick={openLogIn}
+                  isOpen={isOpenLogIn}
+                  close={closeLogIn}
+                />
               </span>
             </>
           )}

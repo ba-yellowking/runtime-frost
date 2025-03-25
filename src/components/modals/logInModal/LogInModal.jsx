@@ -109,7 +109,7 @@ function LogInModal({ isOpen, close, onClick, title, goToSignUpFromLogIn }) {
           <span className="modal__signup dark:text-white">
             {t("loginNoProfile")}{" "}
             <span className="modal__signup--link" onClick={goToSignUpFromLogIn}>
-              {t("loginSignUp")}
+              {t("signUpSignIn")}
             </span>
           </span>
         </div>
